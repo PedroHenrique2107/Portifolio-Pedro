@@ -108,7 +108,7 @@ export function Contact() {
 
             <div className="space-y-4">
               <a
-                href="https://github.com/pedrohenrique"
+                href="https://github.com/PedroHenrique2107"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/5 hover:border-cyan-500/30 hover:bg-cyan-500/5 transition-all duration-300 group"
@@ -118,12 +118,12 @@ export function Contact() {
                 </div>
                 <div>
                   <span className="block text-white font-medium">GitHub</span>
-                  <span className="text-gray-500 font-mono text-sm">github.com/pedrohenrique</span>
+                  <span className="text-gray-500 font-mono text-sm">github.com/PedroHenrique2107</span>
                 </div>
               </a>
 
               <a
-                href="mailto:pedro.henrique.m.s@example.com"
+                href="mailto:pedrohmsousa2023@gmail.com"
                 className="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/5 hover:border-emerald-500/30 hover:bg-emerald-500/5 transition-all duration-300 group"
               >
                 <div className="w-12 h-12 rounded-lg bg-white/5 flex items-center justify-center group-hover:bg-emerald-500/10 transition-colors">
@@ -131,12 +131,12 @@ export function Contact() {
                 </div>
                 <div>
                   <span className="block text-white font-medium">Email</span>
-                  <span className="text-gray-500 font-mono text-sm">pedro.henrique.m.s@example.com</span>
+                  <span className="text-gray-500 font-mono text-sm">pedrohmsousa2023@gmail.com</span>
                 </div>
               </a>
 
               <a
-                href="https://linkedin.com/in/pedrohenrique"
+                href="https://www.linkedin.com/in/pedro-henrique-mendes-78a59325a/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/5 hover:border-purple-500/30 hover:bg-purple-500/5 transition-all duration-300 group"
@@ -146,7 +146,7 @@ export function Contact() {
                 </div>
                 <div>
                   <span className="block text-white font-medium">LinkedIn</span>
-                  <span className="text-gray-500 font-mono text-sm">linkedin.com/in/pedrohenrique</span>
+                  <span className="text-gray-500 font-mono text-sm">https://www.linkedin.com/in/pedro-henrique-mendes-78a59325a/</span>
                 </div>
               </a>
             </div>
@@ -154,11 +154,11 @@ export function Contact() {
             {/* Stats */}
             <div className="grid grid-cols-3 gap-4 pt-8 border-t border-white/5">
               <div className="text-center">
-                <span className="block text-2xl font-bold text-cyan-400">5+</span>
+                <span className="block text-2xl font-bold text-cyan-400">20+</span>
                 <span className="text-gray-500 text-sm">Projetos</span>
               </div>
               <div className="text-center">
-                <span className="block text-2xl font-bold text-emerald-400">3+</span>
+                <span className="block text-2xl font-bold text-emerald-400">1+</span>
                 <span className="text-gray-500 text-sm">Anos Exp.</span>
               </div>
               <div className="text-center">

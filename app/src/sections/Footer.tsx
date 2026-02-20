@@ -9,9 +9,9 @@ const navLinks = [
 ];
 
 const socialLinks = [
-  { icon: Github, href: 'https://github.com/pedrohenrique', label: 'GitHub' },
-  { icon: Linkedin, href: 'https://linkedin.com/in/pedrohenrique', label: 'LinkedIn' },
-  { icon: Mail, href: 'mailto:pedro.henrique.m.s@example.com', label: 'Email' }
+  { icon: Github, href: 'https://github.com/PedroHenrique2107', label: 'GitHub' },
+  { icon: Linkedin, href: 'https://www.linkedin.com/in/pedro-henrique-mendes-78a59325a/', label: 'LinkedIn' },
+  { icon: Mail, href: 'mailto:pedrohmsousa2023@gmail.com', label: 'Email' }
 ];
 
 export function Footer() {
@@ -35,11 +35,11 @@ export function Footer() {
               </div>
               <div>
                 <span className="block text-white font-semibold">Pedro Henrique</span>
-                <span className="text-gray-500 font-mono text-sm">Backend Engineer</span>
+                <span className="text-gray-500 font-mono text-sm">Engenheiro de Software</span>
               </div>
             </div>
             <p className="text-gray-400 text-sm max-w-xs">
-              Construindo sistemas que operam sob pressão. 
+              Se dá pra automatizar, não é pra fazer manual. 
               Backend • AIoT • Arquitetura Limpa.
             </p>
           </div>
@@ -88,8 +88,7 @@ export function Footer() {
         <div className="pt-8 border-t border-white/5">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <p className="text-gray-500 text-sm flex items-center gap-1">
-              © 2024 Pedro Henrique. Construído com{' '}
-              <Heart className="w-4 h-4 text-red-400 fill-red-400" /> e precisão.
+              © 2026 Pedro Henrique. Construído com <Heart className="w-4 h-4 text-red-500" /> e <Code2 className="w-4 h-4 text-cyan-400" />.
             </p>
             <p className="text-gray-600 font-mono text-xs">
               React • TypeScript • TailwindCSS • Three.js
