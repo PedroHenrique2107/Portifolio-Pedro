@@ -63,7 +63,7 @@ export function Hero() {
             >
               <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 font-mono text-sm">
                 <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
-                BACKEND ENGINEER • SOFTWARE ARCHITECT
+                SOFTWARE ENGINEER • BACKEND • CLEAN CODE
               </span>
             </motion.div>
 
@@ -74,8 +74,8 @@ export function Hero() {
               transition={{ duration: 0.6, delay: 0.1, ease: 'easeOut' }}
               className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight"
             >
-              Construindo sistemas que{' '}
-              <span className="text-gradient-cyan">operam sob pressão.</span>
+              Alta performance começa na arquitetura.{' '}
+              <span className="text-gradient-cyan">Sustentabilidade nasce nas decisões técnicas.</span>
             </motion.h1>
 
             {/* Subheadline */}
@@ -85,7 +85,8 @@ export function Hero() {
               transition={{ duration: 0.6, delay: 0.2, ease: 'easeOut' }}
               className="text-lg sm:text-xl text-gray-400 max-w-xl"
             >
-              Backend • AIoT • APIs Escaláveis • Observabilidade • Arquitetura Limpa
+            Olá meu nome é Pedro, sou um futuro Engenheiro de Software focado em backend e arquitetura de sistemas escaláveis.
+            É um prazer ter você aqui. Este portfólio reúne projetos, experiências e soluções que refletem minha visão de tecnologia: eficiência, inovação e impacto positivo. Explore, inspire-se e vamos construir o futuro juntos. 
             </motion.p>
 
             {/* CTAs */}
@@ -120,7 +121,7 @@ export function Hero() {
               className="flex items-center gap-4 pt-4"
             >
               <a
-                href="https://github.com/pedrohenrique"
+                href="https://github.com/PedroHenrique2107"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-gray-400 hover:text-cyan-400 transition-colors"
@@ -130,7 +131,7 @@ export function Hero() {
               </a>
               <span className="text-gray-600">|</span>
               <a
-                href="mailto:pedro.henrique.m.s@example.com"
+                href="mailto:pedrohmsousa2023@gmail.com"
                 className="flex items-center gap-2 text-gray-400 hover:text-cyan-400 transition-colors"
               >
                 <Mail className="w-5 h-5" />
