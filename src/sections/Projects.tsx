@@ -6,11 +6,13 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/u
 import { projects, filterCategories } from '@/data/projects';
 import type { FilterCategory, Project } from '@/types';
 
-const categoryColors: Record<string, { bg: string; text: string; border: string }> = {
+const categoryColors: Record<Project['category'], { bg: string; text: string; border: string }> = {
   apis: { bg: 'bg-cyan-500/10', text: 'text-cyan-400', border: 'border-cyan-500/20' },
   aiot: { bg: 'bg-emerald-500/10', text: 'text-emerald-400', border: 'border-emerald-500/20' },
   fullstack: { bg: 'bg-purple-500/10', text: 'text-purple-400', border: 'border-purple-500/20' },
-  systems: { bg: 'bg-gray-500/10', text: 'text-gray-400', border: 'border-gray-500/20' }
+  systems: { bg: 'bg-gray-500/10', text: 'text-gray-400', border: 'border-gray-500/20' },
+  frontend: { bg: 'bg-blue-500/10', text: 'text-blue-400', border: 'border-blue-500/20' },
+  backend: { bg: 'bg-orange-500/10', text: 'text-orange-400', border: 'border-orange-500/20' }
 };
 
 export function Projects() {

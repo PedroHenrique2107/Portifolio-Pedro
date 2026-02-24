@@ -85,7 +85,7 @@ export function Hero() {
               transition={{ duration: 0.6, delay: 0.2, ease: 'easeOut' }}
               className="text-lg sm:text-xl text-gray-400 max-w-xl"
             >
-            Olá meu nome é Pedro, sou um futuro Engenheiro de Software focado em backend e arquitetura de sistemas escaláveis.
+            Olá meu nome é Pedro Henrique, Engenheiro de Software focado em backend e arquitetura de sistemas escaláveis.
             É um prazer ter você aqui. Este portfólio reúne projetos, experiências e soluções que refletem minha visão de tecnologia: eficiência, inovação e impacto positivo. Explore, inspire-se e vamos construir o futuro juntos. 
             </motion.p>
 
