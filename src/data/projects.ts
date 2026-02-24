@@ -4,7 +4,7 @@ export const projects: Project[] = [
   {
     id: 'apisrestfull',
     title: 'APIsRESTFULL',
-    category: 'apis',
+    category: 'apis', //  Mexer também no /types/index.ts
     categoryLabel: 'APIs & Microserviços',
     description: 'APIs robustas com arquitetura limpa e separação de responsabilidades, implementadas em Python/Flask e Go.',
     highlights: [
@@ -28,7 +28,7 @@ export const projects: Project[] = [
   {
     id: 'shop-swift',
     title: 'Shop Swift Suite',
-    category: 'fullstack',
+    category: 'fullstack', //  Mexer também no /types/index.ts
     categoryLabel: 'Fullstack',
     description: 'Plataforma de e-commerce completa com gestão de produtos, pedidos e integração com gateway de pagamentos.',
     highlights: [
@@ -52,7 +52,7 @@ export const projects: Project[] = [
   {
     id: 'valeti-system',
     title: 'Sistema de Valeti',
-    category: 'fullstack',
+    category: 'fullstack', //  Mexer também no /types/index.ts
     categoryLabel: 'Fullstack',
     description: 'Sistema de gerenciamento de valets com tracking em tempo real e gestão de filas.',
     highlights: [
@@ -61,22 +61,22 @@ export const projects: Project[] = [
       'Gestão de filas e priorização',
       'Relatórios e analytics'
     ],
-    stack: ['React', 'Node.js', 'MongoDB', 'WebSocket', 'Express'],
+    stack: ['React', 'Node.js', 'MySQL', 'WebSocket', 'Express'],
     githubUrl: 'https://github.com/pedrohenrique/valeti-system',
     problem: 'Otimizar o fluxo de valets em eventos e estabelecimentos com alta demanda.',
-    architecture: 'Realtime com WebSocket, MongoDB para flexibilidade de dados, React para interface dinâmica.',
+    architecture: 'Realtime com WebSocket, MySQL para persistência de dados, React para interface dinâmica.',
     decisions: [
       'WebSocket para updates em tempo real',
-      'MongoDB para schema flexível',
+      'MySQL para schema estruturado',
       'Fila prioritária por tempo de espera',
       'Notificações push'
     ],
-    results: 'Redução de 40% no tempo de espera, satisfação do cliente aumentada.'
+    results: 'Redução de 40% no tempo de espera, satisfação do cliente aumentada. Aumento de 60% na eficiência operacional.'
   },
   {
     id: 'agrolink',
     title: 'AgroLink',
-    category: 'aiot',
+    category: 'aiot', //  Mexer também no /types/index.ts
     categoryLabel: 'AIoT & Infraestrutura',
     description: 'Plataforma de monitoramento agrícola com sensores IoT e dashboards em tempo real.',
     highlights: [
@@ -85,13 +85,13 @@ export const projects: Project[] = [
       'Dashboards de monitoramento',
       'Alertas e automação'
     ],
-    stack: ['IoT', 'MQTT', 'Node.js', 'InfluxDB', 'Grafana', 'Docker'],
+    stack: ['IoT', 'Python', 'Node.js', 'PostgreSQL', 'Flask', 'Docker', 'API REST'],
     githubUrl: 'https://github.com/pedrohenrique/agrolink',
     problem: 'Monitorar condições de solo e clima em tempo real para otimização agrícola.',
-    architecture: 'MQTT para comunicação IoT, InfluxDB para séries temporais, Grafana para visualização.',
+    architecture: 'MQTT para comunicação IoT, PostgreSQL para persistência de dados, Flask para backend.',
     decisions: [
       'MQTT para baixa latência',
-      'InfluxDB para dados temporais',
+      'PostgreSQL para dados de Geolocalização',
       'Docker para deployment edge',
       'Alertas baseados em thresholds'
     ],
@@ -100,8 +100,8 @@ export const projects: Project[] = [
   {
     id: 'web-institutional',
     title: 'Desenvolvimento Web Institucional',
-    category: 'fullstack',
-    categoryLabel: 'Fullstack',
+    category: 'frontend', //  Mexer também no /types/index.ts
+    categoryLabel: 'Frontend',
     description: 'Sites institucionais com foco em performance, SEO e experiência do usuário.',
     highlights: [
       'SEO otimizado',

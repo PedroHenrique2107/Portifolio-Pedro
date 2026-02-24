@@ -1,7 +1,7 @@
 export interface Project {
   id: string;
   title: string;
-  category: 'apis' | 'aiot' | 'fullstack' | 'systems';
+  category: 'apis' | 'aiot' | 'fullstack' | 'systems' | 'frontend' | 'backend';
   categoryLabel: string;
   description: string;
   highlights: string[];
