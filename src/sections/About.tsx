@@ -64,7 +64,7 @@ export function About() {
             <div className="h-px flex-1 bg-gradient-to-l from-cyan-500/50 to-transparent" />
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white text-center">
-            De Missão Crítica ao <span className="text-gradient-cyan">Backend</span>
+            Sobre <span className="text-gradient-cyan">Mim</span>
           </h2>
         </motion.div>
 

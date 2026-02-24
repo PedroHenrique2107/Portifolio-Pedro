@@ -74,8 +74,8 @@ export function Hero() {
               transition={{ duration: 0.6, delay: 0.1, ease: 'easeOut' }}
               className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight"
             >
-              Alta performance começa na arquitetura.{' '}
-              <span className="text-gradient-cyan">Sustentabilidade nasce nas decisões técnicas.</span>
+              Alta performance {' '}
+              <span className="text-gradient-cyan">começa na estrutura de dados.</span>
             </motion.h1>
 
             {/* Subheadline */}
