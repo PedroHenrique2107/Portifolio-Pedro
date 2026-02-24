@@ -18,8 +18,9 @@ export interface Experience {
   id: string;
   title: string;
   period: string;
+  company: string;
   icon: string;
-  color: 'cyan' | 'green' | 'purple';
+  color: 'cyan' | 'green' | 'purple' | 'gray' | 'blue' | 'red' | 'yellow';
   items: string[];
   quote: string;
 }
@@ -34,6 +35,7 @@ export interface TimelineItem {
 export interface Skill {
   name: string;
   category: 'architecture' | 'devops' | 'database' | 'backend' | 'tools';
+  logo?: string;
 }
 
 export interface ContactFormData {

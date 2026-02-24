@@ -160,11 +160,14 @@ export function About() {
                   transition={{ duration: 0.6, delay: index * 0.15, ease: 'easeOut' }}
                   className={`group relative p-6 lg:p-8 rounded-xl bg-dark-100 border border-white/5 ${colors.glow} transition-all duration-500 hover:-translate-y-1 hover:border-white/10`}
                 >
-                  <div className={`inline-flex items-center justify-center w-12 h-12 rounded-lg ${colors.bg} ${colors.border} border mb-6`}>
-                    <Icon className={`w-6 h-6 ${colors.text}`} />
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className={`inline-flex items-center justify-center w-12 h-12 rounded-lg ${colors.bg} ${colors.border} border`}>
+                      <Icon className={`w-6 h-6 ${colors.text}`} />
+                    </div>
+                    <h3 className="text-xl font-semibold text-white">{exp.company}</h3>
                   </div>
                   <span className="font-mono text-sm text-gray-500 block mb-2">{exp.period}</span>
-                  <h3 className="text-xl font-semibold text-white mb-4">{exp.title}</h3>
+                  <h4 className="text-xl font-semibold text-white mb-4">{exp.title}</h4>
                   <ul className="space-y-2 mb-6">
                     {exp.items.map((item, i) => (
                       <li key={i} className="flex items-start gap-2 text-gray-400 text-sm">
@@ -200,8 +203,23 @@ export function About() {
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={isInView ? { opacity: 1, scale: 1 } : {}}
                   transition={{ duration: 0.4, delay: 0.3 + index * 0.03 }}
-                  className={`px-4 py-2 rounded-lg border font-mono text-sm transition-all duration-300 hover:scale-105 ${skillCategoryColors[skill.category]}`}
+                  className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg border font-mono text-sm transition-all duration-300 hover:scale-105 ${skillCategoryColors[skill.category]}`}
                 >
+                  {skill.logo ? (
+                    <img
+                      src={skill.logo}
+                      alt={`${skill.name} logo`}
+                      loading="lazy"
+                      className="w-4 h-4 object-contain"
+                      onError={(e) => {
+                        e.currentTarget.style.display = 'none';
+                      }}
+                    />
+                  ) : (
+                    <span className="w-4 h-4 inline-flex items-center justify-center text-[10px] font-bold rounded bg-white/10">
+                      {skill.name.charAt(0)}
+                    </span>
+                  )}
                   {skill.name}
                 </motion.span>
               ))}

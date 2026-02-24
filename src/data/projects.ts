@@ -125,49 +125,50 @@ export const projects: Project[] = [
 
 export const experiences: Experience[] = [
   {
-    id: 'infra',
-    title: 'Infraestrutura & Operação',
-    period: '2022 — 2023',
-    icon: 'Server',
+    id: 'backend',
+    title: 'Backend Developer',
+    period: 'jan/2026 - Atualmente',
+    company: 'SmartCompass',
+    icon: 'Code2',
     color: 'green',
     items: [
-      'Liderança técnica em CFTV para usinas fotovoltaicas',
-      'Redes IP, VMS, latência e disponibilidade',
-      'Diagnóstico de falhas em produção',
-      'POCs e decisões arquiteturais',
-      'Conexão entre campo e engenharia'
+      'Atuar nas rotinas de CI/CD, automatizando processos, versionamento e fluxo de deploy.',
+      'Desenvolver e evoluir serviços e APIs com foco em clareza, performance e manutenibilidade.',
+      'Garantir qualidade do código por meio de testes (unitários, integração e contratos), revisões criteriosas e boas práticas de engenharia.',
+      'Desenvolvimento de soluções e automações com Python e NodeJs',
     ],
-    quote: 'Aprendi que sistemas precisam funcionar sob pressão, não apenas em ambiente ideal.'
+    quote: 'Aprendo todos os dias que código é apenas o começo. O sistema precisa operar, ser observável e evoluir. Necessário ter visão além do código para entregar valor real.'
   },
   {
-    id: 'backend',
-    title: 'Backend & Arquitetura',
-    period: '2023 — 2024',
-    icon: 'Code2',
+    id: 'infra',
+    title: 'Líder de Projetos de Infraestrutura | Analista de Programação',
+    period: 'mar/2025 — dez/2025',
+    company: 'AIoT Solution',
+    icon: 'Server',
     color: 'cyan',
     items: [
-      'Desenvolvimento e evolução de APIs',
-      'Microsserviços e integrações',
-      'Testes unitários, integração e contratos',
-      'Observabilidade: logs estruturados, métricas, tracing',
-      'Resiliência: circuit breaker, caching, idempotência'
+      'Gestão ponta a ponta de projetos de segurança eletrônica, garantindo prazos, normas e qualidade.',
+      'Implantação de monitoramento inteligente com câmeras IP, térmicas e analíticas para segurança e eficiência operacional.',
+      'Configuração de redes seguras e plataformas de vídeo para gestão centralizada de monitoramento.',
+      'Diagnóstico e resolução ágil de falhas em redes, câmeras e infraestrutura, remoto e em campo.',
+      'Desenvolvimento e implantação de soluções com sensores, automação e IA para monitoramento, energia e segurança.'
     ],
-    quote: 'Código é apenas o começo. O sistema precisa operar.'
+    quote: 'A gestão de projetos de infraestrutura é um desafio complexo que exige visão estratégica, coordenação eficaz e capacidade de resolver problemas técnicos, principalmente quando envolve tecnologias emergentes como IoT e IA.'
   },
   {
-    id: 'mindset',
-    title: 'Mentalidade de Engenharia',
-    period: '2024 — Presente',
+    id: 'fullstack',
+    title: 'Desenvolvedor Autônomo | Fullstack',
+    period: 'ago/2023 — fev/2025',
+    company: 'MetaCore - UniMetrocamp',
     icon: 'Brain',
     color: 'purple',
     items: [
-      'Clean Architecture & SOLID',
-      'CI/CD & DevOps',
-      'IaC & Cloud Native',
-      'Docker & Kubernetes',
-      'Observabilidade & SRE'
-    ],
-    quote: 'Engenharia é sobre resolver problemas, não apenas escrever código.'
+      'Sistema completo de Gestão do Agronégocio, com módulos de CRM, ERP e E-commerce para produtores rurais.',
+      'Desenvolvimento de APIs RESTful e GraphQL para integração entre sistemas e clientes.',
+      'Implementação de soluções de infraestrutura em nuvem, garantindo escalabilidade e segurança.',
+      'Análise de dados, IoT, Desenvolvimento de Software completo para qualquer um poder mexer de forma bem moderna, com foco em performance, segurança e experiência do usuário.',
+      ],
+    quote: 'O começo é a parte mais importante de qualquer jornada. Aprender a trabalhar em equipe gera resultados extraordinários — a convivência diária fortalece laços, transforma colegas em amigos e torna os desafios mais leves. Sonhar grande, manter o foco e nunca parar de estudar são atitudes que abrem caminhos, porque com dedicação, disciplina e constância, qualquer pessoa pode chegar onde deseja.'
   }
 ];
 
@@ -199,26 +200,27 @@ export const timeline: TimelineItem[] = [
 ];
 
 export const skills: Skill[] = [
-  { name: 'Clean Architecture', category: 'architecture' },
-  { name: 'SOLID', category: 'architecture' },
-  { name: 'Design Patterns', category: 'architecture' },
-  { name: 'CI/CD', category: 'devops' },
-  { name: 'IaC', category: 'devops' },
-  { name: 'Docker', category: 'devops' },
-  { name: 'Kubernetes', category: 'devops' },
-  { name: 'MySQL', category: 'database' },
-  { name: 'PostgreSQL', category: 'database' },
-  { name: 'MongoDB', category: 'database' },
-  { name: 'Redis', category: 'database' },
-  { name: 'Node.js', category: 'backend' },
-  { name: 'Python', category: 'backend' },
-  { name: 'Go', category: 'backend' },
-  { name: 'REST APIs', category: 'backend' },
-  { name: 'GraphQL', category: 'backend' },
-  { name: 'Linux', category: 'tools' },
-  { name: 'Git', category: 'tools' },
-  { name: 'Observability', category: 'tools' },
-  { name: 'POCs', category: 'tools' }
+  { name: 'Clean Architecture', category: 'architecture', logo: 'https://cdn.simpleicons.org/openapiinitiative' },
+  { name: 'SOLID', category: 'architecture', logo: 'https://cdn.simpleicons.org/bookstack' },
+  { name: 'Amazon Web Services', category: 'devops', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg' },
+  { name: 'CI/CD', category: 'devops', logo: 'https://cdn.simpleicons.org/githubactions' },
+  { name: 'IaC', category: 'devops', logo: 'https://cdn.simpleicons.org/terraform' },
+  { name: 'Docker', category: 'devops', logo: 'https://cdn.simpleicons.org/docker' },
+  { name: 'Kubernetes', category: 'devops', logo: 'https://cdn.simpleicons.org/kubernetes' },
+  { name: 'MySQL', category: 'database', logo: 'https://cdn.simpleicons.org/mysql' },
+  { name: 'PostgreSQL', category: 'database', logo: 'https://cdn.simpleicons.org/postgresql' },
+  { name: 'JavaScript', category: 'backend', logo: 'https://cdn.simpleicons.org/javascript' },
+  { name: 'TypeScript', category: 'backend', logo: 'https://cdn.simpleicons.org/typescript' },
+  { name: 'React', category: 'backend', logo: 'https://cdn.simpleicons.org/react' },
+  { name: 'Node.js', category: 'backend', logo: 'https://cdn.simpleicons.org/nodedotjs' },
+  { name: 'Python', category: 'backend', logo: 'https://cdn.simpleicons.org/python' },
+  { name: 'Go', category: 'backend', logo: 'https://cdn.simpleicons.org/go' },
+  { name: 'REST APIs', category: 'backend', logo: 'https://cdn.simpleicons.org/openapiinitiative' },
+  { name: 'GraphQL', category: 'backend', logo: 'https://cdn.simpleicons.org/graphql' },
+  { name: 'Linux', category: 'tools', logo: 'https://cdn.simpleicons.org/linux' },
+  { name: 'Git', category: 'tools', logo: 'https://cdn.simpleicons.org/git' },
+  { name: 'Grafana', category: 'tools', logo: 'https://cdn.simpleicons.org/grafana' },
+ /* { name: 'POCs', category: 'tools', logo: 'https://cdn.simpleicons.org/lightning' } */
 ];
 
 export const filterCategories = [
