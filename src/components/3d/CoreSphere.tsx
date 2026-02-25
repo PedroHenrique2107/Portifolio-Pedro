@@ -3,6 +3,14 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import * as THREE from 'three';
 
+function StaticCoreFallback() {
+  return (
+    <div className="w-full h-full flex items-center justify-center">
+      <div className="w-48 h-48 rounded-full bg-gradient-to-br from-cyan-500/20 to-purple-500/20 border border-cyan-500/30" />
+    </div>
+  );
+}
+
 function ParticleRing({ count = 100, radius = 2.5, speed = 0.5, color = '#00f0ff' }: {
   count?: number;
   radius?: number;
@@ -16,9 +24,11 @@ function ParticleRing({ count = 100, radius = 2.5, speed = 0.5, color = '#00f0ff
     
     for (let i = 0; i < count; i++) {
       const angle = (i / count) * Math.PI * 2;
-      const r = radius + (Math.random() - 0.5) * 0.3;
+      const radialNoise = Math.sin(i * 12.9898) * 0.15;
+      const verticalNoise = Math.cos(i * 78.233) * 0.25;
+      const r = radius + radialNoise;
       positions[i * 3] = Math.cos(angle) * r;
-      positions[i * 3 + 1] = (Math.random() - 0.5) * 0.5;
+      positions[i * 3 + 1] = verticalNoise;
       positions[i * 3 + 2] = Math.sin(angle) * r;
     }
     
@@ -158,26 +168,64 @@ function Scene() {
 }
 
 export function CoreSphere() {
-  const [reducedMotion, setReducedMotion] = useState(false);
+  const [reducedMotion, setReducedMotion] = useState(() => {
+    if (typeof window === 'undefined') return false;
+    return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  });
+  const [webglAvailable] = useState(() => {
+    if (typeof document === 'undefined') return true;
+    const canvas = document.createElement('canvas');
+    return !!(canvas.getContext('webgl2') || canvas.getContext('webgl'));
+  });
+  const [contextLost, setContextLost] = useState(false);
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-    setReducedMotion(mediaQuery.matches);
+    const handleChange = (e: MediaQueryListEvent) => {
+      setReducedMotion(e.matches);
+    };
+    mediaQuery.addEventListener('change', handleChange);
+
+    return () => {
+      mediaQuery.removeEventListener('change', handleChange);
+    };
   }, []);
 
-  if (reducedMotion) {
-    return (
-      <div className="w-full h-full flex items-center justify-center">
-        <div className="w-48 h-48 rounded-full bg-gradient-to-br from-cyan-500/20 to-purple-500/20 border border-cyan-500/30" />
-      </div>
-    );
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const handleContextLost = (event: Event) => {
+      event.preventDefault();
+      setContextLost(true);
+    };
+
+    const handleContextRestored = () => {
+      setContextLost(false);
+    };
+
+    canvas.addEventListener('webglcontextlost', handleContextLost, false);
+    canvas.addEventListener('webglcontextrestored', handleContextRestored, false);
+
+    return () => {
+      canvas.removeEventListener('webglcontextlost', handleContextLost, false);
+      canvas.removeEventListener('webglcontextrestored', handleContextRestored, false);
+    };
+  }, [webglAvailable]);
+
+  if (reducedMotion || !webglAvailable || contextLost) {
+    return <StaticCoreFallback />;
   }
 
   return (
     <Canvas
+      onCreated={({ gl }) => {
+        canvasRef.current = gl.domElement;
+      }}
       camera={{ position: [0, 0, 6], fov: 50 }}
-      dpr={[1, 2]}
-      gl={{ antialias: true, alpha: true }}
+      dpr={[1, 1.5]}
+      gl={{ antialias: false, alpha: true, powerPreference: 'low-power' }}
     >
       <Scene />
     </Canvas>

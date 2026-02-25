@@ -5,12 +5,20 @@ import type { ISourceOptions, Engine } from '@tsparticles/engine';
 
 export function BackgroundParticles() {
   const [init, setInit] = useState(false);
-  const [reducedMotion, setReducedMotion] = useState(false);
+  const [reducedMotion, setReducedMotion] = useState(() => {
+    if (typeof window === 'undefined') return false;
+    return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  });
+  const [lowSpecDevice] = useState(() => {
+    if (typeof navigator === 'undefined') return false;
+    const cpu = navigator.hardwareConcurrency ?? 8;
+    const memory = (navigator as Navigator & { deviceMemory?: number }).deviceMemory ?? 8;
+    return cpu <= 4 || memory <= 4;
+  });
 
   useEffect(() => {
     // Check for reduced motion preference
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-    setReducedMotion(mediaQuery.matches);
 
     const handleChange = (e: MediaQueryListEvent) => {
       setReducedMotion(e.matches);
@@ -72,7 +80,7 @@ export function BackgroundParticles() {
             default: 'bounce',
           },
           random: true,
-          speed: reducedMotion ? 0.3 : 0.8,
+          speed: reducedMotion ? 0.2 : 0.5,
           straight: false,
         },
         number: {
@@ -80,7 +88,7 @@ export function BackgroundParticles() {
             enable: true,
             area: 800,
           },
-          value: reducedMotion ? 30 : 60,
+          value: reducedMotion ? 20 : 35,
         },
         opacity: {
           value: 0.15,
@@ -98,6 +106,10 @@ export function BackgroundParticles() {
   );
 
   if (!init || reducedMotion) {
+    return null;
+  }
+
+  if (lowSpecDevice) {
     return null;
   }
 

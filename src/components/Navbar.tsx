@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Code2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -15,27 +15,54 @@ export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const rafIdRef = useRef<number | null>(null);
+  const isScrolledRef = useRef(false);
+  const activeSectionRef = useRef('home');
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+    const computeNavState = () => {
+      const nextIsScrolled = window.scrollY > 50;
+      if (nextIsScrolled !== isScrolledRef.current) {
+        isScrolledRef.current = nextIsScrolled;
+        setIsScrolled(nextIsScrolled);
+      }
 
-      // Detect active section
-      const sections = navLinks.map(link => link.href.replace('#', ''));
-      for (const section of sections.reverse()) {
+      const sections = navLinks.map((link) => link.href.replace('#', ''));
+      let nextActive = activeSectionRef.current;
+
+      for (const section of [...sections].reverse()) {
         const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          if (rect.top <= 100) {
-            setActiveSection(section);
-            break;
-          }
+        if (!element) continue;
+
+        const rect = element.getBoundingClientRect();
+        if (rect.top <= 120) {
+          nextActive = section;
+          break;
         }
+      }
+
+      if (nextActive !== activeSectionRef.current) {
+        activeSectionRef.current = nextActive;
+        setActiveSection(nextActive);
       }
     };
 
+    const handleScroll = () => {
+      if (rafIdRef.current !== null) return;
+      rafIdRef.current = window.requestAnimationFrame(() => {
+        rafIdRef.current = null;
+        computeNavState();
+      });
+    };
+
+    computeNavState();
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (rafIdRef.current !== null) {
+        window.cancelAnimationFrame(rafIdRef.current);
+      }
+    };
   }, []);
 
   const scrollToSection = (href: string) => {
