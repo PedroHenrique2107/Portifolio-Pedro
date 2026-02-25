@@ -1,6 +1,8 @@
 ﻿import { motion } from 'framer-motion';
 import { ChevronDown, Github, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { CoreSphere } from '@/components/3d/CoreSphere';
+import { ErrorBoundary } from '@/components/ErrorBoundary';
 
 export function Hero() {
   const scrollToSection = (id: string) => {
@@ -26,7 +28,7 @@ export function Hero() {
               transition={{ duration: 0.6, ease: 'easeOut' }}
             >
               <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 font-mono text-sm">
-                <span className="w-2 h-2 rounded-full bg-cyan-400" />
+                <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
                 SOFTWARE ENGINEER - BACKEND - CLEAN CODE
               </span>
             </motion.div>
@@ -105,24 +107,34 @@ export function Hero() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2, ease: 'easeOut' }}
-            className="relative h-[400px] lg:h-[500px] hidden lg:block"
+            className="relative h-[400px] lg:h-[560px] hidden lg:block"
           >
-            <div className="absolute inset-0 rounded-2xl border border-cyan-500/20 bg-gradient-to-br from-cyan-500/10 via-transparent to-purple-500/10 overflow-hidden">
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(34,211,238,0.16),transparent_45%),radial-gradient(circle_at_70%_70%,rgba(168,85,247,0.16),transparent_45%)]" />
-              <div className="absolute top-10 left-12 w-40 h-40 rounded-full border border-cyan-400/30" />
-              <div className="absolute bottom-12 right-14 w-56 h-56 rounded-full border border-purple-400/30" />
-              <div className="absolute inset-0 m-auto w-44 h-44 rounded-full bg-cyan-500/10 border border-cyan-400/30" />
+            <div className="absolute inset-0 overflow-hidden">
+              <ErrorBoundary
+                fallback={
+                  <div className="w-full h-full flex items-center justify-center">
+                    <div className="w-48 h-48 rounded-full bg-gradient-to-br from-cyan-500/20 to-purple-500/20 border border-cyan-500/30" />
+                  </div>
+                }
+              >
+                <CoreSphere />
+              </ErrorBoundary>
             </div>
           </motion.div>
         </div>
       </div>
 
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20">
-        <div className="flex flex-col items-center gap-2 text-gray-500">
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
+          className="flex flex-col items-center gap-2 text-gray-500"
+        >
           <span className="font-mono text-xs">SCROLL</span>
           <ChevronDown className="w-5 h-5" />
-        </div>
+        </motion.div>
       </div>
     </section>
   );
 }
+

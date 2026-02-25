@@ -47,18 +47,23 @@ export function BackgroundParticles() {
       },
       fpsLimit: reducedMotion ? 30 : 60,
       interactivity: {
+        detectsOn: 'window',
         events: {
           onHover: {
             enable: !reducedMotion,
-            mode: 'grab',
+            mode: ['grab', 'repulse'],
           },
         },
         modes: {
           grab: {
             distance: 140,
             links: {
-              opacity: 0.3,
+              opacity: 0.22,
             },
+          },
+          repulse: {
+            distance: 90,
+            duration: 0.35,
           },
         },
       },

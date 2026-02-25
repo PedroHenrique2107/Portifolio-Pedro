@@ -1,6 +1,7 @@
 export interface Project {
   id: string;
   title: string;
+  image?: string;
   category: 'apis' | 'aiot' | 'fullstack' | 'frontend' | 'backend';
   categoryLabel: string;
   description: string;

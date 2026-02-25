@@ -6,6 +6,15 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/u
 import { projects, filterCategories } from '@/data/projects';
 import type { FilterCategory, Project } from '@/types';
 
+const projectImageModules = import.meta.glob('../image/*.{png,jpg,jpeg,webp,avif}', {
+  eager: true,
+  import: 'default'
+}) as Record<string, string>;
+
+const projectImages = Object.fromEntries(
+  Object.entries(projectImageModules).map(([path, url]) => [path.split('/').pop() ?? '', url])
+) as Record<string, string>;
+
 const categoryColors: Record<Project['category'], { bg: string; text: string; border: string; dot: string }> = {
   apis: { bg: 'bg-cyan-500/10', text: 'text-cyan-400', border: 'border-cyan-500/20', dot: 'bg-cyan-400' },
   aiot: { bg: 'bg-emerald-500/10', text: 'text-emerald-400', border: 'border-emerald-500/20', dot: 'bg-emerald-400' },
@@ -80,6 +89,7 @@ export function Projects() {
           <AnimatePresence mode="popLayout">
             {filteredProjects.map((project, index) => {
               const colors = categoryColors[project.category];
+              const projectImage = project.image ? projectImages[project.image] : undefined;
 
               return (
                 <motion.div
@@ -92,6 +102,17 @@ export function Projects() {
                   onClick={() => setSelectedProject(project)}
                   className={`group relative p-6 rounded-xl bg-dark border border-white/5 cursor-pointer transition-all duration-500 hover:-translate-y-2 hover:border-white/10 hover:shadow-[0_0_30px_rgba(168,85,247,0.15)]`}
                 >
+                  {projectImage && (
+                    <div className="mb-4 overflow-hidden rounded-lg border border-white/10 bg-white/5">
+                      <img
+                        src={projectImage}
+                        alt={`Preview do projeto ${project.title}`}
+                        loading="lazy"
+                        className="w-full h-40 object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                    </div>
+                  )}
+
                   {/* Category badge */}
                   <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full ${colors.bg} ${colors.border} border mb-4`}>
                     <span className={`w-2 h-2 rounded-full ${colors.dot}`} />
