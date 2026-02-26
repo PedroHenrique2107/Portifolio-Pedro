@@ -1,17 +1,10 @@
 import { useRef } from 'react';
-import { motion, useInView, useScroll, useTransform } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import { timeline } from '@/data/projects';
 
 export function Timeline() {
   const containerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, { once: true, margin: '-100px' });
-  
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start end', 'end start']
-  });
-
-  const lineHeight = useTransform(scrollYProgress, [0, 0.5], ['0%', '100%']);
 
   return (
     <section id="vision" className="relative py-24 lg:py-32 bg-dark overflow-hidden">
@@ -45,7 +38,9 @@ export function Timeline() {
           {/* Central line - desktop */}
           <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-px bg-white/10 -translate-x-1/2">
             <motion.div
-              style={{ height: lineHeight }}
+              initial={{ height: '0%' }}
+              animate={isInView ? { height: '100%' } : { height: '0%' }}
+              transition={{ duration: 1, ease: 'easeOut' }}
               className="w-full bg-gradient-to-b from-emerald-500 via-cyan-500 to-purple-500"
             />
           </div>
@@ -53,7 +48,9 @@ export function Timeline() {
           {/* Mobile line */}
           <div className="lg:hidden absolute left-4 top-0 bottom-0 w-px bg-white/10">
             <motion.div
-              style={{ height: lineHeight }}
+              initial={{ height: '0%' }}
+              animate={isInView ? { height: '100%' } : { height: '0%' }}
+              transition={{ duration: 1, ease: 'easeOut' }}
               className="w-full bg-gradient-to-b from-emerald-500 via-cyan-500 to-purple-500"
             />
           </div>
@@ -86,15 +83,8 @@ export function Timeline() {
                     }`}
                   >
                     {/* Year badge */}
-                    <div
-                      className={`inline-flex items-center gap-3 mb-4 ${
-                        isLeft ? 'lg:flex-row-reverse' : ''
-                      }`}
-                    >
-                      <span className={`w-3 h-3 rounded-full ${colors.bg} shadow-lg ${colors.glow}`} />
-                      <span className="font-mono text-2xl font-bold text-white">
-                        {item.year}
-                      </span>
+                    <div className={`inline-flex items-center mb-4 ${isLeft ? 'lg:flex-row-reverse' : ''}`}>
+                      <span className="font-mono text-2xl font-bold text-white">{item.year}</span>
                     </div>
 
                     {/* Title */}

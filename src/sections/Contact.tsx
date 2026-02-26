@@ -1,13 +1,16 @@
-import { useState, useRef } from 'react';
+﻿import { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Github, Mail, Linkedin, Send, Check, Loader2, AlertCircle } from 'lucide-react';
+import { AlertCircle, Check, Github, Linkedin, Loader2, Mail, Send } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
 import type { ContactFormData } from '@/types';
 
 type FormStatus = 'idle' | 'loading' | 'success' | 'error';
+
+const WEB3FORMS_ENDPOINT = 'https://api.web3forms.com/submit';
+const WEB3FORMS_ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY ?? '';
 
 export function Contact() {
   const [formData, setFormData] = useState<ContactFormData>({
@@ -15,6 +18,7 @@ export function Contact() {
     email: '',
     message: ''
   });
+  const [requestError, setRequestError] = useState('');
   const [status, setStatus] = useState<FormStatus>('idle');
   const [errors, setErrors] = useState<Partial<Record<keyof ContactFormData, string>>>({});
   const containerRef = useRef<HTMLDivElement>(null);
@@ -23,16 +27,16 @@ export function Contact() {
   const validateForm = (): boolean => {
     const newErrors: Partial<Record<keyof ContactFormData, string>> = {};
 
-    if (!formData.name.trim() || formData.name.length < 2) {
+    if (!formData.name.trim() || formData.name.trim().length < 2) {
       newErrors.name = 'Nome deve ter pelo menos 2 caracteres';
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!formData.email.trim() || !emailRegex.test(formData.email)) {
-      newErrors.email = 'Email inválido';
+      newErrors.email = 'Email invalido';
     }
 
-    if (!formData.message.trim() || formData.message.length < 10) {
+    if (!formData.message.trim() || formData.message.trim().length < 10) {
       newErrors.message = 'Mensagem deve ter pelo menos 10 caracteres';
     }
 
@@ -45,30 +49,55 @@ export function Contact() {
 
     if (!validateForm()) return;
 
+    if (!WEB3FORMS_ACCESS_KEY) {
+      setStatus('error');
+      setRequestError('Defina VITE_WEB3FORMS_ACCESS_KEY no arquivo .env');
+      return;
+    }
+
     setStatus('loading');
+    setRequestError('');
 
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    const payload = new FormData();
+    payload.append('access_key', WEB3FORMS_ACCESS_KEY);
+    payload.append('subject', 'Novo contato do portfolio');
+    payload.append('from_name', formData.name.trim());
+    payload.append('name', formData.name.trim());
+    payload.append('email', formData.email.trim());
+    payload.append('message', formData.message.trim());
 
-    // Simulate success (in real app, this would be an actual API call)
-    setStatus('success');
-    setFormData({ name: '', email: '', message: '' });
+    try {
+      const response = await fetch(WEB3FORMS_ENDPOINT, {
+        method: 'POST',
+        body: payload
+      });
 
-    // Reset after 3 seconds
-    setTimeout(() => setStatus('idle'), 3000);
+      const result = await response.json();
+      if (!response.ok || result?.success === false) {
+        throw new Error(result?.message || result?.error || 'Nao foi possivel enviar sua mensagem.');
+      }
+
+      setStatus('success');
+      setFormData({ name: '', email: '', message: '' });
+      setTimeout(() => setStatus('idle'), 3000);
+    } catch (error) {
+      setStatus('error');
+      setRequestError(
+        error instanceof Error ? error.message : 'Falha ao enviar mensagem. Tente novamente.'
+      );
+    }
   };
 
   const handleChange = (field: keyof ContactFormData, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
+    setFormData((prev) => ({ ...prev, [field]: value }));
     if (errors[field]) {
-      setErrors(prev => ({ ...prev, [field]: undefined }));
+      setErrors((prev) => ({ ...prev, [field]: undefined }));
     }
   };
 
   return (
     <section id="contact" className="relative py-24 lg:py-32 bg-dark-100">
       <div className="max-w-[1200px] mx-auto px-6 sm:px-8 lg:px-16">
-        {/* Section header */}
         <motion.div
           ref={containerRef}
           initial={{ opacity: 0, y: 30 }}
@@ -85,12 +114,11 @@ export function Contact() {
             Vamos construir algo <span className="text-gradient-cyan">robusto</span>.
           </h2>
           <p className="text-gray-400 text-center max-w-2xl mx-auto">
-            Aberto a oportunidades, colaborações e discussões técnicas.
+            Aberto a oportunidades, colaboracoes e discussoes tecnicas.
           </p>
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
-          {/* Left column - Info */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
@@ -98,11 +126,9 @@ export function Contact() {
             className="space-y-8"
           >
             <div>
-              <h3 className="text-xl font-semibold text-white mb-4">
-                Informações de Contato
-              </h3>
+              <h3 className="text-xl font-semibold text-white mb-4">Informacoes de Contato</h3>
               <p className="text-gray-400 mb-6">
-                Prefere outro canal? Estou disponível nas seguintes plataformas:
+                Prefere outro canal? Estou disponivel nas seguintes plataformas:
               </p>
             </div>
 
@@ -146,12 +172,11 @@ export function Contact() {
                 </div>
                 <div>
                   <span className="block text-white font-medium">LinkedIn</span>
-                  <span className="text-gray-500 font-mono text-sm">https://www.linkedin.com/in/pedro-henrique-mendes-78a59325a/</span>
+                  <span className="text-gray-500 font-mono text-sm">linkedin.com/in/pedro-henrique-mendes-78a59325a/</span>
                 </div>
               </a>
             </div>
 
-            {/* Stats */}
             <div className="grid grid-cols-3 gap-4 pt-8 border-t border-white/5">
               <div className="text-center">
                 <span className="block text-2xl font-bold text-cyan-400">20+</span>
@@ -168,7 +193,6 @@ export function Contact() {
             </div>
           </motion.div>
 
-          {/* Right column - Form */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
@@ -179,22 +203,15 @@ export function Contact() {
                 <div className="w-16 h-16 rounded-full bg-emerald-500/20 flex items-center justify-center mb-4">
                   <Check className="w-8 h-8 text-emerald-400" />
                 </div>
-                <h3 className="text-xl font-semibold text-white mb-2">
-                  Mensagem Enviada!
-                </h3>
-                <p className="text-gray-400 text-center">
-                  Obrigado pelo contato. Responderei em breve.
-                </p>
+                <h3 className="text-xl font-semibold text-white mb-2">Mensagem Enviada!</h3>
+                <p className="text-gray-400 text-center">Obrigado pelo contato. Responderei em breve.</p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
-                {/* Honeypot field - hidden */}
                 <input type="text" name="website" className="hidden" tabIndex={-1} autoComplete="off" />
 
                 <div className="space-y-2">
-                  <Label htmlFor="name" className="text-gray-300">
-                    Nome
-                  </Label>
+                  <Label htmlFor="name" className="text-gray-300">Nome</Label>
                   <Input
                     id="name"
                     type="text"
@@ -214,9 +231,7 @@ export function Contact() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="email" className="text-gray-300">
-                    Email
-                  </Label>
+                  <Label htmlFor="email" className="text-gray-300">Email</Label>
                   <Input
                     id="email"
                     type="email"
@@ -236,9 +251,7 @@ export function Contact() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="message" className="text-gray-300">
-                    Mensagem
-                  </Label>
+                  <Label htmlFor="message" className="text-gray-300">Mensagem</Label>
                   <Textarea
                     id="message"
                     value={formData.message}
@@ -256,6 +269,12 @@ export function Contact() {
                     </span>
                   )}
                 </div>
+
+                {status === 'error' && requestError && (
+                  <div className="rounded-lg border border-red-500/30 bg-red-500/10 p-3 text-sm text-red-300">
+                    {requestError}
+                  </div>
+                )}
 
                 <Button
                   type="submit"
