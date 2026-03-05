@@ -15,7 +15,7 @@ export const projects: Project[] = [
       'Performance otimizada para alta carga'
     ],
     stack: ['Python', 'Flask', 'REST', 'Docker', 'PostgreSQL'],
-    githubUrl: 'https://github.com/pedrohenrique/apisrestfull',
+    githubUrl: 'https://github.com/PedroHenrique2107/APIRestNode',
     problem: 'Necessidade de APIs performáticas e bem estruturadas para integração entre sistemas heterogêneos.',
     architecture: 'Arquitetura em camadas com controllers, services e repositories. Separação clara de responsabilidades.',
     decisions: [
@@ -32,7 +32,7 @@ export const projects: Project[] = [
     image: 'ShopSwiftSuite.png',
     category: 'fullstack', //  Mexer também no /types/index.ts
     categoryLabel: 'Fullstack',
-    description: 'Plataforma de e-commerce completa com gestÃ£o de produtos, pedidos e integração com gateway de pagamentos.',
+    description: 'Plataforma de e-commerce completa com gestão de produtos, pedidos e integração com gateway de pagamentos.',
     highlights: [
       'Arquitetura fullstack moderna',
       'Sistema de autenticação seguro',
@@ -40,7 +40,7 @@ export const projects: Project[] = [
       'Integração com gateway de pagamentos'
     ],
     stack: ['React', 'Node.js', 'TypeScript', 'SQLite', 'Docker',],
-    githubUrl: 'https://github.com/pedrohenrique/shop-swift',
+    githubUrl: 'https://github.com/PedroHenrique2107/shop-swift-suite',
     problem: 'Criar uma plataforma de e-commerce escalável com experiência de usuário fluida.',
     architecture: 'Frontend SPA com React, backend em Node.js com arquitetura em camadas, SQLite para persistência leve, Docker para desenvolvimento e deploy.',
     decisions: [
@@ -65,7 +65,7 @@ export const projects: Project[] = [
       'Relatórios e analytics'
     ],
     stack: ['React', 'Node.js', 'MySQL', 'WebSocket', 'Express'],
-    githubUrl: 'https://github.com/pedrohenrique/valeti-system',
+    githubUrl: 'https://github.com/PedroHenrique2107/valet-perfect',
     problem: 'Otimizar o fluxo de valets em eventos e estabelecimentos com alta demanda.',
     architecture: 'Realtime com WebSocket, MySQL para persistência de dados, React para interface dinâmica.',
     decisions: [
@@ -91,7 +91,7 @@ export const projects: Project[] = [
       'Controle e autonomia total do sistema, com foco em performance, segurança e experiência do usuário.'
     ],
     stack: ['IoT', 'Python', 'Node.js', 'React', 'PostgreSQL', 'Flask', 'Docker', 'API REST', 'AWS'],
-    githubUrl: 'https://github.com/pedrohenrique/agrolink',
+    githubUrl: 'https://github.com/PedroHenrique2107/Dashboard-Agroneg-cio',
     problem: 'Monitorar condições de solo e clima em tempo real para otimização agrícola.',
     architecture: 'MQTT para comunicação IoT, PostgreSQL para persistência de dados, Flask para backend.',
     decisions: [
@@ -182,37 +182,37 @@ export const timeline: TimelineItem[] = [
   {
     year: '2020',
     title: 'Onde tudo começou',
-    description: 'Com a paixão por tecnologia, comecei a explorar o mundo da programação e a descobrir qual faculdade entrar dentro de TI, onde sabia que era o meu lugar. Comecei aprendendo as bases de algoritmos, estruturas de dados e lógica de programação.',
+    description: 'Com a paixão por tecnologia, comecei a explorar o mundo da programação e a descobrir em qual faculdade de TI ingressar, pois sabia que era ali o meu lugar. Comecei aprendendo as bases de algoritmos, estruturas de dados e lógica de programação.',
     technologies: ['Lógica de Programação', 'Algoritmo', 'HTML/CSS', 'JavaScript']
   },
   {
     year: '2023',
     title: 'Inicio da faculdade de Engenharia da Computação',
-    description: 'O inicio foi mágico, professores e máterias que me faziam brilhar os olhos, onde eu tive certeza que era o meu lugar. Tive contato com diversas áreas, como sistemas operacionais, redes de computadores, banco de dados e desenvolvimento de software. E foi a vez de começar a me aprofundar naquilo que mais me interessava: desenvolvimento de software',
+    description: 'O início foi mágico: professores e matérias que faziam meus olhos brilharem, e naquele momento tive certeza de que aquele era o meu lugar. Tive contato com diversas áreas, como sistemas operacionais, redes de computadores, banco de dados e desenvolvimento de software. Foi então que comecei a me aprofundar naquilo que mais me interessava: o desenvolvimento de software.',
     technologies: ['C/C++', 'NodeJS', 'Python', 'Git', 'Linux', 'Docker', 'AWS', 'Projetos Acadêmicos']
   },
   {
     year: '2024',
     title: 'Primeira experiência profissional pela faculdade',
-    description: 'O primeiro projeto grande que começou em apenas um trabalho de faculdade, para uma criação de Iniciação Científica com alguns amigos. Com esse criamos a MetaCore, a "Empresa Junior" que tinha o propósito de desenvolver soluções tecnológicas para o agronegócio, onde tive a oportunidade de trabalhar em um projeto completo, saido do zero com o AgroLink',
+    description: 'O primeiro grande projeto começou como apenas um trabalho de faculdade, que evoluiu para a criação de uma Iniciação Científica com alguns amigos. A partir disso, criamos a MetaCore, uma "Empresa Júnior" que tinha o propósito de desenvolver soluções tecnológicas para o agronegócio. Nesse contexto, tive a oportunidade de trabalhar em um projeto completo, iniciado do zero: o AgroLink.',
     technologies: ['Python', 'Flask', 'NodeJS', 'React', 'PostgreSQL', 'Docker', 'AWS', 'API REST', 'IoT', 'Kubernetes', 'Terraform']
   },
   {
     year: '2025',
     title: 'Do estágio para o mercado de trabalho',
-    description: 'Iniciei minha carreria na tecnologia como estagiário, onde tive a oportunidade de aprender e crescer muito no mundo IoT e Segurança Eletrônica pela Aiot Solution. Nesta função, segui até a minha efetivação, onde tive a oportunidade de liderar projetos de infraestrutura e desenvolvimento de soluções inteligentes para monitoramento e automação com CFTV, Segurança Eletrônica, IoT e IA.',
+    description: 'Iniciei minha carreira na tecnologia como estagiário, onde tive a oportunidade de aprender e crescer muito no mundo de IoT e Segurança Eletrônica pela Aiot Solution. Nessa função, segui até minha efetivação, quando tive a oportunidade de liderar projetos de infraestrutura e desenvolvimento de soluções inteligentes para monitoramento e automação utilizando CFTV, Segurança Eletrônica, IoT e IA.',
     technologies: ['AIoT', 'Configuração de CFTV', 'Rede de Computadores', 'IVMS/HikCentral', 'Gestão de Projetos']
   },
   {
     year: '2026',
     title: 'Desenvolvimento em progresso',
-    description: 'Depois de muito estudo, esforço e dedicação, consegui minha primeira oportunidade como desenvolvedor backend na SmartCompass, onde estou atualmente. Nesta função, tenho a oportunidade de trabalhar com desenvolvimento de APIs, automação de processos e garantir a qualidade do código por meio de testes e boas práticas de arquitetura e estrutura de dados, além de aprender muito sobre o mercado de tecnologia e desenvolvimento de software.',
+    description: 'Depois de muito estudo, esforço e dedicação, consegui minha primeira oportunidade como desenvolvedor backend na SmartCompass, onde atuo atualmente. Nessa função, tenho a oportunidade de trabalhar com desenvolvimento de APIs, automação de processos e garantia da qualidade do código por meio de testes e boas práticas de arquitetura e estruturas de dados, além de aprender muito sobre o mercado de tecnologia e desenvolvimento de software.',
     technologies: ['Python', 'NodeJS', 'React', 'Express', 'MySQL', 'Docker', 'CI/CD', 'API REST/Buck', 'Testes Automatizados']
   },
   {
     year: '2027',
     title: 'Diploma da faculdade e novos desafios',
-    description: 'Após a conclusão da faculdade, estou me preparando para novos desafios no mercado de tecnologia, com foco em Engenharia de Software e arquitetura de software escalável, expandindo meus conhecimentos em tecnologias de Nuvem e DevOps',
+    description: 'Após a conclusão da faculdade, estou me preparando para novos desafios no mercado de tecnologia, com foco em Engenharia de Software e arquitetura de software escalável, expandindo meus conhecimentos em tecnologias de nuvem e DevOps.',
     technologies: ['Software Engineering', 'Clean Architecture', 'Vibe Coding', 'Inteligência Artificial' , 'Certificações em Cloud/IaC/Linux', 'DevOps', ]
   },
   {
