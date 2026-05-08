@@ -6,11 +6,13 @@ import { Timeline } from '@/sections/Timeline';
 import { Contact } from '@/sections/Contact';
 import { Footer } from '@/sections/Footer';
 import { BackgroundParticles } from '@/components/particles/BackgroundParticles';
+import { ScrollProgress } from '@/components/ScrollProgress';
 import './App.css';
 
 function App() {
   return (
     <div className="relative min-h-screen bg-dark text-white overflow-x-hidden">
+      <ScrollProgress />
       <div className="fixed inset-0 z-[1]">
         <BackgroundParticles />
       </div>
