@@ -6,7 +6,7 @@ export const projects: Project[] = [
     title: 'APIsRESTFULL',
     image: 'APIRESTful.png',
     category: 'apis', //  Mexer também no /types/index.ts
-    categoryLabel: 'APIs & Microserviços',
+    categoryLabel: 'Backend',
     description: 'APIs robustas com arquitetura limpa e separação de responsabilidades, implementadas em Python/Flask',
     highlights: [
       'Design de APIs RESTful escaláveis',
@@ -53,7 +53,7 @@ export const projects: Project[] = [
   },
   {
     id: 'valeti-system',
-    title: 'Sistema de Valeti',
+    title: 'Valet Tracker',
     image: 'SistemaValeti.png',
     category: 'fullstack', //  Mexer também no /types/index.ts
     categoryLabel: 'Fullstack',
@@ -66,6 +66,7 @@ export const projects: Project[] = [
     ],
     stack: ['React', 'Node.js', 'MySQL', 'WebSocket', 'Express'],
     githubUrl: 'https://github.com/PedroHenrique2107/valet-perfect',
+    liveUrl: 'https://valet-perfect.vercel.app/',
     problem: 'Otimizar o fluxo de valets em eventos e estabelecimentos com alta demanda.',
     architecture: 'Realtime com WebSocket, MySQL para persistência de dados, React para interface dinâmica.',
     decisions: [
@@ -249,7 +250,7 @@ export const skills: Skill[] = [
 
 export const filterCategories = [
   { value: 'all', label: 'Todos' },
-  { value: 'apis', label: 'APIs & Microserviços' },
+  { value: 'apis', label: 'Backend' },
   { value: 'frontend', label: 'Frontend' },
   { value: 'fullstack', label: 'Fullstack' },
   { value: 'aiot', label: 'AIoT & Infraestrutura' },

@@ -100,7 +100,7 @@ export function Projects() {
                   exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ duration: 0.4, delay: index * 0.1 }}
                   onClick={() => setSelectedProject(project)}
-                  className={`group relative p-6 rounded-xl bg-dark border border-white/5 cursor-pointer transition-all duration-500 hover:-translate-y-2 hover:border-white/10 hover:shadow-[0_0_30px_rgba(168,85,247,0.15)]`}
+                  className={`group relative flex flex-col p-6 rounded-xl bg-dark border border-white/5 cursor-pointer transition-all duration-500 hover:-translate-y-2 hover:border-white/10 hover:shadow-[0_0_30px_rgba(168,85,247,0.15)]`}
                 >
                   {projectImage && (
                     <div className="mb-4 overflow-hidden rounded-lg border border-white/10 bg-white/5">
@@ -159,7 +159,7 @@ export function Projects() {
                   </ul>
 
                   {/* Links */}
-                  <div className="flex items-center gap-3 pt-4 border-t border-white/5">
+                  <div className="flex items-center gap-3 pt-4 border-t border-white/5 mt-auto">
                     {project.githubUrl && (
                       <a
                         href={project.githubUrl}
@@ -181,7 +181,7 @@ export function Projects() {
                         className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors text-sm"
                       >
                         <ExternalLink className="w-4 h-4" />
-                        <span className="font-mono">Demo</span>
+                        <span className="font-mono">Versão Demo</span>
                       </a>
                     )}
                   </div>
