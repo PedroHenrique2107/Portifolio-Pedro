@@ -1,6 +1,7 @@
 ﻿import { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { AlertCircle, Check, Github, Linkedin, Loader2, Mail, Send } from 'lucide-react';
+import { AlertCircle, Check, Loader2, Mail, Send } from 'lucide-react';
+import { GitHubIcon, LinkedInIcon } from '@/components/icons/BrandIcons';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -114,7 +115,7 @@ export function Contact() {
             Vamos construir algo <span className="text-gradient-cyan">robusto</span>.
           </h2>
           <p className="text-gray-400 text-center max-w-2xl mx-auto">
-            Aberto a oportunidades, colaboracoes e discussoes tecnicas.
+            Aberto a oportunidades, colaborações e discussões técnicas.
           </p>
         </motion.div>
 
@@ -140,7 +141,7 @@ export function Contact() {
                 className="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/5 hover:border-cyan-500/30 hover:bg-cyan-500/5 transition-all duration-300 group"
               >
                 <div className="w-12 h-12 rounded-lg bg-white/5 flex items-center justify-center group-hover:bg-cyan-500/10 transition-colors">
-                  <Github className="w-6 h-6 text-gray-400 group-hover:text-cyan-400 transition-colors" />
+                  <GitHubIcon className="w-6 h-6 text-gray-400 group-hover:text-cyan-400 transition-colors" />
                 </div>
                 <div>
                   <span className="block text-white font-medium">GitHub</span>
@@ -168,7 +169,7 @@ export function Contact() {
                 className="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/5 hover:border-purple-500/30 hover:bg-purple-500/5 transition-all duration-300 group"
               >
                 <div className="w-12 h-12 rounded-lg bg-white/5 flex items-center justify-center group-hover:bg-purple-500/10 transition-colors">
-                  <Linkedin className="w-6 h-6 text-gray-400 group-hover:text-purple-400 transition-colors" />
+                  <LinkedInIcon className="w-6 h-6 text-gray-400 group-hover:text-purple-400 transition-colors" />
                 </div>
                 <div>
                   <span className="block text-white font-medium">LinkedIn</span>

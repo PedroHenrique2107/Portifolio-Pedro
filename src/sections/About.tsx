@@ -58,7 +58,7 @@ const aboutBlocks = [
     icon: Target,
     color: 'text-emerald-400 border-emerald-500/20 bg-emerald-500/10',
     content:
-      'Atuar na área de Tecnologia, com foco em Engenharia de Softaware | DevOps Cloud, desenvolvendo projetos, solucionando problemas e aprimorando constantemente minhas habilidades técnicas, visando criar soluções que facilitem e impactem positivamente a vida das pessoas.'
+      'Atuar na área de Tecnologia, com foco em Engenharia de Software | DevOps Cloud, desenvolvendo projetos, solucionando problemas e aprimorando constantemente minhas habilidades técnicas, visando criar soluções que facilitem e impactem positivamente a vida das pessoas.'
   },
   {
     id: 'abordagem',
@@ -72,8 +72,8 @@ const aboutBlocks = [
 
 const aboutTabs = [
   { id: 'sobre', label: 'Sobre mim' },
-  { id: 'experiencia', label: 'Experiencia' },
-  { id: 'stack', label: 'Stack tecnico' }
+  { id: 'experiencia', label: 'Experiência' },
+  { id: 'stack', label: 'Stack técnico' }
 ] as const;
 
 export function About() {
@@ -195,7 +195,7 @@ export function About() {
             transition={{ duration: 0.6, delay: 0.2, ease: 'easeOut' }}
             className="text-center"
           >
-            <h3 className="text-2xl font-semibold text-white mb-8">Stack Tecnico</h3>
+            <h3 className="text-2xl font-semibold text-white mb-8">Stack Técnico</h3>
             <div className="flex flex-wrap justify-center gap-3">
               {skills.map((skill, index) => (
                 <motion.span

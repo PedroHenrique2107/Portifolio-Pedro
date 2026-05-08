@@ -1,4 +1,5 @@
-import { Github, Mail, Linkedin, Heart, Code2 } from 'lucide-react';
+import { Mail, Heart, Code2 } from 'lucide-react';
+import { GitHubIcon, LinkedInIcon } from '@/components/icons/BrandIcons';
 
 const navLinks = [
   { label: 'Home', href: '#home' },
@@ -9,8 +10,8 @@ const navLinks = [
 ];
 
 const socialLinks = [
-  { icon: Github, href: 'https://github.com/PedroHenrique2107', label: 'GitHub' },
-  { icon: Linkedin, href: 'https://www.linkedin.com/in/pedro-henrique-mendes-78a59325a/', label: 'LinkedIn' },
+  { icon: GitHubIcon, href: 'https://github.com/PedroHenrique2107', label: 'GitHub' },
+  { icon: LinkedInIcon, href: 'https://www.linkedin.com/in/pedro-henrique-mendes-78a59325a/', label: 'LinkedIn' },
   { icon: Mail, href: 'mailto:pedrohmsousa2023@gmail.com', label: 'Email' }
 ];
 

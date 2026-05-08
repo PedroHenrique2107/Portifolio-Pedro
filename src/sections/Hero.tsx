@@ -1,5 +1,6 @@
 ﻿import { motion } from 'framer-motion';
-import { ChevronDown, Github, Mail } from 'lucide-react';
+import { ChevronDown, Download, Mail } from 'lucide-react';
+import { GitHubIcon, LinkedInIcon } from '@/components/icons/BrandIcons';
 import { Button } from '@/components/ui/button';
 import { CoreSphere } from '@/components/3d/CoreSphere';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
@@ -40,7 +41,7 @@ export function Hero() {
               className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight"
             >
               Alta performance{' '}
-              <span className="text-gradient-cyan">comeca na estrutura de dados.</span>
+              <span className="text-gradient-cyan">começa na estrutura de dados.</span>
             </motion.h1>
 
             <motion.p
@@ -49,9 +50,9 @@ export function Hero() {
               transition={{ duration: 0.6, delay: 0.2, ease: 'easeOut' }}
               className="text-lg sm:text-xl text-gray-400 max-w-xl"
             >
-              Ola meu nome e Pedro Henrique, Engenheiro de Software focado em backend e arquitetura de sistemas escalaveis.
-              E um prazer ter voce aqui. Este portfolio reune projetos, experiencias e solucoes que refletem minha visao de tecnologia:
-              eficiencia, inovacao e impacto positivo. Explore e vamos construir o futuro juntos.
+              Olá, meu nome é Pedro Henrique, Engenheiro de Software focado em backend e arquitetura de sistemas escaláveis.
+              É um prazer ter você aqui. Este portfólio reúne projetos, experiências e soluções que refletem minha visão de tecnologia:
+              eficiência, inovação e impacto positivo. Explore e vamos construir o futuro juntos.
             </motion.p>
 
             <motion.div
@@ -75,6 +76,16 @@ export function Hero() {
               >
                 Falar Comigo
               </Button>
+              <a
+                href="https://drive.google.com/file/d/1Aa2EULBfAR54iKOk2WUwL9lbxl-Uz8FQ/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                // TODO: substituir "#" pelo link do currículo (Google Drive ou GitHub raw)
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-lg border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/10 hover:border-emerald-500/50 transition-all duration-300 text-base font-medium"
+              >
+                <Download className="w-5 h-5" />
+                Baixar Currículo
+              </a>
             </motion.div>
 
             <motion.div
@@ -89,8 +100,18 @@ export function Hero() {
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-gray-400 hover:text-cyan-400 transition-colors"
               >
-                <Github className="w-5 h-5" />
+                <GitHubIcon className="w-5 h-5" />
                 <span className="font-mono text-sm">GitHub</span>
+              </a>
+              <span className="text-gray-600">|</span>
+              <a
+                href="https://www.linkedin.com/in/pedro-henrique-mendes-78a59325a/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-gray-400 hover:text-cyan-400 transition-colors"
+              >
+                <LinkedInIcon className="w-5 h-5" />
+                <span className="font-mono text-sm">LinkedIn</span>
               </a>
               <span className="text-gray-600">|</span>
               <a

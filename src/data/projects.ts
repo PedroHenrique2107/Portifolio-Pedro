@@ -220,7 +220,7 @@ export const timeline: TimelineItem[] = [
     year: '2028',
     title: 'Inicio em Pós-Graduação',
     description: 'A decidir em breve! - Possiveís áreas de interesse:',
-    technologies: ['Software Engineering', 'Softaware Architecture', 'IA']
+    technologies: ['Software Engineering', 'Software Architecture', 'IA']
   }
 ];
 
