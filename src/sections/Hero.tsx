@@ -80,7 +80,6 @@ export function Hero() {
                 href="https://drive.google.com/file/d/1Aa2EULBfAR54iKOk2WUwL9lbxl-Uz8FQ/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
-                // TODO: substituir "#" pelo link do currículo (Google Drive ou GitHub raw)
                 className="inline-flex items-center gap-2 px-8 py-4 rounded-lg border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/10 hover:border-emerald-500/50 transition-all duration-300 text-base font-medium"
               >
                 <Download className="w-5 h-5" />

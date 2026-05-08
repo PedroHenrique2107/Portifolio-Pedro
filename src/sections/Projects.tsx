@@ -314,7 +314,7 @@ export function Projects() {
                         onClick={() => window.open(selectedProject.liveUrl, '_blank')}
                       >
                         <ExternalLink className="w-4 h-4 mr-2" />
-                        Ver Demo
+                        Versão Demo
                       </Button>
                     )}
                   </div>

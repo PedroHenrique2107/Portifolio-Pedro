@@ -1,5 +1,5 @@
-﻿import { useRef, useState } from 'react';
-import { motion, useInView } from 'framer-motion';
+﻿import { useEffect, useRef, useState } from 'react';
+import { animate, motion, useInView } from 'framer-motion';
 import { AlertCircle, Check, Loader2, Mail, Send } from 'lucide-react';
 import { GitHubIcon, LinkedInIcon } from '@/components/icons/BrandIcons';
 import { Button } from '@/components/ui/button';
@@ -9,6 +9,22 @@ import { Textarea } from '@/components/ui/textarea';
 import type { ContactFormData } from '@/types';
 
 type FormStatus = 'idle' | 'loading' | 'success' | 'error';
+
+function AnimatedCounter({ to, suffix, color, trigger }: { to: number; suffix: string; color: string; trigger: boolean }) {
+  const [value, setValue] = useState(0);
+
+  useEffect(() => {
+    if (!trigger) return;
+    const controls = animate(0, to, {
+      duration: 1.5,
+      ease: 'easeOut',
+      onUpdate: (v) => setValue(Math.round(v)),
+    });
+    return controls.stop;
+  }, [trigger, to]);
+
+  return <span className={`block text-2xl font-bold ${color}`}>{value}{suffix}</span>;
+}
 
 const WEB3FORMS_ENDPOINT = 'https://api.web3forms.com/submit';
 const WEB3FORMS_ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY ?? '';
@@ -180,15 +196,15 @@ export function Contact() {
 
             <div className="grid grid-cols-3 gap-4 pt-8 border-t border-white/5">
               <div className="text-center">
-                <span className="block text-2xl font-bold text-cyan-400">20+</span>
+                <AnimatedCounter to={20} suffix="+" color="text-cyan-400" trigger={isInView} />
                 <span className="text-gray-500 text-sm">Projetos</span>
               </div>
               <div className="text-center">
-                <span className="block text-2xl font-bold text-emerald-400">1+</span>
+                <AnimatedCounter to={1} suffix="+" color="text-emerald-400" trigger={isInView} />
                 <span className="text-gray-500 text-sm">Anos Exp.</span>
               </div>
               <div className="text-center">
-                <span className="block text-2xl font-bold text-purple-400">99%</span>
+                <AnimatedCounter to={99} suffix="%" color="text-purple-400" trigger={isInView} />
                 <span className="text-gray-500 text-sm">Uptime</span>
               </div>
             </div>
