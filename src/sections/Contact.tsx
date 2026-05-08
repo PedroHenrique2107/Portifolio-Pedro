@@ -113,7 +113,7 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="relative py-24 lg:py-32 bg-dark-100">
+    <section id="contact" className="relative py-16 sm:py-24 lg:py-32 bg-dark-100">
       <div className="max-w-[1200px] mx-auto px-6 sm:px-8 lg:px-16">
         <motion.div
           ref={containerRef}
@@ -135,7 +135,7 @@ export function Contact() {
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
@@ -143,9 +143,9 @@ export function Contact() {
             className="space-y-8"
           >
             <div>
-              <h3 className="text-xl font-semibold text-white mb-4">Informacoes de Contato</h3>
+              <h3 className="text-xl font-semibold text-white mb-4">Informações de Contato</h3>
               <p className="text-gray-400 mb-6">
-                Prefere outro canal? Estou disponivel nas seguintes plataformas:
+                Prefere outro canal? Estou disponível nas seguintes plataformas:
               </p>
             </div>
 
@@ -156,7 +156,7 @@ export function Contact() {
                 rel="noopener noreferrer"
                 className="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/5 hover:border-cyan-500/30 hover:bg-cyan-500/5 transition-all duration-300 group"
               >
-                <div className="w-12 h-12 rounded-lg bg-white/5 flex items-center justify-center group-hover:bg-cyan-500/10 transition-colors">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-white/5 flex items-center justify-center group-hover:bg-cyan-500/10 transition-colors">
                   <GitHubIcon className="w-6 h-6 text-gray-400 group-hover:text-cyan-400 transition-colors" />
                 </div>
                 <div>
@@ -169,7 +169,7 @@ export function Contact() {
                 href="mailto:pedrohmsousa2023@gmail.com"
                 className="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/5 hover:border-emerald-500/30 hover:bg-emerald-500/5 transition-all duration-300 group"
               >
-                <div className="w-12 h-12 rounded-lg bg-white/5 flex items-center justify-center group-hover:bg-emerald-500/10 transition-colors">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-white/5 flex items-center justify-center group-hover:bg-emerald-500/10 transition-colors">
                   <Mail className="w-6 h-6 text-gray-400 group-hover:text-emerald-400 transition-colors" />
                 </div>
                 <div>
@@ -184,17 +184,17 @@ export function Contact() {
                 rel="noopener noreferrer"
                 className="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/5 hover:border-purple-500/30 hover:bg-purple-500/5 transition-all duration-300 group"
               >
-                <div className="w-12 h-12 rounded-lg bg-white/5 flex items-center justify-center group-hover:bg-purple-500/10 transition-colors">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-white/5 flex items-center justify-center group-hover:bg-purple-500/10 transition-colors">
                   <LinkedInIcon className="w-6 h-6 text-gray-400 group-hover:text-purple-400 transition-colors" />
                 </div>
                 <div>
                   <span className="block text-white font-medium">LinkedIn</span>
-                  <span className="text-gray-500 font-mono text-sm">linkedin.com/in/pedro-henrique-mendes-78a59325a/</span>
+                  <span className="text-gray-500 font-mono text-sm truncate">linkedin.com/in/pedro-henrique-mendes-78a59325a/</span>
                 </div>
               </a>
             </div>
 
-            <div className="grid grid-cols-3 gap-4 pt-8 border-t border-white/5">
+            <div className="grid grid-cols-3 gap-2 sm:gap-4 pt-8 border-t border-white/5">
               <div className="text-center">
                 <AnimatedCounter to={20} suffix="+" color="text-cyan-400" trigger={isInView} />
                 <span className="text-gray-500 text-sm">Projetos</span>

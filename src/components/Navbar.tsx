@@ -175,7 +175,7 @@ export function Navbar() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 50 }}
               transition={{ delay: 0.1 }}
-              className="absolute right-0 top-0 bottom-0 w-80 bg-dark-100 border-l border-white/5 p-8 pt-24"
+              className="absolute right-0 top-0 bottom-0 w-72 sm:w-80 bg-dark-100 border-l border-white/5 p-6 sm:p-8 pt-20 sm:pt-24"
             >
               <div className="space-y-2">
                 {navLinks.map((link, index) => (

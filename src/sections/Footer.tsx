@@ -27,7 +27,7 @@ export function Footer() {
   return (
     <footer className="relative py-16 bg-dark border-t border-white/5">
       <div className="max-w-[1200px] mx-auto px-6 sm:px-8 lg:px-16">
-        <div className="grid md:grid-cols-3 gap-12 mb-12">
+        <div className="grid md:grid-cols-3 gap-8 sm:gap-12 mb-8 sm:mb-12">
           {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">

@@ -82,7 +82,7 @@ export function About() {
   const [activeTab, setActiveTab] = useState<(typeof aboutTabs)[number]['id']>('sobre');
 
   return (
-    <section id="about" className="relative py-24 lg:py-32 bg-dark">
+    <section id="about" className="relative py-16 sm:py-24 lg:py-32 bg-dark">
       <div className="max-w-[1200px] mx-auto px-6 sm:px-8 lg:px-16">
         <motion.div
           ref={containerRef}
@@ -111,7 +111,7 @@ export function About() {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`px-4 py-2 rounded-lg font-mono text-sm transition-all duration-300 ${
+              className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg font-mono text-sm transition-all duration-300 ${
                 activeTab === tab.id
                   ? 'bg-cyan-500 text-dark'
                   : 'bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white'
@@ -123,7 +123,7 @@ export function About() {
         </motion.div>
 
         {activeTab === 'sobre' && (
-          <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
+          <div className="grid md:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             {aboutBlocks.map((block, index) => {
               const Icon = block.icon;
 
@@ -133,7 +133,7 @@ export function About() {
                   initial={{ opacity: 0, y: 30 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.5, delay: 0.1 + index * 0.1, ease: 'easeOut' }}
-                  className="p-6 lg:p-8 rounded-xl bg-dark-100 border border-white/5 transition-all duration-300 hover:-translate-y-1 hover:border-white/10"
+                  className="p-4 sm:p-6 lg:p-8 rounded-xl bg-dark-100 border border-white/5 transition-all duration-300 hover:-translate-y-1 hover:border-white/10"
                 >
                   <div className={`inline-flex items-center justify-center w-12 h-12 rounded-lg border mb-5 ${block.color}`}>
                     <Icon className="w-5 h-5" />
@@ -147,7 +147,7 @@ export function About() {
         )}
 
         {activeTab === 'experiencia' && (
-          <div className="grid md:grid-cols-3 gap-6 lg:gap-8 mb-20">
+          <div className="grid md:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-12 sm:mb-20">
             {experiences.map((exp, index) => {
               const Icon = iconMap[exp.icon];
               const colors = colorMap[exp.color];
@@ -158,7 +158,7 @@ export function About() {
                   initial={{ opacity: 0, y: 40 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.6, delay: index * 0.15, ease: 'easeOut' }}
-                  className={`group relative p-6 lg:p-8 rounded-xl bg-dark-100 border border-white/5 ${colors.glow} transition-all duration-500 hover:-translate-y-1 hover:border-white/10`}
+                  className={`group relative p-4 sm:p-6 lg:p-8 rounded-xl bg-dark-100 border border-white/5 ${colors.glow} transition-all duration-500 hover:-translate-y-1 hover:border-white/10`}
                 >
                   <div className="flex items-center gap-4 mb-6">
                     <div className={`inline-flex items-center justify-center w-12 h-12 rounded-lg ${colors.bg} ${colors.border} border`}>
@@ -203,7 +203,7 @@ export function About() {
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={isInView ? { opacity: 1, scale: 1 } : {}}
                   transition={{ duration: 0.4, delay: 0.3 + index * 0.03 }}
-                  className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg border font-mono text-sm transition-all duration-300 hover:scale-105 ${skillCategoryColors[skill.category]}`}
+                  className={`inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg border font-mono text-sm transition-all duration-300 hover:scale-105 ${skillCategoryColors[skill.category]}`}
                 >
                   {skill.logo ? (
                     <img

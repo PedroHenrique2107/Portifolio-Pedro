@@ -21,7 +21,7 @@ export function Hero() {
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-dark/50 to-dark pointer-events-none z-[1]" />
 
       <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-16 py-20">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center min-h-[80vh]">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center sm:min-h-[80vh]">
           <div className="space-y-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -62,17 +62,15 @@ export function Hero() {
               className="flex flex-wrap gap-4"
             >
               <Button
-                size="lg"
                 onClick={() => scrollToSection('projects')}
-                className="bg-cyan-500 hover:bg-cyan-400 text-dark font-semibold px-8 py-6 text-base transition-all duration-300 hover:shadow-glow"
+                className="bg-cyan-500 hover:bg-cyan-400 text-dark font-semibold px-8 py-6 text-base transition-all duration-300 hover:shadow-glow rounded-md"
               >
                 Ver Projetos
               </Button>
               <Button
-                size="lg"
                 variant="outline"
                 onClick={() => scrollToSection('contact')}
-                className="border-white/20 text-white hover:bg-white/10 px-8 py-6 text-base"
+                className="border-white/20 text-white hover:bg-white/10 px-8 py-6 text-base rounded-md"
               >
                 Falar Comigo
               </Button>
@@ -80,7 +78,7 @@ export function Hero() {
                 href="https://drive.google.com/file/d/1Aa2EULBfAR54iKOk2WUwL9lbxl-Uz8FQ/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-lg border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/10 hover:border-emerald-500/50 transition-all duration-300 text-base font-medium"
+                className="inline-flex items-center gap-2 px-8 py-6 rounded-md border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/10 hover:border-emerald-500/50 transition-all duration-300 text-base font-medium"
               >
                 <Download className="w-5 h-5" />
                 Baixar Currículo
@@ -91,7 +89,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4, ease: 'easeOut' }}
-              className="flex items-center gap-4 pt-4"
+              className="flex flex-wrap items-center gap-x-4 gap-y-2 pt-4"
             >
               <a
                 href="https://github.com/PedroHenrique2107"
@@ -102,7 +100,7 @@ export function Hero() {
                 <GitHubIcon className="w-5 h-5" />
                 <span className="font-mono text-sm">GitHub</span>
               </a>
-              <span className="text-gray-600">|</span>
+              <span className="hidden sm:inline text-gray-600">|</span>
               <a
                 href="https://www.linkedin.com/in/pedro-henrique-mendes-78a59325a/"
                 target="_blank"
@@ -112,7 +110,7 @@ export function Hero() {
                 <LinkedInIcon className="w-5 h-5" />
                 <span className="font-mono text-sm">LinkedIn</span>
               </a>
-              <span className="text-gray-600">|</span>
+              <span className="hidden sm:inline text-gray-600">|</span>
               <a
                 href="mailto:pedrohmsousa2023@gmail.com"
                 className="flex items-center gap-2 text-gray-400 hover:text-cyan-400 transition-colors"

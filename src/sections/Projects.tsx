@@ -35,7 +35,7 @@ export function Projects() {
   const activeFilterLabel = filterCategories.find((cat) => cat.value === activeFilter)?.label ?? 'esta categoria';
 
   return (
-    <section id="projects" className="relative py-24 lg:py-32 bg-dark-100">
+    <section id="projects" className="relative py-16 sm:py-24 lg:py-32 bg-dark-100">
       <div className="max-w-[1200px] mx-auto px-6 sm:px-8 lg:px-16">
         {/* Section header */}
         <motion.div
@@ -69,7 +69,7 @@ export function Projects() {
             <button
               key={cat.value}
               onClick={() => setActiveFilter(cat.value as FilterCategory)}
-              className={`px-4 py-2 rounded-lg font-mono text-sm transition-all duration-300 ${
+              className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg font-mono text-sm transition-all duration-300 ${
                 activeFilter === cat.value
                   ? 'bg-purple-500 text-white'
                   : 'bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white'
@@ -84,7 +84,7 @@ export function Projects() {
         {filteredProjects.length > 0 ? (
           <motion.div
             layout
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
           >
           <AnimatePresence mode="popLayout">
             {filteredProjects.map((project, index) => {
@@ -100,7 +100,7 @@ export function Projects() {
                   exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ duration: 0.4, delay: index * 0.1 }}
                   onClick={() => setSelectedProject(project)}
-                  className={`group relative flex flex-col p-6 rounded-xl bg-dark border border-white/5 cursor-pointer transition-all duration-500 hover:-translate-y-2 hover:border-white/10 hover:shadow-[0_0_30px_rgba(168,85,247,0.15)]`}
+                  className={`group relative flex flex-col p-4 sm:p-6 rounded-xl bg-dark border border-white/5 cursor-pointer transition-all duration-500 hover:-translate-y-2 hover:border-white/10 hover:shadow-[0_0_30px_rgba(168,85,247,0.15)]`}
                 >
                   {projectImage && (
                     <div className="mb-4 overflow-hidden rounded-lg border border-white/10 bg-white/5">
@@ -108,13 +108,13 @@ export function Projects() {
                         src={projectImage}
                         alt={`Preview do projeto ${project.title}`}
                         loading="lazy"
-                        className="w-full h-40 object-cover transition-transform duration-500 group-hover:scale-105"
+                        className="w-full h-36 sm:h-40 object-cover transition-transform duration-500 group-hover:scale-105"
                       />
                     </div>
                   )}
 
                   {/* Category badge */}
-                  <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full ${colors.bg} ${colors.border} border mb-4`}>
+                  <div className={`self-start inline-flex items-center gap-2 px-3 py-1 rounded-full ${colors.bg} ${colors.border} border mb-4`}>
                     <span className={`w-2 h-2 rounded-full ${colors.dot}`} />
                     <span className={`font-mono text-xs ${colors.text}`}>
                       {project.categoryLabel}
@@ -178,10 +178,10 @@ export function Projects() {
                         target="_blank"
                         rel="noopener noreferrer"
                         onClick={(e) => e.stopPropagation()}
-                        className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors text-sm"
+                        className="ml-auto flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-purple-500/15 border border-purple-500/30 text-purple-400 hover:bg-purple-500/25 hover:border-purple-500/60 hover:text-purple-300 transition-all duration-200 text-xs font-mono"
                       >
-                        <ExternalLink className="w-4 h-4" />
-                        <span className="font-mono">Versão Demo</span>
+                        <ExternalLink className="w-3.5 h-3.5" />
+                        Versão Demo
                       </a>
                     )}
                   </div>
@@ -222,7 +222,7 @@ export function Projects() {
 
         {/* Project Detail Modal */}
         <Dialog open={!!selectedProject} onOpenChange={() => setSelectedProject(null)}>
-          <DialogContent className="max-w-2xl bg-dark-100 border-white/10 text-white max-h-[90vh] overflow-y-auto">
+          <DialogContent className="max-w-[92vw] sm:max-w-2xl bg-dark-100 border-white/10 text-white max-h-[90vh] overflow-y-auto">
             {selectedProject && (
               <>
                 <DialogHeader>

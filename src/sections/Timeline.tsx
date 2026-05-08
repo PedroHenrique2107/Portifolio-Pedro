@@ -7,7 +7,7 @@ export function Timeline() {
   const isInView = useInView(containerRef, { once: true, margin: '-100px' });
 
   return (
-    <section id="vision" className="relative py-24 lg:py-32 bg-dark overflow-hidden">
+    <section id="vision" className="relative py-16 sm:py-24 lg:py-32 bg-dark overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-dark via-dark-100 to-dark pointer-events-none" />
 
@@ -78,7 +78,7 @@ export function Timeline() {
                 >
                   {/* Content */}
                   <div
-                    className={`pl-12 lg:pl-0 ${
+                    className={`pl-10 sm:pl-12 lg:pl-0 ${
                       isLeft ? 'lg:pr-16 lg:text-right' : 'lg:col-start-2 lg:pl-16'
                     }`}
                   >
@@ -134,8 +134,8 @@ export function Timeline() {
           transition={{ duration: 0.6, delay: 0.8 }}
           className="mt-20 text-center"
         >
-          <div className="inline-block p-8 rounded-2xl bg-gradient-to-br from-emerald-500/10 via-cyan-500/10 to-purple-500/10 border border-white/10">
-            <p className="text-xl lg:text-2xl font-semibold text-white max-w-2xl">
+          <div className="inline-block p-4 sm:p-8 rounded-2xl bg-gradient-to-br from-emerald-500/10 via-cyan-500/10 to-purple-500/10 border border-white/10 max-w-full">
+            <p className="text-base sm:text-xl lg:text-2xl font-semibold text-white max-w-2xl">
               "Quero construir sistemas que continuem funcionando quando o{' '}
               <span className="text-gradient-cyan">ambiente falhar</span>."
             </p>
