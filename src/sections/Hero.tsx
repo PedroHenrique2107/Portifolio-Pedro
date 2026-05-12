@@ -41,7 +41,7 @@ export function Hero() {
               className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight"
             >
               Alta performance{' '}
-              <span className="text-gradient-cyan">começa na estrutura de dados.</span>
+              <span className="text-gradient-cyan">começa na estrutura de dados</span>
             </motion.h1>
 
             <motion.p
@@ -52,7 +52,7 @@ export function Hero() {
             >
               Olá, meu nome é Pedro Henrique, Engenheiro de Software focado em backend e arquitetura de sistemas escaláveis.
               É um prazer ter você aqui. Este portfólio reúne projetos, experiências e soluções que refletem minha visão de tecnologia:
-              eficiência, inovação e impacto positivo. Explore e vamos construir o futuro juntos.
+              eficiência, inovação e impacto positivo. Explore e vamos construir o futuro juntos
             </motion.p>
 
             <motion.div
