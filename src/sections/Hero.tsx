@@ -5,6 +5,9 @@ import { Button } from '@/components/ui/button';
 import { CoreSphere } from '@/components/3d/CoreSphere';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 
+const heroCtaClass =
+  'h-14 w-full sm:w-56 px-6 text-base font-semibold rounded-md';
+
 export function Hero() {
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -63,26 +66,31 @@ export function Hero() {
             >
               <Button
                 onClick={() => scrollToSection('projects')}
-                className="bg-cyan-500 hover:bg-cyan-400 text-dark font-semibold px-8 py-6 text-base transition-all duration-300 hover:shadow-glow rounded-md"
+                className={`${heroCtaClass} bg-cyan-500 hover:bg-cyan-400 text-dark transition-all duration-300 hover:shadow-glow`}
               >
                 Ver Projetos
               </Button>
               <Button
                 variant="outline"
                 onClick={() => scrollToSection('contact')}
-                className="border-white/20 text-white hover:bg-white/10 px-8 py-6 text-base rounded-md"
+                className={`${heroCtaClass} border-white/20 text-white hover:bg-white/10`}
               >
                 Falar Comigo
               </Button>
-              <a
-                href="https://drive.google.com/file/d/1Aa2EULBfAR54iKOk2WUwL9lbxl-Uz8FQ/view?usp=sharing"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-8 py-6 rounded-md border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/10 hover:border-emerald-500/50 transition-all duration-300 text-base font-medium"
+              <Button
+                asChild
+                variant="outline"
+                className={`${heroCtaClass} border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/10 hover:border-emerald-500/50 transition-all duration-300`}
               >
-                <Download className="w-5 h-5" />
-                Baixar Currículo
-              </a>
+                <a
+                  href="https://drive.google.com/file/d/1Aa2EULBfAR54iKOk2WUwL9lbxl-Uz8FQ/view?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Download className="w-5 h-5" />
+                  Baixar Currículo
+                </a>
+              </Button>
             </motion.div>
 
             <motion.div

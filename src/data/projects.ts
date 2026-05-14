@@ -131,10 +131,25 @@ export const projects: Project[] = [
 ];
 
 export const experiences: Experience[] = [
+    {
+    id: 'fullstack',
+    title: 'Desenvolvedor Autônomo | Fullstack',
+      period: 'ago/2023 — Atualmente',
+    company: 'MetaCore - UniMetrocamp',
+    icon: 'Brain',
+    color: 'purple',
+    items: [
+      'Sistema completo de Gestão do Agronégocio, com módulos de CRM, ERP e E-commerce para produtores rurais.',
+      'Desenvolvimento de APIs RESTful e GraphQL para integração entre sistemas e clientes.',
+      'Implementação de soluções de infraestrutura em nuvem, garantindo escalabilidade e segurança.',
+      'Análise de dados, IoT, Desenvolvimento de Software completo para qualquer um poder mexer de forma bem moderna, com foco em performance, segurança e experiência do usuário.',
+      ],
+    quote: 'O começo é a parte mais importante de qualquer jornada. Aprender a trabalhar em equipe gera resultados extraordinários — a convivência diária fortalece laços, transforma colegas em amigos e torna os desafios mais leves. Sonhar grande, manter o foco e nunca parar de estudar são atitudes que abrem caminhos, porque com dedicação, disciplina e constância, qualquer pessoa pode chegar onde deseja.'
+  },
   {
-    id: 'backend',
-    title: 'Backend Developer',
-    period: 'jan/2026 - Atualmente',
+    id: 'fullstack',
+    title: 'FullStack Developer',
+    period: 'jan/2026 - mar/2026',
     company: 'SmartCompass',
     icon: 'Code2',
     color: 'green',
@@ -161,21 +176,6 @@ export const experiences: Experience[] = [
       'Desenvolvimento e implantação de soluções com sensores, automação e IA para monitoramento, energia e segurança.'
     ],
     quote: 'A gestão de projetos de infraestrutura é um desafio complexo que exige visão estratégica, coordenação eficaz e capacidade de resolver problemas técnicos, principalmente quando envolve tecnologias emergentes como IoT e IA.'
-  },
-  {
-    id: 'fullstack',
-    title: 'Desenvolvedor Autônomo | Fullstack',
-      period: 'ago/2023 — fev/2025',
-    company: 'MetaCore - UniMetrocamp',
-    icon: 'Brain',
-    color: 'purple',
-    items: [
-      'Sistema completo de Gestão do Agronégocio, com módulos de CRM, ERP e E-commerce para produtores rurais.',
-      'Desenvolvimento de APIs RESTful e GraphQL para integração entre sistemas e clientes.',
-      'Implementação de soluções de infraestrutura em nuvem, garantindo escalabilidade e segurança.',
-      'Análise de dados, IoT, Desenvolvimento de Software completo para qualquer um poder mexer de forma bem moderna, com foco em performance, segurança e experiência do usuário.',
-      ],
-    quote: 'O começo é a parte mais importante de qualquer jornada. Aprender a trabalhar em equipe gera resultados extraordinários — a convivência diária fortalece laços, transforma colegas em amigos e torna os desafios mais leves. Sonhar grande, manter o foco e nunca parar de estudar são atitudes que abrem caminhos, porque com dedicação, disciplina e constância, qualquer pessoa pode chegar onde deseja.'
   }
 ];
 
