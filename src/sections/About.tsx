@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Server, Code2, Brain, User, Target, Lightbulb } from 'lucide-react';
 import { experiences, skills } from '@/data/portfolio';
+import { panelRevealVariants, revealVariants, sectionHeaderVariants, staggerContainerVariants } from '@/lib/motion';
 
 import type { LucideIcon } from 'lucide-react';
 import type { Experience, Skill } from '@/types';
@@ -88,9 +89,9 @@ export function About() {
       <div className="max-w-[1200px] mx-auto px-6 sm:px-8 lg:px-16">
         <motion.div
           ref={containerRef}
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, ease: 'easeOut' }}
+          variants={sectionHeaderVariants}
+          initial="hidden"
+          animate={isInView ? 'visible' : 'hidden'}
           className="mb-16"
         >
           <div className="flex items-center gap-4 mb-4">
@@ -104,9 +105,9 @@ export function About() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.1 }}
+          variants={revealVariants}
+          initial="hidden"
+          animate={isInView ? 'visible' : 'hidden'}
           className="flex flex-wrap justify-center gap-2 mb-6 lg:mb-8"
         >
           {aboutTabs.map((tab) => (
@@ -125,16 +126,19 @@ export function About() {
         </motion.div>
 
         {activeTab === 'sobre' && (
-          <div className="grid md:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-            {aboutBlocks.map((block, index) => {
+          <motion.div
+            variants={staggerContainerVariants}
+            initial="hidden"
+            animate={isInView ? 'visible' : 'hidden'}
+            className="grid md:grid-cols-3 gap-4 sm:gap-6 lg:gap-8"
+          >
+            {aboutBlocks.map((block) => {
               const Icon = block.icon;
 
               return (
                 <motion.article
                   key={block.id}
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.5, delay: 0.1 + index * 0.1, ease: 'easeOut' }}
+                  variants={panelRevealVariants}
                   className="system-panel p-4 sm:p-6 lg:p-8 transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400/20"
                 >
                   <div className={`inline-flex items-center justify-center w-12 h-12 rounded-lg border mb-5 ${block.color}`}>
@@ -145,21 +149,24 @@ export function About() {
                 </motion.article>
               );
             })}
-          </div>
+          </motion.div>
         )}
 
         {activeTab === 'experiencia' && (
-          <div className="grid md:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-12 sm:mb-20">
-            {experiences.map((exp, index) => {
+          <motion.div
+            variants={staggerContainerVariants}
+            initial="hidden"
+            animate={isInView ? 'visible' : 'hidden'}
+            className="grid md:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-12 sm:mb-20"
+          >
+            {experiences.map((exp) => {
               const Icon = iconMap[exp.icon];
               const colors = colorMap[exp.color];
 
               return (
                 <motion.div
                   key={exp.id}
-                  initial={{ opacity: 0, y: 40 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.6, delay: index * 0.15, ease: 'easeOut' }}
+                  variants={panelRevealVariants}
                   className={`system-panel group p-4 sm:p-6 lg:p-8 ${colors.glow} transition-all duration-500 hover:-translate-y-1 hover:border-cyan-400/20`}
                 >
                   <div className="flex items-center gap-4 mb-6">
@@ -187,24 +194,27 @@ export function About() {
                 </motion.div>
               );
             })}
-          </div>
+          </motion.div>
         )}
 
         {activeTab === 'stack' && (
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2, ease: 'easeOut' }}
+            variants={revealVariants}
+            initial="hidden"
+            animate={isInView ? 'visible' : 'hidden'}
             className="text-center"
           >
             <h3 className="text-2xl font-semibold text-white mb-8">Stack Técnico</h3>
-            <div className="flex flex-wrap justify-center gap-3">
-              {displayedSkills.map((skill, index) => (
+            <motion.div
+              variants={staggerContainerVariants}
+              initial="hidden"
+              animate={isInView ? 'visible' : 'hidden'}
+              className="flex flex-wrap justify-center gap-3"
+            >
+              {displayedSkills.map((skill) => (
                 <motion.span
                   key={skill.name}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                  transition={{ duration: 0.4, delay: 0.3 + index * 0.03 }}
+                  variants={panelRevealVariants}
                   className={`inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg border font-mono text-sm transition-all duration-300 hover:scale-105 ${skillCategoryColors[skill.category]}`}
                 >
                   {skill.logo ? (
@@ -225,7 +235,7 @@ export function About() {
                   {skill.name}
                 </motion.span>
               ))}
-            </div>
+            </motion.div>
           </motion.div>
         )}
       </div>

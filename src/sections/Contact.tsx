@@ -7,6 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { metrics, socialLinks } from '@/data/portfolio';
+import { panelRevealVariants, revealVariants, sectionHeaderVariants, staggerContainerVariants } from '@/lib/motion';
 import type { ElementType } from 'react';
 import type { ContactFormData, SocialLink } from '@/types';
 
@@ -148,9 +149,9 @@ export function Contact() {
       <div className="max-w-[1200px] mx-auto px-6 sm:px-8 lg:px-16">
         <motion.div
           ref={containerRef}
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, ease: 'easeOut' }}
+          variants={sectionHeaderVariants}
+          initial="hidden"
+          animate={isInView ? 'visible' : 'hidden'}
           className="mb-16"
         >
           <div className="flex items-center gap-4 mb-4">
@@ -168,9 +169,9 @@ export function Contact() {
 
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-16">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            variants={revealVariants}
+            initial="hidden"
+            animate={isInView ? 'visible' : 'hidden'}
             className="space-y-8"
           >
             <div>
@@ -180,14 +181,20 @@ export function Contact() {
               </p>
             </div>
 
-            <div className="space-y-4">
+            <motion.div
+              variants={staggerContainerVariants}
+              initial="hidden"
+              animate={isInView ? 'visible' : 'hidden'}
+              className="space-y-4"
+            >
               {socialLinks.map((social) => {
                 const styles = contactSocialStyles[social.id];
                 const Icon = styles.icon;
 
                 return (
-                  <a
+                  <motion.a
                     key={social.id}
+                    variants={panelRevealVariants}
                     href={social.href}
                     target={social.external ? '_blank' : undefined}
                     rel={social.external ? 'noopener noreferrer' : undefined}
@@ -200,10 +207,10 @@ export function Contact() {
                       <span className="block text-white font-medium">{social.label}</span>
                       <span className="text-gray-500 font-mono text-sm truncate">{social.display}</span>
                     </div>
-                  </a>
+                  </motion.a>
                 );
               })}
-            </div>
+            </motion.div>
 
             <div className="grid grid-cols-3 gap-2 sm:gap-4 pt-8 border-t border-white/5">
               {metrics.map((metric) => (
@@ -216,9 +223,9 @@ export function Contact() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            variants={revealVariants}
+            initial="hidden"
+            animate={isInView ? 'visible' : 'hidden'}
           >
             {status === 'success' ? (
               <div className="system-panel h-full flex flex-col items-center justify-center p-8 border-emerald-500/20 bg-emerald-500/10">

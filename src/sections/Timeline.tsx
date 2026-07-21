@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { timeline } from '@/data/portfolio';
+import { panelRevealVariants, revealVariants, sectionHeaderVariants, staggerContainerVariants } from '@/lib/motion';
 
 export function Timeline() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -15,9 +16,9 @@ export function Timeline() {
         {/* Section header */}
         <motion.div
           ref={containerRef}
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, ease: 'easeOut' }}
+          variants={sectionHeaderVariants}
+          initial="hidden"
+          animate={isInView ? 'visible' : 'hidden'}
           className="mb-16"
         >
           <div className="flex items-center gap-4 mb-4">
@@ -56,7 +57,12 @@ export function Timeline() {
           </div>
 
           {/* Timeline items */}
-          <div className="space-y-12 lg:space-y-0">
+          <motion.div
+            variants={staggerContainerVariants}
+            initial="hidden"
+            animate={isInView ? 'visible' : 'hidden'}
+            className="space-y-12 lg:space-y-0"
+          >
             {timeline.map((item, index) => {
               const isLeft = index % 2 === 0;
               const colors = [
@@ -69,9 +75,7 @@ export function Timeline() {
               return (
                 <motion.div
                   key={item.year}
-                  initial={{ opacity: 0, x: isLeft ? -50 : 50 }}
-                  animate={isInView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ duration: 0.6, delay: index * 0.2, ease: 'easeOut' }}
+                  variants={panelRevealVariants}
                   className={`relative lg:grid lg:grid-cols-2 lg:gap-8 ${
                     index > 0 ? 'lg:mt-12' : ''
                   }`}
@@ -124,14 +128,14 @@ export function Timeline() {
                 </motion.div>
               );
             })}
-          </div>
+          </motion.div>
         </div>
 
         {/* Closing message */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.8 }}
+          variants={revealVariants}
+          initial="hidden"
+          animate={isInView ? 'visible' : 'hidden'}
           className="mt-20 text-center"
         >
           <div className="inline-block p-4 sm:p-8 rounded-2xl bg-gradient-to-br from-emerald-500/10 via-cyan-500/10 to-purple-500/10 border border-white/10 max-w-full">

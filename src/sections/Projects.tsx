@@ -4,6 +4,7 @@ import { ExternalLink, Github, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { projects, filterCategories } from '@/data/portfolio';
+import { panelRevealVariants, projectCardVariants, revealVariants, sectionHeaderVariants, staggerContainerVariants } from '@/lib/motion';
 import type { FilterCategory, Project } from '@/types';
 
 const projectImageModules = import.meta.glob('../image/*.{png,jpg,jpeg,webp,avif}', {
@@ -39,9 +40,9 @@ export function Projects() {
         {/* Section header */}
         <motion.div
           ref={containerRef}
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, ease: 'easeOut' }}
+          variants={sectionHeaderVariants}
+          initial="hidden"
+          animate={isInView ? 'visible' : 'hidden'}
           className="mb-12"
         >
           <div className="flex items-center gap-4 mb-4">
@@ -59,9 +60,9 @@ export function Projects() {
 
         {/* Filters */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          variants={revealVariants}
+          initial="hidden"
+          animate={isInView ? 'visible' : 'hidden'}
           className="flex flex-wrap justify-center gap-2 mb-12"
         >
           {filterCategories.map((cat) => (
@@ -83,10 +84,13 @@ export function Projects() {
         {filteredProjects.length > 0 ? (
           <motion.div
             layout
+            variants={staggerContainerVariants}
+            initial="hidden"
+            animate="visible"
             className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
           >
           <AnimatePresence mode="popLayout">
-            {filteredProjects.map((project, index) => {
+            {filteredProjects.map((project) => {
               const colors = categoryColors[project.category];
               const projectImage = project.image ? projectImages[project.image] : undefined;
 
@@ -94,10 +98,10 @@ export function Projects() {
                 <motion.div
                   key={project.id}
                   layout
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.4, delay: index * 0.1 }}
+                  variants={projectCardVariants}
+                  initial="hidden"
+                  animate="visible"
+                  exit="exit"
                   onClick={() => setSelectedProject(project)}
                   className="system-panel group flex flex-col p-4 sm:p-6 cursor-pointer transition-all duration-500 hover:-translate-y-2 hover:border-purple-400/25 hover:shadow-[0_18px_60px_rgba(0,0,0,0.28)]"
                 >
@@ -198,9 +202,9 @@ export function Projects() {
           </motion.div>
         ) : (
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.35, ease: 'easeOut' }}
+            variants={panelRevealVariants}
+            initial="hidden"
+            animate="visible"
             className="max-w-2xl mx-auto"
           >
             <div className="system-panel p-6 sm:p-8 text-center">

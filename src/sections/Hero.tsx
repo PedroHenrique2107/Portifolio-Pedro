@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { CoreSphere } from '@/components/3d/CoreSphere';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { profile } from '@/data/portfolio';
+import { heroSequence } from '@/lib/motion';
 
 const heroCtaClass =
   'h-14 w-full sm:w-56 px-6 text-base font-semibold rounded-md';
@@ -28,9 +29,9 @@ export function Hero() {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center sm:min-h-[80vh]">
           <div className="space-y-8">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: 'easeOut' }}
+              variants={heroSequence.badge}
+              initial="hidden"
+              animate="visible"
             >
               <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 font-mono text-sm">
                 <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
@@ -39,9 +40,9 @@ export function Hero() {
             </motion.div>
 
             <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1, ease: 'easeOut' }}
+              variants={heroSequence.title}
+              initial="hidden"
+              animate="visible"
               className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight"
             >
               Alta performance{' '}
@@ -49,9 +50,9 @@ export function Hero() {
             </motion.h1>
 
             <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2, ease: 'easeOut' }}
+              variants={heroSequence.copy}
+              initial="hidden"
+              animate="visible"
               className="text-lg sm:text-xl text-gray-400 max-w-xl"
             >
               Olá, meu nome é Pedro Henrique, Engenheiro de Software focado em backend e arquitetura de sistemas escaláveis.
@@ -60,9 +61,9 @@ export function Hero() {
             </motion.p>
 
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3, ease: 'easeOut' }}
+              variants={heroSequence.actions}
+              initial="hidden"
+              animate="visible"
               className="flex flex-wrap gap-4"
             >
               <Button
@@ -95,9 +96,9 @@ export function Hero() {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4, ease: 'easeOut' }}
+              variants={heroSequence.actions}
+              initial="hidden"
+              animate="visible"
               className="flex flex-wrap items-center gap-x-4 gap-y-2 pt-4"
             >
               <a
@@ -131,9 +132,9 @@ export function Hero() {
           </div>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.2, ease: 'easeOut' }}
+            variants={heroSequence.visual}
+            initial="hidden"
+            animate="visible"
             className="relative h-[400px] lg:h-[560px] hidden lg:block"
           >
             <div className="absolute inset-0 overflow-hidden">
