@@ -3,7 +3,7 @@ import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { ExternalLink, Github, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
-import { projects, filterCategories } from '@/data/projects';
+import { projects, filterCategories } from '@/data/portfolio';
 import type { FilterCategory, Project } from '@/types';
 
 const projectImageModules = import.meta.glob('../image/*.{png,jpg,jpeg,webp,avif}', {
@@ -18,9 +18,7 @@ const projectImages = Object.fromEntries(
 const categoryColors: Record<Project['category'], { bg: string; text: string; border: string; dot: string }> = {
   apis: { bg: 'bg-cyan-500/10', text: 'text-cyan-400', border: 'border-cyan-500/20', dot: 'bg-cyan-400' },
   aiot: { bg: 'bg-emerald-500/10', text: 'text-emerald-400', border: 'border-emerald-500/20', dot: 'bg-emerald-400' },
-  fullstack: { bg: 'bg-purple-500/10', text: 'text-purple-400', border: 'border-purple-500/20', dot: 'bg-purple-400' },
-  frontend: { bg: 'bg-blue-500/10', text: 'text-blue-400', border: 'border-blue-500/20', dot: 'bg-blue-400' },
-  backend: { bg: 'bg-orange-500/10', text: 'text-orange-400', border: 'border-orange-500/20', dot: 'bg-orange-400' }
+  fullstack: { bg: 'bg-purple-500/10', text: 'text-purple-400', border: 'border-purple-500/20', dot: 'bg-purple-400' }
 };
 
 export function Projects() {
@@ -28,10 +26,11 @@ export function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, { once: true, margin: '-100px' });
+  const portfolioProjects: readonly Project[] = projects;
 
   const filteredProjects = activeFilter === 'all'
-    ? projects
-    : projects.filter(p => p.category === activeFilter);
+    ? portfolioProjects
+    : portfolioProjects.filter(p => p.category === activeFilter);
   const activeFilterLabel = filterCategories.find((cat) => cat.value === activeFilter)?.label ?? 'esta categoria';
 
   return (
@@ -68,7 +67,7 @@ export function Projects() {
           {filterCategories.map((cat) => (
             <button
               key={cat.value}
-              onClick={() => setActiveFilter(cat.value as FilterCategory)}
+              onClick={() => setActiveFilter(cat.value)}
               className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg font-mono text-sm transition-all duration-300 ${
                 activeFilter === cat.value
                   ? 'bg-purple-500 text-white'

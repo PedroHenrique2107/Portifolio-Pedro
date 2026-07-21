@@ -2,14 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Code2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-
-const navLinks = [
-  { label: 'Home', href: '#home' },
-  { label: 'Sobre', href: '#about' },
-  { label: 'Projetos', href: '#projects' },
-  { label: 'Visão', href: '#vision' },
-  { label: 'Contato', href: '#contact' }
-];
+import { navLinks } from '@/data/portfolio';
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);

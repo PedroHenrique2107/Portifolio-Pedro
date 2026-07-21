@@ -1,17 +1,33 @@
+import type {
+  experiences,
+  filterCategories,
+  projects,
+  skills,
+  socialLinks,
+  timeline
+} from '@/data/portfolio';
+
+export type ProjectCategory = (typeof projects)[number]['category'];
+export type ExperienceColor = (typeof experiences)[number]['color'];
+export type ExperienceIcon = (typeof experiences)[number]['icon'];
+export type SkillCategory = (typeof skills)[number]['category'];
+export type FilterCategory = (typeof filterCategories)[number]['value'];
+export type SocialLink = (typeof socialLinks)[number];
+
 export interface Project {
   id: string;
   title: string;
   image?: string;
-  category: 'apis' | 'aiot' | 'fullstack' | 'frontend' | 'backend';
+  category: ProjectCategory;
   categoryLabel: string;
   description: string;
-  highlights: string[];
-  stack: string[];
+  highlights: readonly string[];
+  stack: readonly string[];
   githubUrl?: string;
   liveUrl?: string;
   problem?: string;
   architecture?: string;
-  decisions?: string[];
+  decisions?: readonly string[];
   results?: string;
 }
 
@@ -20,22 +36,17 @@ export interface Experience {
   title: string;
   period: string;
   company: string;
-  icon: string;
-  color: 'cyan' | 'green' | 'purple' | 'gray' | 'blue' | 'red' | 'yellow';
-  items: string[];
+  icon: ExperienceIcon;
+  color: ExperienceColor;
+  items: readonly string[];
   quote: string;
 }
 
-export interface TimelineItem {
-  year: string;
-  title: string;
-  description: string;
-  technologies: string[];
-}
+export type TimelineItem = (typeof timeline)[number];
 
 export interface Skill {
   name: string;
-  category: 'architecture' | 'devops' | 'database' | 'backend' | 'tools';
+  category: SkillCategory;
   logo?: string;
 }
 
@@ -44,5 +55,3 @@ export interface ContactFormData {
   email: string;
   message: string;
 }
-
-export type FilterCategory = 'all' | 'apis' | 'aiot' | 'fullstack' | 'backend' | 'frontend';

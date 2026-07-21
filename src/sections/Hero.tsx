@@ -4,6 +4,7 @@ import { GitHubIcon, LinkedInIcon } from '@/components/icons/BrandIcons';
 import { Button } from '@/components/ui/button';
 import { CoreSphere } from '@/components/3d/CoreSphere';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
+import { profile } from '@/data/portfolio';
 
 const heroCtaClass =
   'h-14 w-full sm:w-56 px-6 text-base font-semibold rounded-md';
@@ -83,7 +84,7 @@ export function Hero() {
                 className={`${heroCtaClass} border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/10 hover:border-emerald-500/50 transition-all duration-300`}
               >
                 <a
-                  href="https://drive.google.com/file/d/1Aa2EULBfAR54iKOk2WUwL9lbxl-Uz8FQ/view?usp=sharing"
+                  href={profile.resumeUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -100,7 +101,7 @@ export function Hero() {
               className="flex flex-wrap items-center gap-x-4 gap-y-2 pt-4"
             >
               <a
-                href="https://github.com/PedroHenrique2107"
+                href={profile.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-gray-400 hover:text-cyan-400 transition-colors"
@@ -110,7 +111,7 @@ export function Hero() {
               </a>
               <span className="hidden sm:inline text-gray-600">|</span>
               <a
-                href="https://www.linkedin.com/in/pedro-henrique-mendes-78a59325a/"
+                href={profile.linkedInUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-gray-400 hover:text-cyan-400 transition-colors"
@@ -120,7 +121,7 @@ export function Hero() {
               </a>
               <span className="hidden sm:inline text-gray-600">|</span>
               <a
-                href="mailto:pedrohmsousa2023@gmail.com"
+                href={`mailto:${profile.email}`}
                 className="flex items-center gap-2 text-gray-400 hover:text-cyan-400 transition-colors"
               >
                 <Mail className="w-5 h-5" />

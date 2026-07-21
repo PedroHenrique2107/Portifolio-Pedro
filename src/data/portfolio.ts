@@ -1,11 +1,56 @@
-﻿import type { Project, Experience, TimelineItem, Skill } from '@/types';
+export const profile = {
+  name: 'Pedro Henrique',
+  role: 'Engenheiro de Software',
+  email: 'pedrohmsousa2023@gmail.com',
+  githubUrl: 'https://github.com/PedroHenrique2107',
+  linkedInUrl: 'https://www.linkedin.com/in/pedro-henrique-mendes-78a59325a/',
+  resumeUrl: 'https://drive.google.com/file/d/1Aa2EULBfAR54iKOk2WUwL9lbxl-Uz8FQ/view?usp=sharing'
+} as const;
 
-export const projects: Project[] = [
+export const navLinks = [
+  { label: 'Home', href: '#home' },
+  { label: 'Sobre', href: '#about' },
+  { label: 'Projetos', href: '#projects' },
+  { label: 'Visão', href: '#vision' },
+  { label: 'Contato', href: '#contact' }
+] as const;
+
+export const socialLinks = [
+  {
+    id: 'github',
+    label: 'GitHub',
+    href: profile.githubUrl,
+    display: 'github.com/PedroHenrique2107',
+    external: true
+  },
+  {
+    id: 'email',
+    label: 'Email',
+    href: `mailto:${profile.email}`,
+    display: profile.email,
+    external: false
+  },
+  {
+    id: 'linkedin',
+    label: 'LinkedIn',
+    href: profile.linkedInUrl,
+    display: 'linkedin.com/in/pedro-henrique-mendes-78a59325a/',
+    external: true
+  }
+] as const;
+
+export const metrics = [
+  { label: 'Projetos', value: 20, suffix: '+', color: 'text-cyan-400' },
+  { label: 'Anos Exp.', value: 1, suffix: '+', color: 'text-emerald-400' },
+  { label: 'Uptime', value: 99, suffix: '%', color: 'text-purple-400' }
+] as const;
+
+export const projects = [
   {
     id: 'apisrestfull',
     title: 'APIsRESTFULL',
     image: 'APIRESTful.png',
-    category: 'apis', //  Mexer também no /types/index.ts
+    category: 'apis',
     categoryLabel: 'Backend',
     description: 'APIs robustas com arquitetura limpa e separação de responsabilidades, implementadas em Python/Flask',
     highlights: [
@@ -30,7 +75,7 @@ export const projects: Project[] = [
     id: 'shop-swift',
     title: 'Shop Swift Suite',
     image: 'ShopSwiftSuite.png',
-    category: 'fullstack', //  Mexer também no /types/index.ts
+    category: 'fullstack',
     categoryLabel: 'Fullstack',
     description: 'Plataforma de e-commerce completa com gestão de produtos, pedidos e integração com gateway de pagamentos.',
     highlights: [
@@ -39,7 +84,7 @@ export const projects: Project[] = [
       'Gestão de estado e cache',
       'Integração com gateway de pagamentos'
     ],
-    stack: ['React', 'Node.js', 'TypeScript', 'SQLite', 'Docker',],
+    stack: ['React', 'Node.js', 'TypeScript', 'SQLite', 'Docker'],
     githubUrl: 'https://github.com/PedroHenrique2107/shop-swift-suite',
     problem: 'Criar uma plataforma de e-commerce escalável com experiência de usuário fluida.',
     architecture: 'Frontend SPA com React, backend em Node.js com arquitetura em camadas, SQLite para persistência leve, Docker para desenvolvimento e deploy.',
@@ -55,7 +100,7 @@ export const projects: Project[] = [
     id: 'valeti-system',
     title: 'Valet Tracker',
     image: 'SistemaValeti.png',
-    category: 'fullstack', //  Mexer também no /types/index.ts
+    category: 'fullstack',
     categoryLabel: 'Fullstack',
     description: 'Sistema de gerenciamento de valets com tracking em tempo real e gestão de filas.',
     highlights: [
@@ -81,7 +126,7 @@ export const projects: Project[] = [
     id: 'agrolink',
     image: 'AgroLink.png',
     title: 'AgroLink - © MetaCore',
-    category: 'aiot', //  Mexer também no /types/index.ts
+    category: 'aiot',
     categoryLabel: 'AIoT & Infraestrutura',
     description: 'Plataforma de monitoramento agrícola com sensores IoT e dashboards com gestão em tempo real.',
     highlights: [
@@ -102,39 +147,14 @@ export const projects: Project[] = [
       'Alertas baseados em thresholds'
     ],
     results: 'Economia de 25% em irrigação, detecção precoce de problemas. Aumento de 15% na produtividade agrícola. 70% de aumento na gestão financeira e operacional da safra'
-  },
-  /*{
-    id: 'web-institutional',
-    title: 'Desenvolvimento Web Institucional',
-    githubUrl: '',
-    category: 'frontend', //  Mexer também no /types/index.ts
-    categoryLabel: 'Frontend',
-    description: 'Sites institucionais com foco em performance, SEO e experiÃªncia do usuÃ¡rio.',
-    highlights: [
-      'SEO otimizado',
-      'Performance 90+ Lighthouse',
-      'Design responsivo',
-      'CMS headless'
-    ],
-    stack: ['Next.js', 'TypeScript', 'TailwindCSS', 'Strapi', 'Vercel'],
-    /* githubUrl: 'https://github.com/pedrohenrique/web-institutional',
-    problem: 'Criar presença digital profissional com alta performance e facilidade de manutenção.',
-    architecture: 'Next.js com SSR/SSG, Strapi CMS para conteúdo, Tailwind para styling.',
-    decisions: [
-      'Next.js para SEO e performance',
-      'SSG para páginas estáticas',
-      'CMS headless para flexibilidade',
-      'Vercel para deploy automático'
-    ],
-    results: 'Score 95+ no Lighthouse, ranking melhorado no Google.'
-  } */
-];
+  }
+] as const;
 
-export const experiences: Experience[] = [
-    {
-    id: 'fullstack',
+export const experiences = [
+  {
+    id: 'metacore-fullstack',
     title: 'Desenvolvedor Autônomo | Fullstack',
-      period: 'ago/2023 — Atualmente',
+    period: 'ago/2023 — Atualmente',
     company: 'MetaCore - UniMetrocamp',
     icon: 'Brain',
     color: 'purple',
@@ -142,12 +162,12 @@ export const experiences: Experience[] = [
       'Sistema completo de Gestão do Agronégocio, com módulos de CRM, ERP e E-commerce para produtores rurais.',
       'Desenvolvimento de APIs RESTful e GraphQL para integração entre sistemas e clientes.',
       'Implementação de soluções de infraestrutura em nuvem, garantindo escalabilidade e segurança.',
-      'Análise de dados, IoT, Desenvolvimento de Software completo para qualquer um poder mexer de forma bem moderna, com foco em performance, segurança e experiência do usuário.',
-      ],
+      'Análise de dados, IoT, Desenvolvimento de Software completo para qualquer um poder mexer de forma bem moderna, com foco em performance, segurança e experiência do usuário.'
+    ],
     quote: 'O começo é a parte mais importante de qualquer jornada. Aprender a trabalhar em equipe gera resultados extraordinários — a convivência diária fortalece laços, transforma colegas em amigos e torna os desafios mais leves. Sonhar grande, manter o foco e nunca parar de estudar são atitudes que abrem caminhos, porque com dedicação, disciplina e constância, qualquer pessoa pode chegar onde deseja.'
   },
   {
-    id: 'fullstack',
+    id: 'smartcompass-fullstack',
     title: 'FullStack Developer',
     period: 'jan/2026 - mar/2026',
     company: 'SmartCompass',
@@ -157,7 +177,7 @@ export const experiences: Experience[] = [
       'Atuar nas rotinas de CI/CD, automatizando processos, versionamento e fluxo de deploy.',
       'Desenvolver e evoluir serviços e APIs com foco em clareza, performance e manutenibilidade.',
       'Garantir qualidade do código por meio de testes (unitários, integração e contratos), revisões criteriosas e boas práticas de engenharia.',
-      'Desenvolvimento de soluções e automações com Python e NodeJs',
+      'Desenvolvimento de soluções e automações com Python e NodeJs'
     ],
     quote: 'Aprendo todos os dias que código é apenas o começo. O sistema precisa operar, ser observável e evoluir. Necessário ter visão além do código para entregar valor real.'
   },
@@ -177,9 +197,9 @@ export const experiences: Experience[] = [
     ],
     quote: 'A gestão de projetos de infraestrutura é um desafio complexo que exige visão estratégica, coordenação eficaz e capacidade de resolver problemas técnicos, principalmente quando envolve tecnologias emergentes como IoT e IA.'
   }
-];
+] as const;
 
-export const timeline: TimelineItem[] = [
+export const timeline = [
   {
     year: '2020',
     title: 'Onde tudo começou',
@@ -214,7 +234,7 @@ export const timeline: TimelineItem[] = [
     year: '2027',
     title: 'Diploma da faculdade e novos desafios',
     description: 'Após a conclusão da faculdade, estou me preparando para novos desafios no mercado de tecnologia, com foco em Engenharia de Software e arquitetura de software escalável, expandindo meus conhecimentos em tecnologias de nuvem e DevOps.',
-    technologies: ['Software Engineering', 'Clean Architecture', 'Vibe Coding', 'Inteligência Artificial' , 'Certificações em Cloud/IaC/Linux', 'DevOps', ]
+    technologies: ['Software Engineering', 'Clean Architecture', 'Vibe Coding', 'Inteligência Artificial', 'Certificações em Cloud/IaC/Linux', 'DevOps']
   },
   {
     year: '2028',
@@ -222,9 +242,9 @@ export const timeline: TimelineItem[] = [
     description: 'A decidir em breve! - Possiveís áreas de interesse:',
     technologies: ['Software Engineering', 'Software Architecture', 'IA']
   }
-];
+] as const;
 
-export const skills: Skill[] = [
+export const skills = [
   { name: 'Clean Architecture', category: 'architecture', logo: 'https://cdn.simpleicons.org/openapiinitiative' },
   { name: 'SOLID', category: 'architecture', logo: 'https://cdn.simpleicons.org/bookstack' },
   { name: 'Amazon Web Services', category: 'devops', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg' },
@@ -244,14 +264,28 @@ export const skills: Skill[] = [
   { name: 'GraphQL', category: 'backend', logo: 'https://cdn.simpleicons.org/graphql' },
   { name: 'Linux', category: 'tools', logo: 'https://cdn.simpleicons.org/linux' },
   { name: 'Git', category: 'tools', logo: 'https://cdn.simpleicons.org/git' },
-  { name: 'Grafana', category: 'tools', logo: 'https://cdn.simpleicons.org/grafana' },
- /* { name: 'POCs', category: 'tools', logo: 'https://cdn.simpleicons.org/lightning' } */
-];
-
-export const filterCategories = [
-  { value: 'all', label: 'Todos' },
-  { value: 'apis', label: 'Backend' },
-  { value: 'frontend', label: 'Frontend' },
-  { value: 'fullstack', label: 'Fullstack' },
-  { value: 'aiot', label: 'AIoT & Infraestrutura' },
+  { name: 'Grafana', category: 'tools', logo: 'https://cdn.simpleicons.org/grafana' }
 ] as const;
+
+type ProjectCategory = (typeof projects)[number]['category'];
+
+const categoryLabels: Record<ProjectCategory, string> = {
+  apis: 'Backend',
+  fullstack: 'Fullstack',
+  aiot: 'AIoT & Infraestrutura'
+};
+
+const activeProjectCategories = Array.from(
+  new Set(projects.map((project) => project.category))
+) as ProjectCategory[];
+
+export const filterCategories: ReadonlyArray<{
+  value: 'all' | ProjectCategory;
+  label: string;
+}> = [
+  { value: 'all', label: 'Todos' },
+  ...activeProjectCategories.map((category) => ({
+    value: category,
+    label: categoryLabels[category]
+  }))
+];

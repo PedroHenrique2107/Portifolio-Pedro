@@ -6,7 +6,9 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
-import type { ContactFormData } from '@/types';
+import { metrics, socialLinks } from '@/data/portfolio';
+import type { ElementType } from 'react';
+import type { ContactFormData, SocialLink } from '@/types';
 
 type FormStatus = 'idle' | 'loading' | 'success' | 'error';
 
@@ -28,6 +30,25 @@ function AnimatedCounter({ to, suffix, color, trigger }: { to: number; suffix: s
 
 const WEB3FORMS_ENDPOINT = 'https://api.web3forms.com/submit';
 const WEB3FORMS_ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY ?? '';
+const HONEYPOT_FIELD = 'botcheck';
+
+const contactSocialStyles: Record<SocialLink['id'], { icon: ElementType<{ className?: string }>; hover: string; iconHover: string }> = {
+  github: {
+    icon: GitHubIcon,
+    hover: 'hover:border-cyan-500/30 hover:bg-cyan-500/5',
+    iconHover: 'group-hover:text-cyan-400'
+  },
+  email: {
+    icon: Mail,
+    hover: 'hover:border-emerald-500/30 hover:bg-emerald-500/5',
+    iconHover: 'group-hover:text-emerald-400'
+  },
+  linkedin: {
+    icon: LinkedInIcon,
+    hover: 'hover:border-purple-500/30 hover:bg-purple-500/5',
+    iconHover: 'group-hover:text-purple-400'
+  }
+};
 
 export function Contact() {
   const [formData, setFormData] = useState<ContactFormData>({
@@ -38,6 +59,7 @@ export function Contact() {
   const [requestError, setRequestError] = useState('');
   const [status, setStatus] = useState<FormStatus>('idle');
   const [errors, setErrors] = useState<Partial<Record<keyof ContactFormData, string>>>({});
+  const honeypotRef = useRef<HTMLInputElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, { once: true, margin: '-100px' });
 
@@ -64,6 +86,14 @@ export function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    const honeypotValue = honeypotRef.current?.value.trim() ?? '';
+    if (honeypotValue) {
+      setStatus('success');
+      setFormData({ name: '', email: '', message: '' });
+      setTimeout(() => setStatus('idle'), 3000);
+      return;
+    }
+
     if (!validateForm()) return;
 
     if (!WEB3FORMS_ACCESS_KEY) {
@@ -82,6 +112,7 @@ export function Contact() {
     payload.append('name', formData.name.trim());
     payload.append('email', formData.email.trim());
     payload.append('message', formData.message.trim());
+    payload.append(HONEYPOT_FIELD, honeypotValue);
 
     try {
       const response = await fetch(WEB3FORMS_ENDPOINT, {
@@ -150,63 +181,37 @@ export function Contact() {
             </div>
 
             <div className="space-y-4">
-              <a
-                href="https://github.com/PedroHenrique2107"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/5 hover:border-cyan-500/30 hover:bg-cyan-500/5 transition-all duration-300 group"
-              >
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-white/5 flex items-center justify-center group-hover:bg-cyan-500/10 transition-colors">
-                  <GitHubIcon className="w-6 h-6 text-gray-400 group-hover:text-cyan-400 transition-colors" />
-                </div>
-                <div>
-                  <span className="block text-white font-medium">GitHub</span>
-                  <span className="text-gray-500 font-mono text-sm">github.com/PedroHenrique2107</span>
-                </div>
-              </a>
+              {socialLinks.map((social) => {
+                const styles = contactSocialStyles[social.id];
+                const Icon = styles.icon;
 
-              <a
-                href="mailto:pedrohmsousa2023@gmail.com"
-                className="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/5 hover:border-emerald-500/30 hover:bg-emerald-500/5 transition-all duration-300 group"
-              >
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-white/5 flex items-center justify-center group-hover:bg-emerald-500/10 transition-colors">
-                  <Mail className="w-6 h-6 text-gray-400 group-hover:text-emerald-400 transition-colors" />
-                </div>
-                <div>
-                  <span className="block text-white font-medium">Email</span>
-                  <span className="text-gray-500 font-mono text-sm">pedrohmsousa2023@gmail.com</span>
-                </div>
-              </a>
-
-              <a
-                href="https://www.linkedin.com/in/pedro-henrique-mendes-78a59325a/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/5 hover:border-purple-500/30 hover:bg-purple-500/5 transition-all duration-300 group"
-              >
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-white/5 flex items-center justify-center group-hover:bg-purple-500/10 transition-colors">
-                  <LinkedInIcon className="w-6 h-6 text-gray-400 group-hover:text-purple-400 transition-colors" />
-                </div>
-                <div>
-                  <span className="block text-white font-medium">LinkedIn</span>
-                  <span className="text-gray-500 font-mono text-sm truncate">linkedin.com/in/pedro-henrique-mendes-78a59325a/</span>
-                </div>
-              </a>
+                return (
+                  <a
+                    key={social.id}
+                    href={social.href}
+                    target={social.external ? '_blank' : undefined}
+                    rel={social.external ? 'noopener noreferrer' : undefined}
+                    className={`flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/5 ${styles.hover} transition-all duration-300 group`}
+                  >
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-white/5 flex items-center justify-center transition-colors">
+                      <Icon className={`w-6 h-6 text-gray-400 ${styles.iconHover} transition-colors`} />
+                    </div>
+                    <div>
+                      <span className="block text-white font-medium">{social.label}</span>
+                      <span className="text-gray-500 font-mono text-sm truncate">{social.display}</span>
+                    </div>
+                  </a>
+                );
+              })}
             </div>
 
             <div className="grid grid-cols-3 gap-2 sm:gap-4 pt-8 border-t border-white/5">
-              <div className="text-center">
-                <AnimatedCounter to={20} suffix="+" color="text-cyan-400" trigger={isInView} />
-                <span className="text-gray-500 text-sm">Projetos</span>
-              </div>
-              <div className="text-center">
-                <AnimatedCounter to={1} suffix="+" color="text-emerald-400" trigger={isInView} />
-                <span className="text-gray-500 text-sm">Anos Exp.</span>
-              </div>
-              <div className="text-center">
-                <AnimatedCounter to={99} suffix="%" color="text-purple-400" trigger={isInView} />
-                <span className="text-gray-500 text-sm">Uptime</span>
-              </div>
+              {metrics.map((metric) => (
+                <div key={metric.label} className="text-center">
+                  <AnimatedCounter to={metric.value} suffix={metric.suffix} color={metric.color} trigger={isInView} />
+                  <span className="text-gray-500 text-sm">{metric.label}</span>
+                </div>
+              ))}
             </div>
           </motion.div>
 
@@ -225,7 +230,15 @@ export function Contact() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
-                <input type="text" name="website" className="hidden" tabIndex={-1} autoComplete="off" />
+                <input
+                  ref={honeypotRef}
+                  type="text"
+                  name={HONEYPOT_FIELD}
+                  className="absolute left-[-9999px] top-auto h-px w-px overflow-hidden opacity-0"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                />
 
                 <div className="space-y-2">
                   <Label htmlFor="name" className="text-gray-300">Nome</Label>

@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { timeline } from '@/data/projects';
+import { timeline } from '@/data/portfolio';
 
 export function Timeline() {
   const containerRef = useRef<HTMLDivElement>(null);

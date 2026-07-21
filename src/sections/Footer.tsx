@@ -1,19 +1,14 @@
 import { Mail, Heart, Code2 } from 'lucide-react';
 import { GitHubIcon, LinkedInIcon } from '@/components/icons/BrandIcons';
+import { navLinks, profile, socialLinks } from '@/data/portfolio';
+import type { ElementType } from 'react';
+import type { SocialLink } from '@/types';
 
-const navLinks = [
-  { label: 'Home', href: '#home' },
-  { label: 'Sobre', href: '#about' },
-  { label: 'Projetos', href: '#projects' },
-  { label: 'Visão', href: '#vision' },
-  { label: 'Contato', href: '#contact' }
-];
-
-const socialLinks = [
-  { icon: GitHubIcon, href: 'https://github.com/PedroHenrique2107', label: 'GitHub' },
-  { icon: LinkedInIcon, href: 'https://www.linkedin.com/in/pedro-henrique-mendes-78a59325a/', label: 'LinkedIn' },
-  { icon: Mail, href: 'mailto:pedrohmsousa2023@gmail.com', label: 'Email' }
-];
+const socialIconMap: Record<SocialLink['id'], ElementType<{ className?: string }>> = {
+  github: GitHubIcon,
+  email: Mail,
+  linkedin: LinkedInIcon
+};
 
 export function Footer() {
   const scrollToSection = (href: string) => {
@@ -35,12 +30,12 @@ export function Footer() {
                 <Code2 className="w-5 h-5 text-cyan-400" />
               </div>
               <div>
-                <span className="block text-white font-semibold">Pedro Henrique</span>
-                <span className="text-gray-500 font-mono text-sm">Engenheiro de Software</span>
+                <span className="block text-white font-semibold">{profile.name}</span>
+                <span className="text-gray-500 font-mono text-sm">{profile.role}</span>
               </div>
             </div>
             <p className="text-gray-400 text-sm max-w-xs">
-              Se dá pra automatizar, não é pra fazer manual. 
+              Se dá pra automatizar, não é pra fazer manual.
               Backend • AIoT • Arquitetura Limpa.
             </p>
           </div>
@@ -67,13 +62,13 @@ export function Footer() {
             <h4 className="text-white font-semibold mb-4">Conecte-se</h4>
             <div className="flex gap-3">
               {socialLinks.map((social) => {
-                const Icon = social.icon;
+                const Icon = socialIconMap[social.id];
                 return (
                   <a
                     key={social.label}
                     href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    target={social.external ? '_blank' : undefined}
+                    rel={social.external ? 'noopener noreferrer' : undefined}
                     className="w-10 h-10 rounded-lg bg-white/5 border border-white/5 flex items-center justify-center text-gray-400 hover:text-cyan-400 hover:border-cyan-500/30 hover:bg-cyan-500/5 transition-all duration-300"
                     aria-label={social.label}
                   >

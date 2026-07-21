@@ -1,17 +1,18 @@
 import { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Server, Code2, Brain, User, Target, Lightbulb } from 'lucide-react';
-import { experiences, skills } from '@/data/projects';
+import { experiences, skills } from '@/data/portfolio';
 
 import type { LucideIcon } from 'lucide-react';
+import type { Experience, Skill } from '@/types';
 
-const iconMap: Record<string, LucideIcon> = {
+const iconMap: Record<Experience['icon'], LucideIcon> = {
   Server,
   Code2,
   Brain
 };
 
-const colorMap: Record<string, { bg: string; dot: string; border: string; text: string; glow: string }> = {
+const colorMap: Record<Experience['color'], { bg: string; dot: string; border: string; text: string; glow: string }> = {
   green: {
     bg: 'bg-emerald-500/10',
     dot: 'bg-emerald-500',
@@ -35,7 +36,7 @@ const colorMap: Record<string, { bg: string; dot: string; border: string; text: 
   }
 };
 
-const skillCategoryColors: Record<string, string> = {
+const skillCategoryColors: Record<Skill['category'], string> = {
   architecture: 'border-cyan-500/30 text-cyan-400 bg-cyan-500/10',
   devops: 'border-emerald-500/30 text-emerald-400 bg-emerald-500/10',
   database: 'border-purple-500/30 text-purple-400 bg-purple-500/10',
@@ -80,6 +81,7 @@ export function About() {
   const containerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, { once: true, margin: '-100px' });
   const [activeTab, setActiveTab] = useState<(typeof aboutTabs)[number]['id']>('sobre');
+  const displayedSkills: readonly Skill[] = skills;
 
   return (
     <section id="about" className="relative py-16 sm:py-24 lg:py-32 bg-dark">
@@ -197,7 +199,7 @@ export function About() {
           >
             <h3 className="text-2xl font-semibold text-white mb-8">Stack Técnico</h3>
             <div className="flex flex-wrap justify-center gap-3">
-              {skills.map((skill, index) => (
+              {displayedSkills.map((skill, index) => (
                 <motion.span
                   key={skill.name}
                   initial={{ opacity: 0, scale: 0.9 }}
