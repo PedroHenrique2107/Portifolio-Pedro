@@ -122,7 +122,7 @@ export function Navbar() {
             <div className="hidden lg:block">
               <Button
                 onClick={() => scrollToSection('#contact')}
-                className="bg-cyan-500 hover:bg-cyan-400 text-dark font-semibold px-6 transition-all duration-300 hover:shadow-glow"
+                className="system-button-primary px-6"
               >
                 Falar Comigo
               </Button>
@@ -197,7 +197,7 @@ export function Navbar() {
               >
                 <Button
                   onClick={() => scrollToSection('#contact')}
-                  className="w-full bg-cyan-500 hover:bg-cyan-400 text-dark font-semibold py-6"
+                  className="system-button-primary w-full py-6"
                 >
                   Falar Comigo
                 </Button>

@@ -115,8 +115,8 @@ export function About() {
               onClick={() => setActiveTab(tab.id)}
               className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg font-mono text-sm transition-all duration-300 ${
                 activeTab === tab.id
-                  ? 'bg-cyan-500 text-dark'
-                  : 'bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white'
+                  ? 'system-chip-active'
+                  : 'system-chip hover:border-white/20 hover:text-white'
               }`}
             >
               {tab.label}
@@ -135,7 +135,7 @@ export function About() {
                   initial={{ opacity: 0, y: 30 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.5, delay: 0.1 + index * 0.1, ease: 'easeOut' }}
-                  className="p-4 sm:p-6 lg:p-8 rounded-xl bg-dark-100 border border-white/5 transition-all duration-300 hover:-translate-y-1 hover:border-white/10"
+                  className="system-panel p-4 sm:p-6 lg:p-8 transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400/20"
                 >
                   <div className={`inline-flex items-center justify-center w-12 h-12 rounded-lg border mb-5 ${block.color}`}>
                     <Icon className="w-5 h-5" />
@@ -160,7 +160,7 @@ export function About() {
                   initial={{ opacity: 0, y: 40 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.6, delay: index * 0.15, ease: 'easeOut' }}
-                  className={`group relative p-4 sm:p-6 lg:p-8 rounded-xl bg-dark-100 border border-white/5 ${colors.glow} transition-all duration-500 hover:-translate-y-1 hover:border-white/10`}
+                  className={`system-panel group p-4 sm:p-6 lg:p-8 ${colors.glow} transition-all duration-500 hover:-translate-y-1 hover:border-cyan-400/20`}
                 >
                   <div className="flex items-center gap-4 mb-6">
                     <div className={`inline-flex items-center justify-center w-12 h-12 rounded-lg ${colors.bg} ${colors.border} border`}>

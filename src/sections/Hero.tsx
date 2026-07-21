@@ -67,21 +67,21 @@ export function Hero() {
             >
               <Button
                 onClick={() => scrollToSection('projects')}
-                className={`${heroCtaClass} bg-cyan-500 hover:bg-cyan-400 text-dark transition-all duration-300 hover:shadow-glow`}
+                className={`${heroCtaClass} system-button-primary`}
               >
                 Ver Projetos
               </Button>
               <Button
                 variant="outline"
                 onClick={() => scrollToSection('contact')}
-                className={`${heroCtaClass} border-white/20 text-white hover:bg-white/10`}
+                className={`${heroCtaClass} system-button-outline`}
               >
                 Falar Comigo
               </Button>
               <Button
                 asChild
                 variant="outline"
-                className={`${heroCtaClass} border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/10 hover:border-emerald-500/50 transition-all duration-300`}
+                className={`${heroCtaClass} border border-emerald-400/30 bg-emerald-400/5 text-emerald-300 hover:bg-emerald-400/10 hover:border-emerald-400/50 transition-all duration-300`}
               >
                 <a
                   href={profile.resumeUrl}

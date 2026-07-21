@@ -70,8 +70,8 @@ export function Projects() {
               onClick={() => setActiveFilter(cat.value)}
               className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg font-mono text-sm transition-all duration-300 ${
                 activeFilter === cat.value
-                  ? 'bg-purple-500 text-white'
-                  : 'bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white'
+                  ? 'border-purple-400/45 bg-purple-400/10 text-purple-100'
+                  : 'system-chip hover:border-white/20 hover:text-white'
               }`}
             >
               {cat.label}
@@ -99,7 +99,7 @@ export function Projects() {
                   exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ duration: 0.4, delay: index * 0.1 }}
                   onClick={() => setSelectedProject(project)}
-                  className={`group relative flex flex-col p-4 sm:p-6 rounded-xl bg-dark border border-white/5 cursor-pointer transition-all duration-500 hover:-translate-y-2 hover:border-white/10 hover:shadow-[0_0_30px_rgba(168,85,247,0.15)]`}
+                  className="system-panel group flex flex-col p-4 sm:p-6 cursor-pointer transition-all duration-500 hover:-translate-y-2 hover:border-purple-400/25 hover:shadow-[0_18px_60px_rgba(0,0,0,0.28)]"
                 >
                   {projectImage && (
                     <div className="mb-4 overflow-hidden rounded-lg border border-white/10 bg-white/5">
@@ -135,13 +135,13 @@ export function Projects() {
                     {project.stack.slice(0, 4).map((tech) => (
                       <span
                         key={tech}
-                        className="px-2 py-1 rounded bg-white/5 text-gray-500 font-mono text-xs"
+                        className="system-chip px-2 py-1 text-gray-500"
                       >
                         {tech}
                       </span>
                     ))}
                     {project.stack.length > 4 && (
-                      <span className="px-2 py-1 rounded bg-white/5 text-gray-500 font-mono text-xs">
+                      <span className="system-chip px-2 py-1 text-gray-500">
                         +{project.stack.length - 4}
                       </span>
                     )}
@@ -203,7 +203,7 @@ export function Projects() {
             transition={{ duration: 0.35, ease: 'easeOut' }}
             className="max-w-2xl mx-auto"
           >
-            <div className="rounded-xl border border-purple-500/20 bg-purple-500/5 p-6 sm:p-8 text-center">
+            <div className="system-panel p-6 sm:p-8 text-center">
               <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-300 font-mono text-xs mb-4">
                 <span className="w-2 h-2 rounded-full bg-purple-400 animate-pulse" />
                 Em desenvolvimento
@@ -287,7 +287,7 @@ export function Projects() {
                       {selectedProject.stack.map((tech) => (
                         <span
                           key={tech}
-                          className="px-3 py-1 rounded-lg bg-white/5 text-gray-300 font-mono text-sm"
+                          className="system-chip text-gray-300"
                         >
                           {tech}
                         </span>
@@ -309,7 +309,7 @@ export function Projects() {
                     )}
                     {selectedProject.liveUrl && (
                       <Button
-                        className="flex-1 bg-purple-500 hover:bg-purple-400 text-white"
+                        className="system-button-primary flex-1"
                         onClick={() => window.open(selectedProject.liveUrl, '_blank')}
                       >
                         <ExternalLink className="w-4 h-4 mr-2" />

@@ -191,7 +191,7 @@ export function Contact() {
                     href={social.href}
                     target={social.external ? '_blank' : undefined}
                     rel={social.external ? 'noopener noreferrer' : undefined}
-                    className={`flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/5 ${styles.hover} transition-all duration-300 group`}
+                    className={`system-panel-quiet flex items-center gap-4 p-4 ${styles.hover} transition-all duration-300 group`}
                   >
                     <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-white/5 flex items-center justify-center transition-colors">
                       <Icon className={`w-6 h-6 text-gray-400 ${styles.iconHover} transition-colors`} />
@@ -221,7 +221,7 @@ export function Contact() {
             transition={{ duration: 0.6, delay: 0.3 }}
           >
             {status === 'success' ? (
-              <div className="h-full flex flex-col items-center justify-center p-8 rounded-2xl bg-emerald-500/10 border border-emerald-500/20">
+              <div className="system-panel h-full flex flex-col items-center justify-center p-8 border-emerald-500/20 bg-emerald-500/10">
                 <div className="w-16 h-16 rounded-full bg-emerald-500/20 flex items-center justify-center mb-4">
                   <Check className="w-8 h-8 text-emerald-400" />
                 </div>
@@ -309,7 +309,7 @@ export function Contact() {
                 <Button
                   type="submit"
                   disabled={status === 'loading'}
-                  className="w-full bg-cyan-500 hover:bg-cyan-400 text-dark font-semibold py-6 transition-all duration-300 hover:shadow-glow disabled:opacity-50"
+                  className="system-button-primary w-full py-6 disabled:opacity-50"
                 >
                   {status === 'loading' ? (
                     <>

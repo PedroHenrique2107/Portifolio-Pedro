@@ -6,30 +6,38 @@
 
 @layer base {
   :root {
-    --background: 240 20% 4%;
-    --foreground: 240 10% 96%;
-    --card: 240 15% 8%;
+    --background: 220 13% 5%;
+    --foreground: 210 24% 96%;
+    --card: 220 13% 8%;
     --card-foreground: 240 10% 96%;
-    --popover: 240 15% 8%;
+    --popover: 220 13% 8%;
     --popover-foreground: 240 10% 96%;
     --primary: 183 100% 50%;
-    --primary-foreground: 240 20% 4%;
-    --secondary: 240 10% 12%;
+    --primary-foreground: 220 13% 5%;
+    --secondary: 220 12% 12%;
     --secondary-foreground: 240 10% 96%;
-    --muted: 240 10% 15%;
-    --muted-foreground: 220 9% 60%;
+    --muted: 220 10% 16%;
+    --muted-foreground: 218 10% 64%;
     --accent: 262 83% 58%;
     --accent-foreground: 240 10% 96%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 240 10% 96%;
-    --border: 240 10% 15%;
-    --input: 240 10% 15%;
+    --border: 220 10% 18%;
+    --input: 220 10% 18%;
     --ring: 183 100% 50%;
     --radius: 0.5rem;
     
+    --surface-base: #0a0b0d;
+    --surface-panel: #101318;
+    --surface-panel-strong: #151922;
+    --line-subtle: rgba(226, 232, 240, 0.08);
+    --line-technical: rgba(0, 240, 255, 0.26);
+    --accent-cyan: #00f0ff;
+    --accent-infra: #10b981;
+    --accent-rare: #8b5cf6;
     --cyan: 183 100% 50%;
     --green: 160 84% 39%;
-    --purple: 262 83% 58%;
+    --purple: 258 90% 66%;
   }
 }
 
@@ -54,15 +62,15 @@
 
 @layer utilities {
   .text-gradient-cyan {
-    @apply bg-gradient-to-r from-cyan-400 to-cyan-300 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-cyan-300 via-cyan-400 to-white bg-clip-text text-transparent;
   }
   
   .text-gradient-green {
-    @apply bg-gradient-to-r from-emerald-400 to-emerald-300 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-emerald-300 via-emerald-400 to-white bg-clip-text text-transparent;
   }
   
   .text-gradient-purple {
-    @apply bg-gradient-to-r from-purple-400 to-purple-300 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-purple-300 via-purple-400 to-white bg-clip-text text-transparent;
   }
   
   .glow-cyan {
@@ -88,6 +96,80 @@
   
   .glass-dark {
     @apply bg-black/20 backdrop-blur-xl border border-white/5;
+  }
+
+  .system-panel {
+    position: relative;
+    border: 1px solid var(--line-subtle);
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.012)),
+      var(--surface-panel);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+  }
+
+  .system-panel::before,
+  .system-panel::after {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 1px;
+    background: var(--line-technical);
+    pointer-events: none;
+  }
+
+  .system-panel::before {
+    top: 0;
+    right: 0;
+    transform: rotate(45deg);
+    transform-origin: right top;
+  }
+
+  .system-panel::after {
+    bottom: 0;
+    left: 0;
+    transform: rotate(45deg);
+    transform-origin: left bottom;
+  }
+
+  .system-panel-quiet {
+    @apply border border-white/10 bg-white/[0.035];
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035);
+  }
+
+  .system-chip {
+    @apply inline-flex items-center gap-2 border border-white/10 bg-white/[0.035] px-3 py-1 font-mono text-xs text-gray-400;
+    border-radius: 4px;
+  }
+
+  .system-chip-active {
+    @apply border-cyan-400/40 bg-cyan-400/10 text-cyan-200;
+    box-shadow: inset 0 -1px 0 rgba(0, 240, 255, 0.22);
+  }
+
+  .system-button-primary {
+    @apply bg-cyan-400 text-dark font-semibold transition-all duration-300 hover:bg-cyan-300;
+    box-shadow: 0 0 0 1px rgba(0, 240, 255, 0.24), 0 16px 40px rgba(0, 240, 255, 0.12);
+  }
+
+  .system-button-outline {
+    @apply border border-white/15 bg-white/[0.025] text-white transition-all duration-300 hover:border-cyan-400/35 hover:bg-cyan-400/5 hover:text-cyan-100;
+  }
+
+  .system-divider-cyan {
+    @apply h-px flex-1 bg-gradient-to-r from-cyan-400/50 to-transparent;
+  }
+
+  .system-divider-infra {
+    @apply h-px flex-1 bg-gradient-to-r from-emerald-400/50 to-transparent;
+  }
+
+  .system-divider-rare {
+    @apply h-px flex-1 bg-gradient-to-r from-purple-400/50 to-transparent;
+  }
+
+  .system-label {
+    @apply font-mono text-xs uppercase tracking-normal;
   }
 }
 

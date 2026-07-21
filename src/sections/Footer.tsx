@@ -69,7 +69,7 @@ export function Footer() {
                     href={social.href}
                     target={social.external ? '_blank' : undefined}
                     rel={social.external ? 'noopener noreferrer' : undefined}
-                    className="w-10 h-10 rounded-lg bg-white/5 border border-white/5 flex items-center justify-center text-gray-400 hover:text-cyan-400 hover:border-cyan-500/30 hover:bg-cyan-500/5 transition-all duration-300"
+                    className="system-panel-quiet w-10 h-10 rounded-lg flex items-center justify-center text-gray-400 hover:text-cyan-400 hover:border-cyan-500/30 hover:bg-cyan-500/5 transition-all duration-300"
                     aria-label={social.label}
                   >
                     <Icon className="w-5 h-5" />
