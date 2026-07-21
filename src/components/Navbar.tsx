@@ -2,14 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Code2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-
-const navLinks = [
-  { label: 'Home', href: '#home' },
-  { label: 'Sobre', href: '#about' },
-  { label: 'Projetos', href: '#projects' },
-  { label: 'Visão', href: '#vision' },
-  { label: 'Contato', href: '#contact' }
-];
+import { navLinks } from '@/data/portfolio';
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -90,7 +83,9 @@ export function Navbar() {
           <div className="flex items-center justify-between h-16 lg:h-20">
             {/* Logo */}
             <button
+              type="button"
               onClick={() => scrollToSection('#home')}
+              aria-label="Ir para o início"
               className="flex items-center gap-3 group"
             >
               <div className="w-9 h-9 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center group-hover:bg-cyan-500/20 transition-colors">
@@ -106,7 +101,9 @@ export function Navbar() {
               {navLinks.map((link) => (
                 <button
                   key={link.label}
+                  type="button"
                   onClick={() => scrollToSection(link.href)}
+                  aria-current={activeSection === link.href.replace('#', '') ? 'page' : undefined}
                   className={`relative px-4 py-2 text-sm transition-colors ${
                     activeSection === link.href.replace('#', '')
                       ? 'text-cyan-400'
@@ -129,7 +126,7 @@ export function Navbar() {
             <div className="hidden lg:block">
               <Button
                 onClick={() => scrollToSection('#contact')}
-                className="bg-cyan-500 hover:bg-cyan-400 text-dark font-semibold px-6 transition-all duration-300 hover:shadow-glow"
+                className="system-button-primary px-6"
               >
                 Falar Comigo
               </Button>
@@ -137,7 +134,10 @@ export function Navbar() {
 
             {/* Mobile menu button */}
             <button
+              type="button"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label={isMobileMenuOpen ? 'Fechar menu' : 'Abrir menu'}
+              aria-expanded={isMobileMenuOpen}
               className="lg:hidden w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-white"
             >
               {isMobileMenuOpen ? (
@@ -181,10 +181,12 @@ export function Navbar() {
                 {navLinks.map((link, index) => (
                   <motion.button
                     key={link.label}
+                    type="button"
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.1 + index * 0.05 }}
                     onClick={() => scrollToSection(link.href)}
+                    aria-current={activeSection === link.href.replace('#', '') ? 'page' : undefined}
                     className={`block w-full text-left px-4 py-3 rounded-lg text-lg transition-colors ${
                       activeSection === link.href.replace('#', '')
                         ? 'bg-cyan-500/10 text-cyan-400'
@@ -204,7 +206,7 @@ export function Navbar() {
               >
                 <Button
                   onClick={() => scrollToSection('#contact')}
-                  className="w-full bg-cyan-500 hover:bg-cyan-400 text-dark font-semibold py-6"
+                  className="system-button-primary w-full py-6"
                 >
                   Falar Comigo
                 </Button>

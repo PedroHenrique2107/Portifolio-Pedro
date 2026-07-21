@@ -1,0 +1,27 @@
+{
+  "resourceResult": {
+    "loadedThree": false,
+    "loadedParticles": false,
+    "resources": [
+      "index-CcZWW4wn.js",
+      "vendor-radix-Dc_FVRD7.js",
+      "vendor-motion-VRhfIdrb.js",
+      "vendor-react-CGH7cYkN.js",
+      "index-BMmHD6EW.css"
+    ]
+  },
+  "modalResult": {
+    "cardFound": true,
+    "dialogOpen": true,
+    "dialogText": "Backend APIsRESTFULL APIs robustas com arquitetura limpa e separação de responsabilidades, implementadas em Python/Flask"
+  },
+  "formEmptyResult": {
+    "nameError": "Nome deve ter pelo menos 2 caracteres",
+    "emailError": "Email inválido",
+    "messageError": "Mensagem deve ter pelo menos 10 caracteres"
+  },
+  "honeypotResult": {
+    "successVisible": true,
+    "hasNetworkKeyError": false
+  }
+}

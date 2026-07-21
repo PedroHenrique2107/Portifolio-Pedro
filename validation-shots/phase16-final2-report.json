@@ -1,0 +1,154 @@
+[
+  {
+    "viewport": "mobile",
+    "pageMetrics": {
+      "title": "Portfólio - Pedro Henrique",
+      "viewport": 390,
+      "scrollWidth": 390,
+      "overflowX": 0,
+      "mojibakeIndex": 1332,
+      "mojibakeSnippet": "RA\n\nCamadas, dados e integrações\n\nOPERAÇÃO\n\nDocker, cloud e observabilidade\n\nEXPERIENCE STREAM\nExperiência aplicada\n3 op",
+      "overflowing": []
+    }
+  },
+  {
+    "viewport": "mobile",
+    "section": "about",
+    "screenshot": "phase16-final2-mobile-about.png",
+    "sectionMetrics": {
+      "hash": "#about",
+      "scrollY": 860,
+      "top": 0,
+      "bottom": 2910,
+      "height": 2911,
+      "inViewport": true,
+      "overflowX": 0,
+      "visibleText": "01 Minha História OPERATING PROFILE Quem sou Desde pequeno, sempre fui fascinado por tecnologia. Eu passava horas assistindo a vídeos, pesquisando e tentando entender como as coisa",
+      "overflowing": []
+    }
+  },
+  {
+    "viewport": "mobile",
+    "section": "projects",
+    "screenshot": "phase16-final2-mobile-projects.png",
+    "sectionMetrics": {
+      "hash": "#projects",
+      "scrollY": 3770,
+      "top": 0,
+      "bottom": 3839,
+      "height": 3839,
+      "inViewport": true,
+      "overflowX": 0,
+      "visibleText": "02 Prova Técnica Projetos que demonstram engenharia real, arquitetura limpa e decisões técnicas fundamentadas. FILTRO ATIVO 4 Todos STACK EM DESTAQUE Python Flask REST Docker Postg",
+      "overflowing": []
+    }
+  },
+  {
+    "viewport": "mobile",
+    "section": "vision",
+    "screenshot": "phase16-final2-mobile-vision.png",
+    "sectionMetrics": {
+      "hash": "#vision",
+      "scrollY": 7609,
+      "top": 0,
+      "bottom": 4395,
+      "height": 4395,
+      "inViewport": true,
+      "overflowX": 0,
+      "visibleText": "03 Engenharia em Escala A trajetória de evolução técnica e as próximas fronteiras. 2020 Onde tudo começou Com a paixão por tecnologia, comecei a explorar o mundo da programação e a",
+      "overflowing": []
+    }
+  },
+  {
+    "viewport": "mobile",
+    "section": "contact",
+    "screenshot": "phase16-final2-mobile-contact.png",
+    "sectionMetrics": {
+      "hash": "#contact",
+      "scrollY": 12004,
+      "top": 0,
+      "bottom": 1435,
+      "height": 1435,
+      "inViewport": true,
+      "overflowX": 0,
+      "visibleText": "04 Vamos construir algo robusto. Aberto a oportunidades, colaborações e discussões técnicas. STATUS Canal aberto Prefere outro canal? Estou disponível nas seguintes plataformas: Gi",
+      "overflowing": []
+    }
+  },
+  {
+    "viewport": "desktop",
+    "pageMetrics": {
+      "title": "Portfólio - Pedro Henrique",
+      "viewport": 1440,
+      "scrollWidth": 1432,
+      "overflowX": -8,
+      "mojibakeIndex": 1503,
+      "mojibakeSnippet": "RA\n\nCamadas, dados e integrações\n\nOPERAÇÃO\n\nDocker, cloud e observabilidade\n\nEXPERIENCE STREAM\nExperiência aplicada\n3 op",
+      "overflowing": []
+    }
+  },
+  {
+    "viewport": "desktop",
+    "section": "about",
+    "screenshot": "phase16-final2-desktop-about.png",
+    "sectionMetrics": {
+      "hash": "#about",
+      "scrollY": 912,
+      "top": 0,
+      "bottom": 1749,
+      "height": 1749,
+      "inViewport": true,
+      "overflowX": -8,
+      "visibleText": "01 Minha História OPERATING PROFILE Quem sou Desde pequeno, sempre fui fascinado por tecnologia. Eu passava horas assistindo a vídeos, pesquisando e tentando entender como as coisa",
+      "overflowing": []
+    }
+  },
+  {
+    "viewport": "desktop",
+    "section": "projects",
+    "screenshot": "phase16-final2-desktop-projects.png",
+    "sectionMetrics": {
+      "hash": "#projects",
+      "scrollY": 2661,
+      "top": 0,
+      "bottom": 2047,
+      "height": 2047,
+      "inViewport": true,
+      "overflowX": -8,
+      "visibleText": "02 Prova Técnica Projetos que demonstram engenharia real, arquitetura limpa e decisões técnicas fundamentadas. FILTRO ATIVO 4 Todos STACK EM DESTAQUE Python Flask REST Docker Postg",
+      "overflowing": []
+    }
+  },
+  {
+    "viewport": "desktop",
+    "section": "vision",
+    "screenshot": "phase16-final2-desktop-vision.png",
+    "sectionMetrics": {
+      "hash": "#vision",
+      "scrollY": 4708,
+      "top": 0,
+      "bottom": 3728,
+      "height": 3728,
+      "inViewport": true,
+      "overflowX": -8,
+      "visibleText": "03 Engenharia em Escala A trajetória de evolução técnica e as próximas fronteiras. 2020 Onde tudo começou Com a paixão por tecnologia, comecei a explorar o mundo da programação e a",
+      "overflowing": []
+    }
+  },
+  {
+    "viewport": "desktop",
+    "section": "contact",
+    "screenshot": "phase16-final2-desktop-contact.png",
+    "sectionMetrics": {
+      "hash": "#contact",
+      "scrollY": 8436,
+      "top": 0,
+      "bottom": 1008,
+      "height": 1009,
+      "inViewport": true,
+      "overflowX": -8,
+      "visibleText": "04 Vamos construir algo robusto. Aberto a oportunidades, colaborações e discussões técnicas. STATUS Canal aberto Prefere outro canal? Estou disponível nas seguintes plataformas: Gi",
+      "overflowing": []
+    }
+  }
+]

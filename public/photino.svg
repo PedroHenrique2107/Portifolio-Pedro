@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Photino">
+  <rect width="64" height="64" rx="12" fill="#101318"/>
+  <path d="M18 44V16h18c7.2 0 12 4.5 12 11.2S43.2 38.5 36 38.5H26V44h-8Zm8-13h9.1c3 0 4.9-1.5 4.9-3.8s-1.9-3.8-4.9-3.8H26V31Z" fill="#00F0FF"/>
+  <path d="M16 50h32" stroke="#10B981" stroke-width="4" stroke-linecap="round"/>
+</svg>

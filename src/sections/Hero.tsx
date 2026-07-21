@@ -2,11 +2,13 @@
 import { ChevronDown, Download, Mail } from 'lucide-react';
 import { GitHubIcon, LinkedInIcon } from '@/components/icons/BrandIcons';
 import { Button } from '@/components/ui/button';
-import { CoreSphere } from '@/components/3d/CoreSphere';
+import { AdaptiveVisualCore } from '@/components/hero/AdaptiveVisualCore';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
+import { profile } from '@/data/portfolio';
+import { heroSequence } from '@/lib/motion';
 
 const heroCtaClass =
-  'h-14 w-full sm:w-56 px-6 text-base font-semibold rounded-md';
+  'h-12 sm:h-14 w-full sm:w-56 px-5 sm:px-6 text-sm sm:text-base font-semibold rounded-md';
 
 export function Hero() {
   const scrollToSection = (id: string) => {
@@ -23,35 +25,40 @@ export function Hero() {
     >
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-dark/50 to-dark pointer-events-none z-[1]" />
 
-      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-16 py-20">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center sm:min-h-[80vh]">
-          <div className="space-y-8">
+      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-16 py-20 sm:py-24">
+        <div className="relative grid lg:grid-cols-2 gap-6 sm:gap-12 lg:gap-8 items-center sm:min-h-[80vh]">
+          <div className="relative z-10 max-w-xs space-y-6 sm:max-w-none sm:space-y-8">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: 'easeOut' }}
+              variants={heroSequence.badge}
+              initial="hidden"
+              animate="visible"
             >
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 font-mono text-sm">
-                <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
-                SOFTWARE ENGINEER - BACKEND - CLEAN CODE
+              <span className="inline-flex w-full max-w-xs flex-wrap items-center gap-x-2 gap-y-1 rounded-md border border-cyan-500/20 bg-cyan-500/10 px-3 py-2 font-mono text-xs leading-relaxed text-cyan-400 sm:w-auto sm:max-w-none sm:flex-nowrap sm:rounded-full sm:px-4 sm:text-sm">
+                <span className="h-2 w-2 shrink-0 rounded-full bg-cyan-400 animate-pulse" />
+                <span>SOFTWARE ENGINEER</span>
+                <span>-</span>
+                <span>BACKEND</span>
+                <span>-</span>
+                <span>CLEAN CODE</span>
               </span>
             </motion.div>
 
             <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1, ease: 'easeOut' }}
-              className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight"
+              variants={heroSequence.title}
+              initial="hidden"
+              animate="visible"
+              className="text-3xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight"
             >
-              Alta performance{' '}
-              <span className="text-gradient-cyan">começa na estrutura de dados</span>
+              <span className="block">Alta performance</span>
+              <span className="block text-gradient-cyan">começa na estrutura</span>
+              <span className="block text-gradient-cyan">de dados</span>
             </motion.h1>
 
             <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2, ease: 'easeOut' }}
-              className="text-lg sm:text-xl text-gray-400 max-w-xl"
+              variants={heroSequence.copy}
+              initial="hidden"
+              animate="visible"
+              className="text-base sm:text-xl text-gray-300 max-w-xl leading-relaxed"
             >
               Olá, meu nome é Pedro Henrique, Engenheiro de Software focado em backend e arquitetura de sistemas escaláveis.
               É um prazer ter você aqui. Este portfólio reúne projetos, experiências e soluções que refletem minha visão de tecnologia:
@@ -59,31 +66,31 @@ export function Hero() {
             </motion.p>
 
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3, ease: 'easeOut' }}
-              className="flex flex-wrap gap-4"
+              variants={heroSequence.actions}
+              initial="hidden"
+              animate="visible"
+              className="flex flex-wrap gap-3 sm:gap-4"
             >
               <Button
                 onClick={() => scrollToSection('projects')}
-                className={`${heroCtaClass} bg-cyan-500 hover:bg-cyan-400 text-dark transition-all duration-300 hover:shadow-glow`}
+                className={`${heroCtaClass} system-button-primary`}
               >
                 Ver Projetos
               </Button>
               <Button
                 variant="outline"
                 onClick={() => scrollToSection('contact')}
-                className={`${heroCtaClass} border-white/20 text-white hover:bg-white/10`}
+                className={`${heroCtaClass} system-button-outline`}
               >
                 Falar Comigo
               </Button>
               <Button
                 asChild
                 variant="outline"
-                className={`${heroCtaClass} border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/10 hover:border-emerald-500/50 transition-all duration-300`}
+                className={`${heroCtaClass} border border-emerald-400/30 bg-emerald-400/5 text-emerald-300 hover:bg-emerald-400/10 hover:border-emerald-400/50 transition-all duration-300`}
               >
                 <a
-                  href="https://drive.google.com/file/d/1Aa2EULBfAR54iKOk2WUwL9lbxl-Uz8FQ/view?usp=sharing"
+                  href={profile.resumeUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -94,13 +101,13 @@ export function Hero() {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4, ease: 'easeOut' }}
-              className="flex flex-wrap items-center gap-x-4 gap-y-2 pt-4"
+              variants={heroSequence.actions}
+              initial="hidden"
+              animate="visible"
+              className="flex flex-wrap items-center gap-x-4 gap-y-2 pt-2 sm:pt-4"
             >
               <a
-                href="https://github.com/PedroHenrique2107"
+                href={profile.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-gray-400 hover:text-cyan-400 transition-colors"
@@ -110,7 +117,7 @@ export function Hero() {
               </a>
               <span className="hidden sm:inline text-gray-600">|</span>
               <a
-                href="https://www.linkedin.com/in/pedro-henrique-mendes-78a59325a/"
+                href={profile.linkedInUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-gray-400 hover:text-cyan-400 transition-colors"
@@ -120,7 +127,7 @@ export function Hero() {
               </a>
               <span className="hidden sm:inline text-gray-600">|</span>
               <a
-                href="mailto:pedrohmsousa2023@gmail.com"
+                href={`mailto:${profile.email}`}
                 className="flex items-center gap-2 text-gray-400 hover:text-cyan-400 transition-colors"
               >
                 <Mail className="w-5 h-5" />
@@ -130,10 +137,10 @@ export function Hero() {
           </div>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.2, ease: 'easeOut' }}
-            className="relative h-[400px] lg:h-[560px] hidden lg:block"
+            variants={heroSequence.visual}
+            initial="hidden"
+            animate="visible"
+            className="pointer-events-none absolute inset-x-0 top-[25rem] z-0 h-[220px] opacity-10 sm:top-20 sm:h-[420px] sm:opacity-45 lg:pointer-events-auto lg:relative lg:inset-auto lg:z-auto lg:h-[560px] lg:opacity-100"
           >
             <div className="absolute inset-0 overflow-hidden">
               <ErrorBoundary
@@ -143,7 +150,7 @@ export function Hero() {
                   </div>
                 }
               >
-                <CoreSphere />
+                <AdaptiveVisualCore />
               </ErrorBoundary>
             </div>
           </motion.div>
