@@ -1,10 +1,11 @@
-import { useState, useRef } from 'react';
-import { motion, useInView, AnimatePresence } from 'framer-motion';
-import { ExternalLink, Github, ChevronRight } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
-import { projects, filterCategories } from '@/data/portfolio';
-import { panelRevealVariants, projectCardVariants, revealVariants, sectionHeaderVariants, staggerContainerVariants } from '@/lib/motion';
+import { useRef, useState } from 'react';
+import { motion, useInView } from 'framer-motion';
+import { ProjectEmptyState } from '@/components/projects/ProjectEmptyState';
+import { ProjectFilters } from '@/components/projects/ProjectFilters';
+import { ProjectGrid } from '@/components/projects/ProjectGrid';
+import { ProjectModal } from '@/components/projects/ProjectModal';
+import { filterCategories, projects } from '@/data/portfolio';
+import { revealVariants, sectionHeaderVariants } from '@/lib/motion';
 import type { FilterCategory, Project } from '@/types';
 
 const projectImageModules = import.meta.glob('../image/*.{png,jpg,jpeg,webp,avif}', {
@@ -16,12 +17,6 @@ const projectImages = Object.fromEntries(
   Object.entries(projectImageModules).map(([path, url]) => [path.split('/').pop() ?? '', url])
 ) as Record<string, string>;
 
-const categoryColors: Record<Project['category'], { bg: string; text: string; border: string; dot: string }> = {
-  apis: { bg: 'bg-cyan-500/10', text: 'text-cyan-400', border: 'border-cyan-500/20', dot: 'bg-cyan-400' },
-  aiot: { bg: 'bg-emerald-500/10', text: 'text-emerald-400', border: 'border-emerald-500/20', dot: 'bg-emerald-400' },
-  fullstack: { bg: 'bg-purple-500/10', text: 'text-purple-400', border: 'border-purple-500/20', dot: 'bg-purple-400' }
-};
-
 export function Projects() {
   const [activeFilter, setActiveFilter] = useState<FilterCategory>('all');
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
@@ -31,13 +26,12 @@ export function Projects() {
 
   const filteredProjects = activeFilter === 'all'
     ? portfolioProjects
-    : portfolioProjects.filter(p => p.category === activeFilter);
+    : portfolioProjects.filter((project) => project.category === activeFilter);
   const activeFilterLabel = filterCategories.find((cat) => cat.value === activeFilter)?.label ?? 'esta categoria';
 
   return (
     <section id="projects" className="relative py-16 sm:py-24 lg:py-32 bg-dark-100">
       <div className="max-w-[1200px] mx-auto px-6 sm:px-8 lg:px-16">
-        {/* Section header */}
         <motion.div
           ref={containerRef}
           variants={sectionHeaderVariants}
@@ -58,275 +52,31 @@ export function Projects() {
           </p>
         </motion.div>
 
-        {/* Filters */}
         <motion.div
           variants={revealVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="flex flex-wrap justify-center gap-2 mb-12"
+          className="mb-12"
         >
-          {filterCategories.map((cat) => (
-            <button
-              key={cat.value}
-              onClick={() => setActiveFilter(cat.value)}
-              className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg font-mono text-sm transition-all duration-300 ${
-                activeFilter === cat.value
-                  ? 'border-purple-400/45 bg-purple-400/10 text-purple-100'
-                  : 'system-chip hover:border-white/20 hover:text-white'
-              }`}
-            >
-              {cat.label}
-            </button>
-          ))}
+          <ProjectFilters activeFilter={activeFilter} onFilterChange={setActiveFilter} />
         </motion.div>
 
-        {/* Projects grid */}
         {filteredProjects.length > 0 ? (
-          <motion.div
-            layout
-            variants={staggerContainerVariants}
-            initial="hidden"
-            animate="visible"
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
-          >
-          <AnimatePresence mode="popLayout">
-            {filteredProjects.map((project) => {
-              const colors = categoryColors[project.category];
-              const projectImage = project.image ? projectImages[project.image] : undefined;
-
-              return (
-                <motion.div
-                  key={project.id}
-                  layout
-                  variants={projectCardVariants}
-                  initial="hidden"
-                  animate="visible"
-                  exit="exit"
-                  onClick={() => setSelectedProject(project)}
-                  className="system-panel group flex flex-col p-4 sm:p-6 cursor-pointer transition-all duration-500 hover:-translate-y-2 hover:border-purple-400/25 hover:shadow-[0_18px_60px_rgba(0,0,0,0.28)]"
-                >
-                  {projectImage && (
-                    <div className="mb-4 overflow-hidden rounded-lg border border-white/10 bg-white/5">
-                      <img
-                        src={projectImage}
-                        alt={`Preview do projeto ${project.title}`}
-                        loading="lazy"
-                        className="w-full h-36 sm:h-40 object-cover transition-transform duration-500 group-hover:scale-105"
-                      />
-                    </div>
-                  )}
-
-                  {/* Category badge */}
-                  <div className={`self-start inline-flex items-center gap-2 px-3 py-1 rounded-full ${colors.bg} ${colors.border} border mb-4`}>
-                    <span className={`w-2 h-2 rounded-full ${colors.dot}`} />
-                    <span className={`font-mono text-xs ${colors.text}`}>
-                      {project.categoryLabel}
-                    </span>
-                  </div>
-
-                  {/* Title */}
-                  <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-purple-400 transition-colors">
-                    {project.title}
-                  </h3>
-
-                  {/* Description */}
-                  <p className="text-gray-400 text-sm mb-4 line-clamp-2">
-                    {project.description}
-                  </p>
-
-                  {/* Stack */}
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.stack.slice(0, 4).map((tech) => (
-                      <span
-                        key={tech}
-                        className="system-chip px-2 py-1 text-gray-500"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                    {project.stack.length > 4 && (
-                      <span className="system-chip px-2 py-1 text-gray-500">
-                        +{project.stack.length - 4}
-                      </span>
-                    )}
-                  </div>
-
-                  {/* Highlights preview */}
-                  <ul className="space-y-1 mb-6">
-                    {project.highlights.slice(0, 2).map((highlight, i) => (
-                      <li key={i} className="flex items-start gap-2 text-gray-500 text-xs">
-                        <ChevronRight className="w-3 h-3 mt-0.5 flex-shrink-0 text-purple-400" />
-                        {highlight}
-                      </li>
-                    ))}
-                  </ul>
-
-                  {/* Links */}
-                  <div className="flex items-center gap-3 pt-4 border-t border-white/5 mt-auto">
-                    {project.githubUrl && (
-                      <a
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={(e) => e.stopPropagation()}
-                        className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors text-sm"
-                      >
-                        <Github className="w-4 h-4" />
-                        <span className="font-mono">Código</span>
-                      </a>
-                    )}
-                    {project.liveUrl && (
-                      <a
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={(e) => e.stopPropagation()}
-                        className="ml-auto flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-purple-500/15 border border-purple-500/30 text-purple-400 hover:bg-purple-500/25 hover:border-purple-500/60 hover:text-purple-300 transition-all duration-200 text-xs font-mono"
-                      >
-                        <ExternalLink className="w-3.5 h-3.5" />
-                        Versão Demo
-                      </a>
-                    )}
-                  </div>
-
-                  {/* Hover indicator */}
-                  <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <div className="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center">
-                      <ExternalLink className="w-4 h-4 text-purple-400" />
-                    </div>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </AnimatePresence>
-          </motion.div>
+          <ProjectGrid
+            projects={filteredProjects}
+            projectImages={projectImages}
+            onSelectProject={setSelectedProject}
+          />
         ) : (
-          <motion.div
-            variants={panelRevealVariants}
-            initial="hidden"
-            animate="visible"
-            className="max-w-2xl mx-auto"
-          >
-            <div className="system-panel p-6 sm:p-8 text-center">
-              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-300 font-mono text-xs mb-4">
-                <span className="w-2 h-2 rounded-full bg-purple-400 animate-pulse" />
-                Em desenvolvimento
-              </span>
-              <h3 className="text-white text-xl font-semibold mb-2">
-                Novos projetos em breve
-              </h3>
-              <p className="text-gray-300 text-sm sm:text-base">
-                Ainda não há projetos publicados em <span className="text-purple-300 font-medium">{activeFilterLabel}</span>.
-                Estou finalizando novos cases e em breve terá atualizações nesta categoria.
-              </p>
-            </div>
-          </motion.div>
+          <ProjectEmptyState activeFilterLabel={activeFilterLabel} />
         )}
 
-        {/* Project Detail Modal */}
-        <Dialog open={!!selectedProject} onOpenChange={() => setSelectedProject(null)}>
-          <DialogContent className="max-w-[92vw] sm:max-w-2xl bg-dark-100 border-white/10 text-white max-h-[90vh] overflow-y-auto">
-            {selectedProject && (
-              <>
-                <DialogHeader>
-                  <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full ${categoryColors[selectedProject.category].bg} ${categoryColors[selectedProject.category].border} border mb-4 w-fit`}>
-                    <span className={`font-mono text-xs ${categoryColors[selectedProject.category].text}`}>
-                      {selectedProject.categoryLabel}
-                    </span>
-                  </div>
-                  <DialogTitle className="text-2xl font-bold text-white">
-                    {selectedProject.title}
-                  </DialogTitle>
-                </DialogHeader>
-
-                <div className="space-y-6 mt-4">
-                  {/* Description */}
-                  <p className="text-gray-300">
-                    {selectedProject.description}
-                  </p>
-
-                  {/* Problem */}
-                  {selectedProject.problem && (
-                    <div>
-                      <h4 className="text-sm font-mono text-purple-400 mb-2">PROBLEMA</h4>
-                      <p className="text-gray-400 text-sm">{selectedProject.problem}</p>
-                    </div>
-                  )}
-
-                  {/* Architecture */}
-                  {selectedProject.architecture && (
-                    <div>
-                      <h4 className="text-sm font-mono text-cyan-400 mb-2">ARQUITETURA</h4>
-                      <p className="text-gray-400 text-sm">{selectedProject.architecture}</p>
-                    </div>
-                  )}
-
-                  {/* Decisions */}
-                  {selectedProject.decisions && (
-                    <div>
-                      <h4 className="text-sm font-mono text-emerald-400 mb-2">DECISÕES TÉCNICAS</h4>
-                      <ul className="space-y-1">
-                        {selectedProject.decisions.map((decision, i) => (
-                          <li key={i} className="flex items-start gap-2 text-gray-400 text-sm">
-                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 mt-1.5 flex-shrink-0" />
-                            {decision}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-
-                  {/* Results */}
-                  {selectedProject.results && (
-                    <div>
-                      <h4 className="text-sm font-mono text-purple-400 mb-2">RESULTADOS</h4>
-                      <p className="text-gray-400 text-sm">{selectedProject.results}</p>
-                    </div>
-                  )}
-
-                  {/* Stack */}
-                  <div>
-                    <h4 className="text-sm font-mono text-gray-400 mb-2">STACK</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {selectedProject.stack.map((tech) => (
-                        <span
-                          key={tech}
-                          className="system-chip text-gray-300"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Actions */}
-                  <div className="flex gap-4 pt-4">
-                    {selectedProject.githubUrl && (
-                      <Button
-                        variant="outline"
-                        className="flex-1 border-white/20 text-white hover:bg-white/10"
-                        onClick={() => window.open(selectedProject.githubUrl, '_blank')}
-                      >
-                        <Github className="w-4 h-4 mr-2" />
-                        Ver Código
-                      </Button>
-                    )}
-                    {selectedProject.liveUrl && (
-                      <Button
-                        className="system-button-primary flex-1"
-                        onClick={() => window.open(selectedProject.liveUrl, '_blank')}
-                      >
-                        <ExternalLink className="w-4 h-4 mr-2" />
-                        Versão Demo
-                      </Button>
-                    )}
-                  </div>
-                </div>
-              </>
-            )}
-          </DialogContent>
-        </Dialog>
+        <ProjectModal
+          project={selectedProject}
+          onClose={() => setSelectedProject(null)}
+        />
       </div>
     </section>
   );
 }
+
