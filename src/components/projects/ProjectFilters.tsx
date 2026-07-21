@@ -12,8 +12,10 @@ export function ProjectFilters({ activeFilter, onFilterChange }: ProjectFiltersP
       {filterCategories.map((cat) => (
         <button
           key={cat.value}
+          type="button"
+          aria-pressed={activeFilter === cat.value}
           onClick={() => onFilterChange(cat.value)}
-          className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg font-mono text-sm transition-all duration-300 ${
+          className={`min-h-10 px-3 py-1.5 font-mono text-sm transition-all duration-300 sm:px-4 sm:py-2 ${
             activeFilter === cat.value
               ? 'border-purple-400/45 bg-purple-400/10 text-purple-100'
               : 'system-chip hover:border-white/20 hover:text-white'
@@ -25,4 +27,3 @@ export function ProjectFilters({ activeFilter, onFilterChange }: ProjectFiltersP
     </div>
   );
 }
-

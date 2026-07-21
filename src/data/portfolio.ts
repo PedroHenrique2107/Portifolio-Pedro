@@ -123,6 +123,32 @@ export const projects = [
     results: 'Redução de 40% no tempo de espera, satisfação do cliente aumentada. Aumento de 60% na eficiência operacional.'
   },
   {
+    id: 'park-scan',
+    title: 'ParkScan',
+    image: 'optimized/ParkScan.webp',
+    category: 'fullstack',
+    categoryLabel: 'Fullstack',
+    description: 'PWA operacional para gestão de estacionamento com leitura de pátio, mapa de pisos, busca de veículos e histórico do dia.',
+    highlights: [
+      'Dashboard mobile-first para operação de pátio',
+      'Mapa de pisos e busca de veículos',
+      'Histórico operacional do dia',
+      'Deploy em produção na Vercel com comportamento PWA'
+    ],
+    stack: ['React', 'TypeScript', 'Vite', 'PWA', 'Vercel'],
+    githubUrl: 'https://github.com/PedroHenrique2107/ParkScan',
+    liveUrl: 'https://park-scan.vercel.app/',
+    problem: 'Centralizar a leitura operacional de um estacionamento em uma interface rápida para consulta de ocupação, vagas e movimentações.',
+    architecture: 'SPA/PWA com rotas para início, mapa, busca e histórico, preparada para uso recorrente em operação mobile.',
+    decisions: [
+      'Vite para build rápido e deploy simples',
+      'PWA para experiência mais próxima de aplicativo',
+      'Layout mobile-first para uso em campo',
+      'Vercel para publicação contínua'
+    ],
+    results: 'Projeto publicado em produção com painel de ocupação, atalhos operacionais e navegação inferior para fluxos principais.'
+  },
+  {
     id: 'agrolink',
     image: 'optimized/AgroLink.webp',
     title: 'AgroLink - © MetaCore',
@@ -152,10 +178,25 @@ export const projects = [
 
 export const experiences = [
   {
+    id: 'moderna-fullstack-intern',
+    title: 'FullStack Developer Intern',
+    period: 'mai/2026 - Atualmente',
+    company: 'Moderna Tecnologia',
+    icon: 'Code2',
+    color: 'green',
+    items: [
+      'Atuação em desenvolvimento fullstack com TypeScript, Node.js, Angular e C#.',
+      'Evolução de aplicações e serviços usando PostgreSQL, Prisma ORM e Fastify.',
+      'Contato com aplicações desktop/web com Photino e fluxos modernos de desenvolvimento.',
+      'Uso de Docker, Git, GitHub e ArgoCD em rotinas de versionamento, entrega e operação.'
+    ],
+    quote: 'Experiência em evolução, com foco em ampliar repertório fullstack, atuar em sistemas reais e consolidar práticas modernas de desenvolvimento, entrega e operação.'
+  },
+  {
     id: 'metacore-fullstack',
     title: 'Desenvolvedor Autônomo | Fullstack',
     period: 'ago/2023 — Atualmente',
-    company: 'MetaCore - UniMetrocamp',
+    company: 'UniMetrocamp - Wyden',
     icon: 'Brain',
     color: 'purple',
     items: [
@@ -227,8 +268,8 @@ export const timeline = [
   {
     year: '2026',
     title: 'Desenvolvimento em progresso',
-    description: 'Depois de muito estudo, esforço e dedicação, consegui minha primeira oportunidade como desenvolvedor backend na SmartCompass, onde atuo atualmente. Nessa função, tenho a oportunidade de trabalhar com desenvolvimento de APIs, automação de processos e garantia da qualidade do código por meio de testes e boas práticas de arquitetura e estruturas de dados, além de aprender muito sobre o mercado de tecnologia e desenvolvimento de software.',
-    technologies: ['Python', 'NodeJS', 'React', 'Express', 'MySQL', 'Docker', 'CI/CD', 'API REST/Buck', 'Testes Automatizados']
+    description: 'Depois de muito estudo, esforço e dedicação, avancei em experiências profissionais de desenvolvimento, passando por backend, automações e engenharia fullstack. Em 2026, sigo evoluindo como FullStack Developer Intern na Moderna Tecnologia, ampliando meu contato com aplicações web, serviços, bancos de dados, deploy e operação.',
+    technologies: ['C#', 'Angular', 'TypeScript', 'NodeJS', 'Fastify', 'Prisma ORM', 'PostgreSQL', 'Docker', 'ArgoCD']
   },
   {
     year: '2027',
@@ -244,6 +285,12 @@ export const timeline = [
   }
 ] as const;
 
+type SkillData = {
+  name: string;
+  category: 'architecture' | 'devops' | 'database' | 'backend' | 'tools';
+  logo?: string;
+};
+
 export const skills = [
   { name: 'Clean Architecture', category: 'architecture', logo: 'https://cdn.simpleicons.org/openapiinitiative' },
   { name: 'SOLID', category: 'architecture', logo: 'https://cdn.simpleicons.org/bookstack' },
@@ -252,20 +299,169 @@ export const skills = [
   { name: 'IaC', category: 'devops', logo: 'https://cdn.simpleicons.org/terraform' },
   { name: 'Docker', category: 'devops', logo: 'https://cdn.simpleicons.org/docker' },
   { name: 'Kubernetes', category: 'devops', logo: 'https://cdn.simpleicons.org/kubernetes' },
+  { name: 'Vercel', category: 'devops', logo: 'https://cdn.simpleicons.org/vercel' },
+  { name: 'ArgoCD', category: 'devops', logo: 'https://cdn.simpleicons.org/argo' },
   { name: 'MySQL', category: 'database', logo: 'https://cdn.simpleicons.org/mysql' },
   { name: 'PostgreSQL', category: 'database', logo: 'https://cdn.simpleicons.org/postgresql' },
+  { name: 'Prisma ORM', category: 'database', logo: 'https://cdn.simpleicons.org/prisma' },
   { name: 'JavaScript', category: 'backend', logo: 'https://cdn.simpleicons.org/javascript' },
   { name: 'TypeScript', category: 'backend', logo: 'https://cdn.simpleicons.org/typescript' },
+  { name: 'C#', category: 'backend', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg' },
+  { name: 'Angular', category: 'backend', logo: 'https://cdn.simpleicons.org/angular' },
   { name: 'React', category: 'backend', logo: 'https://cdn.simpleicons.org/react' },
+  { name: 'Vite', category: 'backend', logo: 'https://cdn.simpleicons.org/vite' },
+  { name: 'PWA', category: 'backend', logo: 'https://cdn.simpleicons.org/pwa' },
   { name: 'Node.js', category: 'backend', logo: 'https://cdn.simpleicons.org/nodedotjs' },
+  { name: 'Fastify', category: 'backend', logo: 'https://cdn.simpleicons.org/fastify' },
+  { name: 'Photino', category: 'backend', logo: './photino.svg' },
   { name: 'Python', category: 'backend', logo: 'https://cdn.simpleicons.org/python' },
   { name: 'Go', category: 'backend', logo: 'https://cdn.simpleicons.org/go' },
   { name: 'REST APIs', category: 'backend', logo: 'https://cdn.simpleicons.org/openapiinitiative' },
   { name: 'GraphQL', category: 'backend', logo: 'https://cdn.simpleicons.org/graphql' },
   { name: 'Linux', category: 'tools', logo: 'https://cdn.simpleicons.org/linux' },
   { name: 'Git', category: 'tools', logo: 'https://cdn.simpleicons.org/git' },
-  { name: 'Grafana', category: 'tools', logo: 'https://cdn.simpleicons.org/grafana' }
+  { name: 'GitHub', category: 'tools', logo: 'https://cdn.simpleicons.org/github' },
+  { name: 'Grafana', category: 'tools', logo: 'https://cdn.simpleicons.org/grafana' },
+  { name: 'Claude AI', category: 'tools', logo: 'https://cdn.simpleicons.org/claude' },
+  { name: 'Claude Code', category: 'tools', logo: 'https://cdn.simpleicons.org/claudecode' },
+] as const satisfies readonly SkillData[];
+
+export const dataCoreTechnologies = [
+  {
+    id: 'react',
+    label: 'React',
+    group: 'frontend',
+    x: 50,
+    y: 14,
+    color: '#00f0ff',
+    stackMatches: ['React']
+  },
+  {
+    id: 'node',
+    label: 'Node.js',
+    group: 'backend',
+    x: 82,
+    y: 36,
+    color: '#10b981',
+    stackMatches: ['Node.js']
+  },
+  {
+    id: 'python',
+    label: 'Python',
+    group: 'backend',
+    x: 72,
+    y: 78,
+    color: '#00f0ff',
+    stackMatches: ['Python', 'Flask']
+  },
+  {
+    id: 'docker',
+    label: 'Docker',
+    group: 'devops',
+    x: 28,
+    y: 78,
+    color: '#10b981',
+    stackMatches: ['Docker']
+  },
+  {
+    id: 'data',
+    label: 'Data',
+    group: 'database',
+    x: 18,
+    y: 36,
+    color: '#8b5cf6',
+    stackMatches: ['PostgreSQL', 'MySQL', 'SQLite']
+  },
+  {
+    id: 'cloud',
+    label: 'Cloud',
+    group: 'infra',
+    x: 50,
+    y: 88,
+    color: '#10b981',
+    stackMatches: ['AWS', 'Kubernetes', 'Terraform']
+  }
 ] as const;
+
+export const dataCoreProjectNodes = projects.map((project, index) => ({
+  id: project.id,
+  label: project.title,
+  kind: 'project',
+  x: [50, 75, 62, 36, 25][index] ?? 50,
+  y: [50, 54, 30, 70, 54][index] ?? 50,
+  color:
+    project.category === 'aiot'
+      ? '#10b981'
+      : project.category === 'apis'
+        ? '#00f0ff'
+        : '#8b5cf6'
+})) as ReadonlyArray<{
+  id: (typeof projects)[number]['id'];
+  label: (typeof projects)[number]['title'];
+  kind: 'project';
+  x: number;
+  y: number;
+  color: string;
+}>;
+
+export const dataCoreTechnologyNodes = dataCoreTechnologies.map((technology) => ({
+  id: technology.id,
+  label: technology.label,
+  kind: 'technology',
+  x: technology.x,
+  y: technology.y,
+  color: technology.color
+})) as ReadonlyArray<{
+  id: (typeof dataCoreTechnologies)[number]['id'];
+  label: (typeof dataCoreTechnologies)[number]['label'];
+  kind: 'technology';
+  x: number;
+  y: number;
+  color: string;
+}>;
+
+export const dataCoreNodes = [
+  {
+    id: 'portfolio-core',
+    label: 'Pedro Core',
+    kind: 'core',
+    x: 50,
+    y: 50,
+    color: '#00f0ff'
+  },
+  ...dataCoreProjectNodes,
+  ...dataCoreTechnologyNodes
+] as const;
+
+export const dataCoreLinks = [
+  ...dataCoreProjectNodes.map((project) => ({
+    source: 'portfolio-core',
+    target: project.id,
+    strength: 'primary'
+  })),
+  ...projects.flatMap((project) =>
+    dataCoreTechnologies
+      .filter((technology) =>
+        technology.stackMatches.some((match) =>
+          (project.stack as readonly string[]).includes(match)
+        )
+      )
+      .map((technology) => ({
+        source: project.id,
+        target: technology.id,
+        strength: 'secondary'
+      }))
+  )
+] as ReadonlyArray<{
+  source: (typeof dataCoreNodes)[number]['id'];
+  target: (typeof dataCoreNodes)[number]['id'];
+  strength: 'primary' | 'secondary';
+}>;
+
+export const dataCoreGraph = {
+  nodes: dataCoreNodes,
+  links: dataCoreLinks
+} as const;
 
 type ProjectCategory = (typeof projects)[number]['category'];
 

@@ -16,8 +16,10 @@ function getInitialTier(): VisualTier {
 
   const cpu = navigator.hardwareConcurrency ?? 4;
   const memory = (navigator as Navigator & { deviceMemory?: number }).deviceMemory ?? 4;
+  const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
 
   if (cpu <= 4 || memory <= 4) return 'low';
+  if (viewportWidth < 1024) return 'medium';
   if (cpu >= 8 && memory >= 8) return 'high';
 
   return 'medium';
@@ -82,4 +84,3 @@ export function useVisualTier() {
 
   return tier;
 }
-

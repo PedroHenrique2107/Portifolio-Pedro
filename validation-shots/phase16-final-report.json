@@ -1,0 +1,680 @@
+[
+  {
+    "viewport": "mobile",
+    "pageMetrics": {
+      "title": "Portfólio - Pedro Henrique",
+      "bodyWidth": 390,
+      "htmlWidth": 390,
+      "viewport": 390,
+      "hasMojibake": true,
+      "navButtons": [
+        {
+          "text": "Pedro Henrique",
+          "width": 36,
+          "height": 36
+        },
+        {
+          "text": "Abrir menu",
+          "width": 40,
+          "height": 40
+        },
+        {
+          "text": "Ver Projetos",
+          "width": 320,
+          "height": 48
+        },
+        {
+          "text": "Falar Comigo",
+          "width": 320,
+          "height": 48
+        },
+        {
+          "text": "Baixar Currículo",
+          "width": 320,
+          "height": 48
+        },
+        {
+          "text": "GitHub",
+          "width": 78,
+          "height": 20
+        },
+        {
+          "text": "LinkedIn",
+          "width": 95,
+          "height": 20
+        },
+        {
+          "text": "Email",
+          "width": 70,
+          "height": 20
+        },
+        {
+          "text": "Quem sou",
+          "width": 316,
+          "height": 42
+        },
+        {
+          "text": "Foco atual",
+          "width": 316,
+          "height": 42
+        },
+        {
+          "text": "Como trabalho",
+          "width": 316,
+          "height": 42
+        },
+        {
+          "text": "Todos",
+          "width": 66,
+          "height": 40
+        },
+        {
+          "text": "Backend",
+          "width": 76,
+          "height": 40
+        },
+        {
+          "text": "Fullstack",
+          "width": 91,
+          "height": 40
+        },
+        {
+          "text": "AIoT & Infraestrutura",
+          "width": 177,
+          "height": 40
+        },
+        {
+          "text": "Código",
+          "width": 74,
+          "height": 20
+        },
+        {
+          "text": "Código",
+          "width": 74,
+          "height": 20
+        },
+        {
+          "text": "Código",
+          "width": 74,
+          "height": 20
+        },
+        {
+          "text": "Versão Demo",
+          "width": 125,
+          "height": 30
+        },
+        {
+          "text": "Código",
+          "width": 74,
+          "height": 20
+        }
+      ]
+    }
+  },
+  {
+    "viewport": "mobile",
+    "section": "about",
+    "screenshot": "phase16-final-mobile-about.png",
+    "sectionMetrics": {
+      "hash": "#about",
+      "scrollY": 860,
+      "top": 0,
+      "bottom": 2910,
+      "height": 2911,
+      "inViewport": true,
+      "overflow": 0,
+      "visibleText": "01\nMinha Hi tória\nOPERATING PROFILE\nQuem  ou\n\nDe de pequeno,  empre fui fa cinado por tecnologia. Eu pa ava hora  a i tindo a vídeo , pe qui ando e tentando entender como a  coi a ",
+      "focusables": [
+        {
+          "tag": "button",
+          "text": "Quem sou",
+          "width": 316,
+          "height": 42,
+          "x": 37,
+          "y": 665
+        },
+        {
+          "tag": "button",
+          "text": "Foco atual",
+          "width": 316,
+          "height": 42,
+          "x": 37,
+          "y": 715
+        },
+        {
+          "tag": "button",
+          "text": "Como trabalho",
+          "width": 316,
+          "height": 42,
+          "x": 37,
+          "y": 765
+        }
+      ]
+    }
+  },
+  {
+    "viewport": "mobile",
+    "section": "projects",
+    "screenshot": "phase16-final-mobile-projects.png",
+    "sectionMetrics": {
+      "hash": "#projects",
+      "scrollY": 3770,
+      "top": 0,
+      "bottom": 3839,
+      "height": 3839,
+      "inViewport": true,
+      "overflow": 0,
+      "visibleText": "02\nProva Técnica\n\nProjeto  que demon tram engenharia real, arquitetura limpa e deci õe  técnica  fundamentada .\n\nFILTRO ATIVO\n4\nTodo \nSTACK EM DESTAQUE\nPython\nFla k\nREST\nDocker\nPo ",
+      "focusables": [
+        {
+          "tag": "button",
+          "text": "Todos",
+          "width": 66,
+          "height": 40,
+          "x": 70,
+          "y": 540
+        },
+        {
+          "tag": "button",
+          "text": "Backend",
+          "width": 76,
+          "height": 40,
+          "x": 144,
+          "y": 540
+        },
+        {
+          "tag": "button",
+          "text": "Fullstack",
+          "width": 91,
+          "height": 40,
+          "x": 229,
+          "y": 540
+        },
+        {
+          "tag": "button",
+          "text": "AIoT & Infraestrutura",
+          "width": 177,
+          "height": 40,
+          "x": 106,
+          "y": 588
+        },
+        {
+          "tag": "a",
+          "text": "Código",
+          "width": 74,
+          "height": 20,
+          "x": 37,
+          "y": 1404
+        },
+        {
+          "tag": "a",
+          "text": "Código",
+          "width": 74,
+          "height": 20,
+          "x": 37,
+          "y": 2173
+        },
+        {
+          "tag": "a",
+          "text": "Código",
+          "width": 74,
+          "height": 20,
+          "x": 37,
+          "y": 2944
+        },
+        {
+          "tag": "a",
+          "text": "Versão Demo",
+          "width": 125,
+          "height": 30,
+          "x": 228,
+          "y": 2939
+        },
+        {
+          "tag": "a",
+          "text": "Código",
+          "width": 74,
+          "height": 20,
+          "x": 37,
+          "y": 3738
+        }
+      ]
+    }
+  },
+  {
+    "viewport": "mobile",
+    "section": "vision",
+    "screenshot": "phase16-final-mobile-vision.png",
+    "sectionMetrics": {
+      "hash": "#vision",
+      "scrollY": 7586,
+      "top": 23,
+      "bottom": 4418,
+      "height": 4395,
+      "inViewport": true,
+      "overflow": 0,
+      "visibleText": "03\nEngenharia em E cala\n\nA trajetória de evolução técnica e a  próxima  fronteira .\n\n2020\nOnde tudo começou\n\nCom a paixão por tecnologia, comecei a explorar o mundo da programação ",
+      "focusables": []
+    }
+  },
+  {
+    "viewport": "mobile",
+    "section": "contact",
+    "screenshot": "phase16-final-mobile-contact.png",
+    "sectionMetrics": {
+      "hash": "#contact",
+      "scrollY": 11946,
+      "top": 58,
+      "bottom": 1470,
+      "height": 1412,
+      "inViewport": true,
+      "overflow": 0,
+      "visibleText": "04\nVamo  con truir algo robu to.\n\nAberto a oportunidade , colaboraçõe  e di cu õe  técnica .\n\nSTATUS\nCanal aberto\n\nPrefere outro canal? E tou di ponível na   eguinte  plataforma :\n",
+      "focusables": [
+        {
+          "tag": "a",
+          "text": "GitHubgithub.com/PedroHenrique2107",
+          "width": 497,
+          "height": 78,
+          "x": 20,
+          "y": 521
+        },
+        {
+          "tag": "a",
+          "text": "Emailpedrohmsousa2023@gmail.com",
+          "width": 497,
+          "height": 78,
+          "x": 20,
+          "y": 615
+        },
+        {
+          "tag": "a",
+          "text": "LinkedInlinkedin.com/in/pedro-henrique-mendes-78a59325a/",
+          "width": 497,
+          "height": 78,
+          "x": 20,
+          "y": 709
+        },
+        {
+          "tag": "input",
+          "text": "",
+          "width": 1,
+          "height": 1,
+          "x": -9978,
+          "y": 980
+        },
+        {
+          "tag": "input",
+          "text": "Seu nome",
+          "width": 455,
+          "height": 36,
+          "x": 41,
+          "y": 994
+        },
+        {
+          "tag": "input",
+          "text": "seu@email.com",
+          "width": 455,
+          "height": 36,
+          "x": 41,
+          "y": 1072
+        },
+        {
+          "tag": "textarea",
+          "text": "Sua mensagem...",
+          "width": 455,
+          "height": 162,
+          "x": 41,
+          "y": 1150
+        },
+        {
+          "tag": "button",
+          "text": "Enviar Mensagem",
+          "width": 455,
+          "height": 56,
+          "x": 41,
+          "y": 1332
+        }
+      ]
+    }
+  },
+  {
+    "viewport": "desktop",
+    "pageMetrics": {
+      "title": "Portfólio - Pedro Henrique",
+      "bodyWidth": 1432,
+      "htmlWidth": 1432,
+      "viewport": 1440,
+      "hasMojibake": true,
+      "navButtons": [
+        {
+          "text": "Pedro Henrique",
+          "width": 168,
+          "height": 36
+        },
+        {
+          "text": "Home",
+          "width": 71,
+          "height": 36
+        },
+        {
+          "text": "Sobre",
+          "width": 71,
+          "height": 36
+        },
+        {
+          "text": "Projetos",
+          "width": 86,
+          "height": 36
+        },
+        {
+          "text": "Visão",
+          "width": 69,
+          "height": 36
+        },
+        {
+          "text": "Contato",
+          "width": 84,
+          "height": 36
+        },
+        {
+          "text": "Falar Comigo",
+          "width": 137,
+          "height": 36
+        },
+        {
+          "text": "Ver Projetos",
+          "width": 224,
+          "height": 56
+        },
+        {
+          "text": "Falar Comigo",
+          "width": 224,
+          "height": 56
+        },
+        {
+          "text": "Baixar Currículo",
+          "width": 224,
+          "height": 56
+        },
+        {
+          "text": "GitHub",
+          "width": 78,
+          "height": 20
+        },
+        {
+          "text": "LinkedIn",
+          "width": 95,
+          "height": 20
+        },
+        {
+          "text": "Email",
+          "width": 70,
+          "height": 20
+        },
+        {
+          "text": "APIsRESTFULL",
+          "width": 112,
+          "height": 26
+        },
+        {
+          "text": "Shop Swift Suite",
+          "width": 128,
+          "height": 42
+        },
+        {
+          "text": "Valet Tracker",
+          "width": 120,
+          "height": 26
+        },
+        {
+          "text": "AgroLink - © MetaCore",
+          "width": 128,
+          "height": 42
+        },
+        {
+          "text": "React",
+          "width": 62,
+          "height": 26
+        },
+        {
+          "text": "Node.js",
+          "width": 76,
+          "height": 26
+        },
+        {
+          "text": "Python",
+          "width": 69,
+          "height": 26
+        }
+      ]
+    }
+  },
+  {
+    "viewport": "desktop",
+    "section": "about",
+    "screenshot": "phase16-final-desktop-about.png",
+    "sectionMetrics": {
+      "hash": "#about",
+      "scrollY": 912,
+      "top": 0,
+      "bottom": 1749,
+      "height": 1749,
+      "inViewport": true,
+      "overflow": -8,
+      "visibleText": "01\nMinha Hi tória\nOPERATING PROFILE\nQuem  ou\n\nDe de pequeno,  empre fui fa cinado por tecnologia. Eu pa ava hora  a i tindo a vídeo , pe qui ando e tentando entender como a  coi a ",
+      "focusables": [
+        {
+          "tag": "button",
+          "text": "Quem sou",
+          "width": 383,
+          "height": 42,
+          "x": 205,
+          "y": 785
+        },
+        {
+          "tag": "button",
+          "text": "Foco atual",
+          "width": 383,
+          "height": 42,
+          "x": 205,
+          "y": 835
+        },
+        {
+          "tag": "button",
+          "text": "Como trabalho",
+          "width": 383,
+          "height": 42,
+          "x": 205,
+          "y": 885
+        }
+      ]
+    }
+  },
+  {
+    "viewport": "desktop",
+    "section": "projects",
+    "screenshot": "phase16-final-desktop-projects.png",
+    "sectionMetrics": {
+      "hash": "#projects",
+      "scrollY": 2661,
+      "top": 0,
+      "bottom": 2047,
+      "height": 2047,
+      "inViewport": true,
+      "overflow": -8,
+      "visibleText": "02\nProva Técnica\n\nProjeto  que demon tram engenharia real, arquitetura limpa e deci õe  técnica  fundamentada .\n\nFILTRO ATIVO\n4\nTodo \nSTACK EM DESTAQUE\nPython\nFla k\nREST\nDocker\nPo ",
+      "focusables": [
+        {
+          "tag": "button",
+          "text": "Todos",
+          "width": 74,
+          "height": 40,
+          "x": 483,
+          "y": 454
+        },
+        {
+          "tag": "button",
+          "text": "Backend",
+          "width": 84,
+          "height": 40,
+          "x": 565,
+          "y": 454
+        },
+        {
+          "tag": "button",
+          "text": "Fullstack",
+          "width": 99,
+          "height": 40,
+          "x": 657,
+          "y": 454
+        },
+        {
+          "tag": "button",
+          "text": "AIoT & Infraestrutura",
+          "width": 185,
+          "height": 40,
+          "x": 764,
+          "y": 454
+        },
+        {
+          "tag": "a",
+          "text": "Código",
+          "width": 74,
+          "height": 20,
+          "x": 205,
+          "y": 1173
+        },
+        {
+          "tag": "a",
+          "text": "Código",
+          "width": 74,
+          "height": 20,
+          "x": 570,
+          "y": 1173
+        },
+        {
+          "tag": "a",
+          "text": "Código",
+          "width": 74,
+          "height": 20,
+          "x": 936,
+          "y": 1168
+        },
+        {
+          "tag": "a",
+          "text": "Versão Demo",
+          "width": 125,
+          "height": 30,
+          "x": 1102,
+          "y": 1163
+        },
+        {
+          "tag": "a",
+          "text": "Código",
+          "width": 74,
+          "height": 20,
+          "x": 205,
+          "y": 1874
+        }
+      ]
+    }
+  },
+  {
+    "viewport": "desktop",
+    "section": "vision",
+    "screenshot": "phase16-final-desktop-vision.png",
+    "sectionMetrics": {
+      "hash": "#vision",
+      "scrollY": 4708,
+      "top": 0,
+      "bottom": 3728,
+      "height": 3728,
+      "inViewport": true,
+      "overflow": -8,
+      "visibleText": "03\nEngenharia em E cala\n\nA trajetória de evolução técnica e a  próxima  fronteira .\n\n2020\nOnde tudo começou\n\nCom a paixão por tecnologia, comecei a explorar o mundo da programação ",
+      "focusables": []
+    }
+  },
+  {
+    "viewport": "desktop",
+    "section": "contact",
+    "screenshot": "phase16-final-desktop-contact.png",
+    "sectionMetrics": {
+      "hash": "#contact",
+      "scrollY": 8417,
+      "top": 19,
+      "bottom": 1004,
+      "height": 986,
+      "inViewport": true,
+      "overflow": -8,
+      "visibleText": "04\nVamo  con truir algo robu to.\n\nAberto a oportunidade , colaboraçõe  e di cu õe  técnica .\n\nSTATUS\nCanal aberto\n\nPrefere outro canal? E tou di ponível na   eguinte  plataforma :\n",
+      "focusables": [
+        {
+          "tag": "a",
+          "text": "GitHubgithub.com/PedroHenrique2107",
+          "width": 497,
+          "height": 78,
+          "x": 180,
+          "y": 520
+        },
+        {
+          "tag": "a",
+          "text": "Emailpedrohmsousa2023@gmail.com",
+          "width": 497,
+          "height": 78,
+          "x": 180,
+          "y": 615
+        },
+        {
+          "tag": "a",
+          "text": "LinkedInlinkedin.com/in/pedro-henrique-mendes-78a59325a/",
+          "width": 497,
+          "height": 78,
+          "x": 180,
+          "y": 709
+        },
+        {
+          "tag": "input",
+          "text": "",
+          "width": 1,
+          "height": 1,
+          "x": -9273,
+          "y": 417
+        },
+        {
+          "tag": "input",
+          "text": "Seu nome",
+          "width": 461,
+          "height": 36,
+          "x": 758,
+          "y": 431
+        },
+        {
+          "tag": "input",
+          "text": "seu@email.com",
+          "width": 461,
+          "height": 36,
+          "x": 758,
+          "y": 509
+        },
+        {
+          "tag": "textarea",
+          "text": "Sua mensagem...",
+          "width": 461,
+          "height": 138,
+          "x": 758,
+          "y": 587
+        },
+        {
+          "tag": "button",
+          "text": "Enviar Mensagem",
+          "width": 461,
+          "height": 56,
+          "x": 758,
+          "y": 745
+        }
+      ]
+    }
+  }
+]

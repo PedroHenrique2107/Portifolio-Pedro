@@ -1,0 +1,90 @@
+[
+  {
+    "viewport": "mobile",
+    "section": "about",
+    "screenshot": "phase16-final3-mobile-about.png",
+    "hash": "#about",
+    "top": 0,
+    "inViewport": true,
+    "overflowX": 0,
+    "overflowingCount": 0,
+    "text": "01 Minha História OPERATING PROFILE Quem sou Desde pequeno, sempre fui fascinado por tecnologia. Eu "
+  },
+  {
+    "viewport": "mobile",
+    "section": "projects",
+    "screenshot": "phase16-final3-mobile-projects.png",
+    "hash": "#projects",
+    "top": 0,
+    "inViewport": true,
+    "overflowX": 0,
+    "overflowingCount": 0,
+    "text": "02 Prova Técnica Projetos que demonstram engenharia real, arquitetura limpa e decisões técnicas fund"
+  },
+  {
+    "viewport": "mobile",
+    "section": "vision",
+    "screenshot": "phase16-final3-mobile-vision.png",
+    "hash": "#vision",
+    "top": 0,
+    "inViewport": true,
+    "overflowX": 0,
+    "overflowingCount": 0,
+    "text": "03 Engenharia em Escala A trajetória de evolução técnica e as próximas fronteiras. 2020 Onde tudo co"
+  },
+  {
+    "viewport": "mobile",
+    "section": "contact",
+    "screenshot": "phase16-final3-mobile-contact.png",
+    "hash": "#contact",
+    "top": 42,
+    "inViewport": true,
+    "overflowX": 0,
+    "overflowingCount": 0,
+    "text": "04 Vamos construir algo robusto. Aberto a oportunidades, colaborações e discussões técnicas. STATUS "
+  },
+  {
+    "viewport": "desktop",
+    "section": "about",
+    "screenshot": "phase16-final3-desktop-about.png",
+    "hash": "#about",
+    "top": -738,
+    "inViewport": true,
+    "overflowX": -8,
+    "overflowingCount": 0,
+    "text": "01 Minha História OPERATING PROFILE Quem sou Desde pequeno, sempre fui fascinado por tecnologia. Eu "
+  },
+  {
+    "viewport": "desktop",
+    "section": "projects",
+    "screenshot": "phase16-final3-desktop-projects.png",
+    "hash": "#projects",
+    "top": 0,
+    "inViewport": true,
+    "overflowX": -8,
+    "overflowingCount": 0,
+    "text": "02 Prova Técnica Projetos que demonstram engenharia real, arquitetura limpa e decisões técnicas fund"
+  },
+  {
+    "viewport": "desktop",
+    "section": "vision",
+    "screenshot": "phase16-final3-desktop-vision.png",
+    "hash": "#vision",
+    "top": 0,
+    "inViewport": true,
+    "overflowX": -8,
+    "overflowingCount": 0,
+    "text": "03 Engenharia em Escala A trajetória de evolução técnica e as próximas fronteiras. 2020 Onde tudo co"
+  },
+  {
+    "viewport": "desktop",
+    "section": "contact",
+    "screenshot": "phase16-final3-desktop-contact.png",
+    "hash": "#contact",
+    "top": 21,
+    "inViewport": true,
+    "overflowX": -8,
+    "overflowingCount": 0,
+    "text": "04 Vamos construir algo robusto. Aberto a oportunidades, colaborações e discussões técnicas. STATUS "
+  }
+]

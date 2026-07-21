@@ -1,4 +1,4 @@
-import { lazy, Suspense, useRef, useState } from 'react';
+import { lazy, Suspense, useMemo, useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { ProjectEmptyState } from '@/components/projects/ProjectEmptyState';
 import { ProjectFilters } from '@/components/projects/ProjectFilters';
@@ -30,27 +30,31 @@ export function Projects() {
   const filteredProjects = activeFilter === 'all'
     ? portfolioProjects
     : portfolioProjects.filter((project) => project.category === activeFilter);
-  const activeFilterLabel = filterCategories.find((cat) => cat.value === activeFilter)?.label ?? 'esta categoria';
+  const activeFilterLabel = filterCategories.find((category) => category.value === activeFilter)?.label ?? 'esta categoria';
+  const stackSignals = useMemo(
+    () => Array.from(new Set(filteredProjects.flatMap((project) => project.stack))).slice(0, 6),
+    [filteredProjects]
+  );
 
   return (
-    <section id="projects" className="relative py-16 sm:py-24 lg:py-32 bg-dark-100">
-      <div className="max-w-[1200px] mx-auto px-6 sm:px-8 lg:px-16">
+    <section id="projects" className="relative bg-dark-100 py-16 sm:py-24 lg:py-32">
+      <div className="mx-auto max-w-[1200px] px-5 sm:px-8 lg:px-16">
         <motion.div
           ref={containerRef}
           variants={sectionHeaderVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="mb-12"
+          className="mb-10 sm:mb-12"
         >
-          <div className="flex items-center gap-4 mb-4">
-            <div className="h-px flex-1 bg-gradient-to-r from-purple-500/50 to-transparent" />
-            <span className="font-mono text-purple-400 text-sm">02</span>
-            <div className="h-px flex-1 bg-gradient-to-l from-purple-500/50 to-transparent" />
+          <div className="mb-4 flex items-center gap-4">
+            <div className="system-divider-rare" />
+            <span className="font-mono text-sm text-purple-400">02</span>
+            <div className="h-px flex-1 bg-gradient-to-l from-purple-400/50 to-transparent" />
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white text-center mb-4">
+          <h2 className="mb-4 text-center text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
             Prova <span className="text-gradient-purple">Técnica</span>
           </h2>
-          <p className="text-gray-400 text-center max-w-2xl mx-auto">
+          <p className="mx-auto max-w-2xl text-center text-gray-400">
             Projetos que demonstram engenharia real, arquitetura limpa e decisões técnicas fundamentadas.
           </p>
         </motion.div>
@@ -59,7 +63,33 @@ export function Projects() {
           variants={revealVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="mb-12"
+          className="mb-8 grid gap-4 lg:grid-cols-[0.7fr_1.3fr]"
+        >
+          <div className="system-panel-quiet p-4">
+            <span className="system-label text-purple-300">Filtro ativo</span>
+            <div className="mt-2 flex items-end justify-between gap-4">
+              <strong className="text-2xl text-white">{filteredProjects.length}</strong>
+              <span className="text-right font-mono text-xs text-gray-400">{activeFilterLabel}</span>
+            </div>
+          </div>
+
+          <div className="system-panel-quiet p-4">
+            <span className="system-label text-cyan-300">Stack em destaque</span>
+            <div className="mt-3 flex flex-wrap gap-2">
+              {stackSignals.map((stack) => (
+                <span key={stack} className="system-chip text-gray-300">
+                  {stack}
+                </span>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+
+        <motion.div
+          variants={revealVariants}
+          initial="hidden"
+          animate={isInView ? 'visible' : 'hidden'}
+          className="mb-10 sm:mb-12"
         >
           <ProjectFilters activeFilter={activeFilter} onFilterChange={setActiveFilter} />
         </motion.div>

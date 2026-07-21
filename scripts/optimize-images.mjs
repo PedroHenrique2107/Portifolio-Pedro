@@ -9,6 +9,7 @@ const projectImages = [
   'APIRESTful.png',
   'ShopSwiftSuite.png',
   'SistemaValeti.png',
+  'ParkScan.png',
   'AgroLink.png'
 ];
 
@@ -34,4 +35,3 @@ async function optimizeImage(fileName) {
 
 await fs.mkdir(outputDir, { recursive: true });
 await Promise.all(projectImages.map(optimizeImage));
-

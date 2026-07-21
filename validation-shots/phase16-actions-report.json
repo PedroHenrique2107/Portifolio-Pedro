@@ -1,0 +1,16 @@
+{
+  "modalResult": {
+    "cardFound": true,
+    "dialogOpen": true,
+    "dialogText": "Backend APIsRESTFULL APIs robustas com arquitetura limpa e separação de responsabilidades, implementadas em Python/Flask PROBLEMA Necessidade de APIs performáti"
+  },
+  "formEmptyResult": {
+    "nameError": "Nome deve ter pelo menos 2 caracteres",
+    "emailError": "Email inválido",
+    "messageError": "Mensagem deve ter pelo menos 10 caracteres"
+  },
+  "honeypotResult": {
+    "successVisible": true,
+    "hasNetworkKeyError": false
+  }
+}

@@ -1,169 +1,232 @@
-import { useRef, useMemo, useState, useEffect } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
-import { OrbitControls } from '@react-three/drei';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { Canvas, type ThreeEvent, useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
+import { dataCoreGraph } from '@/data/portfolio';
+
+type DataCoreNode = (typeof dataCoreGraph.nodes)[number];
 
 function StaticCoreFallback() {
   return (
-    <div className="w-full h-full flex items-center justify-center">
-      <div className="w-48 h-48 rounded-full bg-gradient-to-br from-cyan-500/20 to-purple-500/20 border border-cyan-500/30" />
+    <div className="flex h-full w-full items-center justify-center">
+      <div className="h-48 w-48 border border-cyan-500/30 bg-cyan-500/10" />
     </div>
   );
 }
 
-function ParticleRing({ count = 100, radius = 2.5, speed = 0.5, color = '#00f0ff' }: {
-  count?: number;
-  radius?: number;
-  speed?: number;
-  color?: string;
+function getNodeById(id: string) {
+  return dataCoreGraph.nodes.find((node) => node.id === id);
+}
+
+function mapNodeToVector(node: DataCoreNode) {
+  const x = (node.x - 50) / 12;
+  const y = (50 - node.y) / 12;
+  const z = node.kind === 'technology' ? -0.35 : node.kind === 'project' ? 0.35 : 0;
+
+  return new THREE.Vector3(x, y, z);
+}
+
+function isNodeActive(nodeId: string, activeNodeId: string | null) {
+  if (!activeNodeId) return false;
+  if (nodeId === activeNodeId) return true;
+
+  return dataCoreGraph.links.some(
+    (link) =>
+      (link.source === activeNodeId && link.target === nodeId) ||
+      (link.target === activeNodeId && link.source === nodeId)
+  );
+}
+
+function DataCoreNodeMesh({
+  node,
+  activeNodeId,
+  onActiveNodeChange
+}: {
+  node: DataCoreNode;
+  activeNodeId: string | null;
+  onActiveNodeChange: (nodeId: string | null) => void;
 }) {
-  const meshRef = useRef<THREE.Points>(null);
-  
-  const [positions] = useMemo(() => {
-    const positions = new Float32Array(count * 3);
-    
-    for (let i = 0; i < count; i++) {
-      const angle = (i / count) * Math.PI * 2;
-      const radialNoise = Math.sin(i * 12.9898) * 0.15;
-      const verticalNoise = Math.cos(i * 78.233) * 0.25;
-      const r = radius + radialNoise;
-      positions[i * 3] = Math.cos(angle) * r;
-      positions[i * 3 + 1] = verticalNoise;
-      positions[i * 3 + 2] = Math.sin(angle) * r;
-    }
-    
-    return [positions];
-  }, [count, radius]);
-
-  useFrame((state) => {
-    if (meshRef.current) {
-      meshRef.current.rotation.y = state.clock.elapsedTime * speed * 0.1;
-    }
-  });
-
-  return (
-    <points ref={meshRef}>
-      <bufferGeometry>
-        <bufferAttribute
-          attach="attributes-position"
-          args={[positions, 3]}
-        />
-      </bufferGeometry>
-      <pointsMaterial
-        size={0.04}
-        color={color}
-        transparent
-        opacity={0.8}
-        sizeAttenuation
-      />
-    </points>
-  );
-}
-
-function WireframeIcosahedron({ size = 1.2 }: { size?: number }) {
   const meshRef = useRef<THREE.Mesh>(null);
-  const glowRef = useRef<THREE.Mesh>(null);
+  const position = useMemo(() => mapNodeToVector(node), [node]);
+  const active = isNodeActive(node.id, activeNodeId);
+  const radius = node.kind === 'core' ? 0.34 : node.kind === 'project' ? 0.18 : 0.13;
 
   useFrame((state) => {
-    if (meshRef.current) {
-      meshRef.current.rotation.x = state.clock.elapsedTime * 0.1;
-      meshRef.current.rotation.y = state.clock.elapsedTime * 0.15;
-    }
-    if (glowRef.current) {
-      const scale = 1 + Math.sin(state.clock.elapsedTime * 2) * 0.05;
-      glowRef.current.scale.setScalar(scale);
-    }
+    if (!meshRef.current) return;
+    const pulse = active ? 1.12 + Math.sin(state.clock.elapsedTime * 4) * 0.05 : 1;
+    meshRef.current.scale.setScalar(pulse);
   });
 
+  const handlePointerOver = (event: ThreeEvent<PointerEvent>) => {
+    event.stopPropagation();
+    onActiveNodeChange(node.id);
+  };
+
+  const handlePointerOut = (event: ThreeEvent<PointerEvent>) => {
+    event.stopPropagation();
+    onActiveNodeChange(null);
+  };
+
   return (
-    <group>
-      {/* Glow sphere */}
-      <mesh ref={glowRef}>
-        <sphereGeometry args={[size * 0.8, 32, 32]} />
-        <meshBasicMaterial
-          color="#00f0ff"
-          transparent
-          opacity={0.1}
-        />
-      </mesh>
-      
-      {/* Wireframe icosahedron */}
-      <mesh ref={meshRef}>
-        <icosahedronGeometry args={[size, 1]} />
-        <meshBasicMaterial
-          color="#00f0ff"
-          wireframe
-          transparent
-          opacity={0.6}
-        />
-      </mesh>
-      
-      {/* Inner core */}
-      <mesh>
-        <icosahedronGeometry args={[size * 0.5, 0]} />
-        <meshBasicMaterial
-          color="#00f0ff"
-          transparent
-          opacity={0.3}
-        />
-      </mesh>
-    </group>
+    <mesh
+      ref={meshRef}
+      position={position}
+      onPointerOver={handlePointerOver}
+      onPointerOut={handlePointerOut}
+    >
+      <sphereGeometry args={[radius, node.kind === 'core' ? 32 : 20, node.kind === 'core' ? 32 : 20]} />
+      <meshBasicMaterial
+        color={node.color}
+        transparent
+        opacity={node.kind === 'core' ? 0.58 : active ? 0.92 : 0.52}
+      />
+    </mesh>
   );
 }
 
-function OrbitalRings() {
+function DataCoreLink({
+  source,
+  target,
+  active
+}: {
+  source: DataCoreNode;
+  target: DataCoreNode;
+  active: boolean;
+}) {
+  const positions = useMemo(() => {
+    const sourcePoint = mapNodeToVector(source);
+    const targetPoint = mapNodeToVector(target);
+    return new Float32Array([
+      sourcePoint.x,
+      sourcePoint.y,
+      sourcePoint.z,
+      targetPoint.x,
+      targetPoint.y,
+      targetPoint.z
+    ]);
+  }, [source, target]);
+
+  return (
+    <line>
+      <bufferGeometry>
+        <bufferAttribute attach="attributes-position" args={[positions, 3]} />
+      </bufferGeometry>
+      <lineBasicMaterial color={active ? '#00f0ff' : '#64748b'} transparent opacity={active ? 0.58 : 0.16} />
+    </line>
+  );
+}
+
+function DataCoreHalo() {
   const groupRef = useRef<THREE.Group>(null);
 
   useFrame((state) => {
-    if (groupRef.current) {
-      groupRef.current.rotation.x = Math.sin(state.clock.elapsedTime * 0.2) * 0.1;
-      groupRef.current.rotation.y = state.clock.elapsedTime * 0.05;
-    }
+    if (!groupRef.current) return;
+    groupRef.current.rotation.z = state.clock.elapsedTime * 0.06;
   });
 
   return (
     <group ref={groupRef}>
-      {/* Main ring */}
-      <mesh rotation={[Math.PI / 2, 0, 0]}>
-        <torusGeometry args={[2.2, 0.015, 16, 100]} />
-        <meshBasicMaterial color="#00f0ff" transparent opacity={0.4} />
+      <mesh>
+        <torusGeometry args={[1.9, 0.008, 12, 96]} />
+        <meshBasicMaterial color="#00f0ff" transparent opacity={0.26} />
       </mesh>
-      
-      {/* Secondary ring */}
-      <mesh rotation={[Math.PI / 3, Math.PI / 4, 0]}>
-        <torusGeometry args={[2.5, 0.01, 16, 100]} />
-        <meshBasicMaterial color="#10b981" transparent opacity={0.3} />
+      <mesh rotation={[0.7, 0.2, 0.6]}>
+        <torusGeometry args={[2.45, 0.006, 12, 96]} />
+        <meshBasicMaterial color="#10b981" transparent opacity={0.2} />
       </mesh>
-      
-      {/* Tertiary ring */}
-      <mesh rotation={[Math.PI / 6, -Math.PI / 3, 0]}>
-        <torusGeometry args={[1.8, 0.008, 16, 100]} />
-        <meshBasicMaterial color="#a855f7" transparent opacity={0.25} />
+      <mesh rotation={[1.15, -0.4, -0.45]}>
+        <torusGeometry args={[2.85, 0.005, 12, 96]} />
+        <meshBasicMaterial color="#8b5cf6" transparent opacity={0.14} />
       </mesh>
     </group>
   );
 }
 
-function Scene() {
+function DataCoreScene({
+  activeNodeId,
+  pointer,
+  onActiveNodeChange
+}: {
+  activeNodeId: string | null;
+  pointer: { x: number; y: number };
+  onActiveNodeChange: (nodeId: string | null) => void;
+}) {
+  const groupRef = useRef<THREE.Group>(null);
+
+  useFrame((state) => {
+    if (!groupRef.current) return;
+    groupRef.current.rotation.y = state.clock.elapsedTime * 0.08 + pointer.x * 0.18;
+    groupRef.current.rotation.x = pointer.y * -0.14;
+  });
+
   return (
     <>
-      <ambientLight intensity={0.5} />
-      <pointLight position={[10, 10, 10]} intensity={1} />
-      
-      <WireframeIcosahedron size={1.2} />
-      <OrbitalRings />
-      
-      <ParticleRing count={80} radius={2.5} speed={0.3} color="#00f0ff" />
-      <ParticleRing count={60} radius={3.2} speed={-0.2} color="#10b981" />
-      <ParticleRing count={40} radius={1.8} speed={0.4} color="#a855f7" />
-      
-      <OrbitControls
-        enableZoom={false}
-        enablePan={false}
-        autoRotate
-        autoRotateSpeed={0.5}
-      />
+      <ambientLight intensity={0.8} />
+      <group ref={groupRef}>
+        <DataCoreHalo />
+        {dataCoreGraph.links.map((link) => {
+          const source = getNodeById(link.source);
+          const target = getNodeById(link.target);
+          if (!source || !target) return null;
+
+          const active =
+            activeNodeId === link.source ||
+            activeNodeId === link.target ||
+            (!activeNodeId && link.strength === 'primary');
+
+          return (
+            <DataCoreLink
+              key={`${link.source}-${link.target}`}
+              source={source}
+              target={target}
+              active={active}
+            />
+          );
+        })}
+        {dataCoreGraph.nodes.map((node) => (
+          <DataCoreNodeMesh
+            key={node.id}
+            node={node}
+            activeNodeId={activeNodeId}
+            onActiveNodeChange={onActiveNodeChange}
+          />
+        ))}
+      </group>
     </>
+  );
+}
+
+function DataCoreLabels({
+  activeNodeId,
+  onActiveNodeChange
+}: {
+  activeNodeId: string | null;
+  onActiveNodeChange: (nodeId: string | null) => void;
+}) {
+  return (
+    <div className="absolute inset-0 hidden sm:block">
+      {dataCoreGraph.nodes
+        .filter((node) => node.kind !== 'core')
+        .map((node) => {
+          const active = isNodeActive(node.id, activeNodeId);
+
+          return (
+            <button
+              key={node.id}
+              type="button"
+              onMouseEnter={() => onActiveNodeChange(node.id)}
+              onMouseLeave={() => onActiveNodeChange(null)}
+              onFocus={() => onActiveNodeChange(node.id)}
+              onBlur={() => onActiveNodeChange(null)}
+              className={`system-chip absolute max-w-32 -translate-x-1/2 -translate-y-1/2 justify-center border-cyan-400/20 bg-dark/80 text-center text-[10px] transition-all duration-200 ${
+                active ? 'system-chip-active scale-105' : 'hover:border-cyan-400/35 hover:text-cyan-100'
+              }`}
+              style={{ left: `${node.x}%`, top: `${node.y}%` }}
+            >
+              {node.label}
+            </button>
+          );
+        })}
+    </div>
   );
 }
 
@@ -175,15 +238,17 @@ export function CoreSphere() {
   const [webglAvailable] = useState(() => {
     if (typeof document === 'undefined') return true;
     const canvas = document.createElement('canvas');
-    return !!(canvas.getContext('webgl2') || canvas.getContext('webgl'));
+    return Boolean(canvas.getContext('webgl2') || canvas.getContext('webgl'));
   });
   const [contextLost, setContextLost] = useState(false);
+  const [activeNodeId, setActiveNodeId] = useState<string | null>(null);
+  const [pointer, setPointer] = useState({ x: 0, y: 0 });
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const handleChange = (e: MediaQueryListEvent) => {
-      setReducedMotion(e.matches);
+    const handleChange = (event: MediaQueryListEvent) => {
+      setReducedMotion(event.matches);
     };
     mediaQuery.addEventListener('change', handleChange);
 
@@ -219,15 +284,35 @@ export function CoreSphere() {
   }
 
   return (
-    <Canvas
-      onCreated={({ gl }) => {
-        canvasRef.current = gl.domElement;
+    <div
+      className="relative h-full w-full"
+      onPointerMove={(event) => {
+        const rect = event.currentTarget.getBoundingClientRect();
+        setPointer({
+          x: (event.clientX - rect.left) / rect.width - 0.5,
+          y: (event.clientY - rect.top) / rect.height - 0.5
+        });
       }}
-      camera={{ position: [0, 0, 6], fov: 50 }}
-      dpr={[1, 1.5]}
-      gl={{ antialias: false, alpha: true, powerPreference: 'low-power' }}
+      onPointerLeave={() => {
+        setPointer({ x: 0, y: 0 });
+        setActiveNodeId(null);
+      }}
     >
-      <Scene />
-    </Canvas>
+      <Canvas
+        onCreated={({ gl }) => {
+          canvasRef.current = gl.domElement;
+        }}
+        camera={{ position: [0, 0, 6], fov: 48 }}
+        dpr={[1, 1.5]}
+        gl={{ antialias: false, alpha: true, powerPreference: 'low-power' }}
+      >
+        <DataCoreScene
+          activeNodeId={activeNodeId}
+          pointer={pointer}
+          onActiveNodeChange={setActiveNodeId}
+        />
+      </Canvas>
+      <DataCoreLabels activeNodeId={activeNodeId} onActiveNodeChange={setActiveNodeId} />
+    </div>
   );
 }

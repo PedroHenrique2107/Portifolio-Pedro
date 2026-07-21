@@ -7,7 +7,7 @@ export const motionViewport = {
 
 export const heroSequence = {
   badge: {
-    hidden: { opacity: 0, y: 18 },
+    hidden: { opacity: 1, y: 18 },
     visible: {
       opacity: 1,
       y: 0,
@@ -15,7 +15,7 @@ export const heroSequence = {
     }
   },
   title: {
-    hidden: { opacity: 0, y: 28 },
+    hidden: { opacity: 1, y: 28 },
     visible: {
       opacity: 1,
       y: 0,
@@ -23,7 +23,7 @@ export const heroSequence = {
     }
   },
   copy: {
-    hidden: { opacity: 0, y: 24 },
+    hidden: { opacity: 1, y: 24 },
     visible: {
       opacity: 1,
       y: 0,
@@ -31,7 +31,7 @@ export const heroSequence = {
     }
   },
   actions: {
-    hidden: { opacity: 0, y: 22 },
+    hidden: { opacity: 1, y: 22 },
     visible: {
       opacity: 1,
       y: 0,
@@ -105,4 +105,3 @@ export const projectCardVariants: Variants = {
     transition: { duration: 0.22, ease: 'easeIn' }
   }
 };
-

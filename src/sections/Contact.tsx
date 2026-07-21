@@ -1,19 +1,34 @@
-﻿import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { animate, motion, useInView } from 'framer-motion';
-import { AlertCircle, Check, Loader2, Mail, Send } from 'lucide-react';
+import { AlertCircle, Check, Loader2, Mail, Radio, Send, ShieldCheck } from 'lucide-react';
 import { GitHubIcon, LinkedInIcon } from '@/components/icons/BrandIcons';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { metrics, socialLinks } from '@/data/portfolio';
-import { panelRevealVariants, revealVariants, sectionHeaderVariants, staggerContainerVariants } from '@/lib/motion';
-import type { ElementType } from 'react';
+import {
+  panelRevealVariants,
+  revealVariants,
+  sectionHeaderVariants,
+  staggerContainerVariants
+} from '@/lib/motion';
+import type { ElementType, FormEvent } from 'react';
 import type { ContactFormData, SocialLink } from '@/types';
 
 type FormStatus = 'idle' | 'loading' | 'success' | 'error';
 
-function AnimatedCounter({ to, suffix, color, trigger }: { to: number; suffix: string; color: string; trigger: boolean }) {
+function AnimatedCounter({
+  to,
+  suffix,
+  color,
+  trigger
+}: {
+  to: number;
+  suffix: string;
+  color: string;
+  trigger: boolean;
+}) {
   const [value, setValue] = useState(0);
 
   useEffect(() => {
@@ -21,7 +36,7 @@ function AnimatedCounter({ to, suffix, color, trigger }: { to: number; suffix: s
     const controls = animate(0, to, {
       duration: 1.5,
       ease: 'easeOut',
-      onUpdate: (v) => setValue(Math.round(v)),
+      onUpdate: (nextValue) => setValue(Math.round(nextValue))
     });
     return controls.stop;
   }, [trigger, to]);
@@ -73,7 +88,7 @@ export function Contact() {
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!formData.email.trim() || !emailRegex.test(formData.email)) {
-      newErrors.email = 'Email invalido';
+      newErrors.email = 'Email inválido';
     }
 
     if (!formData.message.trim() || formData.message.trim().length < 10) {
@@ -84,8 +99,8 @@ export function Contact() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = async (event: FormEvent) => {
+    event.preventDefault();
 
     const honeypotValue = honeypotRef.current?.value.trim() ?? '';
     if (honeypotValue) {
@@ -123,7 +138,7 @@ export function Contact() {
 
       const result = await response.json();
       if (!response.ok || result?.success === false) {
-        throw new Error(result?.message || result?.error || 'Nao foi possivel enviar sua mensagem.');
+        throw new Error(result?.message || result?.error || 'Não foi possível enviar sua mensagem.');
       }
 
       setStatus('success');
@@ -145,98 +160,105 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="relative py-16 sm:py-24 lg:py-32 bg-dark-100">
-      <div className="max-w-[1200px] mx-auto px-6 sm:px-8 lg:px-16">
+    <section id="contact" className="relative bg-dark-100 py-16 sm:py-24 lg:py-32">
+      <div className="mx-auto max-w-[1200px] px-5 sm:px-8 lg:px-16">
         <motion.div
           ref={containerRef}
           variants={sectionHeaderVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="mb-16"
+          className="mb-12 sm:mb-16"
         >
-          <div className="flex items-center gap-4 mb-4">
-            <div className="h-px flex-1 bg-gradient-to-r from-cyan-500/50 to-transparent" />
-            <span className="font-mono text-cyan-400 text-sm">04</span>
-            <div className="h-px flex-1 bg-gradient-to-l from-cyan-500/50 to-transparent" />
+          <div className="mb-4 flex items-center gap-4">
+            <div className="system-divider-cyan" />
+            <span className="font-mono text-sm text-cyan-400">04</span>
+            <div className="h-px flex-1 bg-gradient-to-l from-cyan-400/50 to-transparent" />
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white text-center mb-4">
+          <h2 className="mb-4 text-center text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
             Vamos construir algo <span className="text-gradient-cyan">robusto</span>.
           </h2>
-          <p className="text-gray-400 text-center max-w-2xl mx-auto">
+          <p className="mx-auto max-w-2xl text-center text-gray-400">
             Aberto a oportunidades, colaborações e discussões técnicas.
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16">
-          <motion.div
-            variants={revealVariants}
+        <div className="grid min-w-0 gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-12">
+          <motion.aside
+            variants={staggerContainerVariants}
             initial="hidden"
             animate={isInView ? 'visible' : 'hidden'}
-            className="space-y-8"
+            className="min-w-0 space-y-4"
           >
-            <div>
-              <h3 className="text-xl font-semibold text-white mb-4">Informações de Contato</h3>
-              <p className="text-gray-400 mb-6">
+            <motion.div variants={panelRevealVariants} className="system-panel min-w-0 overflow-hidden p-5 sm:p-6">
+              <div className="mb-5 flex items-center gap-3">
+                <div className="flex h-12 w-12 items-center justify-center border border-emerald-400/25 bg-emerald-400/10">
+                  <Radio className="h-5 w-5 text-emerald-300" />
+                </div>
+                <div>
+                  <span className="system-label text-emerald-300">Status</span>
+                  <h3 className="text-xl font-semibold text-white">Canal aberto</h3>
+                </div>
+              </div>
+              <p className="break-words text-sm leading-relaxed text-gray-400">
                 Prefere outro canal? Estou disponível nas seguintes plataformas:
               </p>
-            </div>
-
-            <motion.div
-              variants={staggerContainerVariants}
-              initial="hidden"
-              animate={isInView ? 'visible' : 'hidden'}
-              className="space-y-4"
-            >
-              {socialLinks.map((social) => {
-                const styles = contactSocialStyles[social.id];
-                const Icon = styles.icon;
-
-                return (
-                  <motion.a
-                    key={social.id}
-                    variants={panelRevealVariants}
-                    href={social.href}
-                    target={social.external ? '_blank' : undefined}
-                    rel={social.external ? 'noopener noreferrer' : undefined}
-                    className={`system-panel-quiet flex items-center gap-4 p-4 ${styles.hover} transition-all duration-300 group`}
-                  >
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-white/5 flex items-center justify-center transition-colors">
-                      <Icon className={`w-6 h-6 text-gray-400 ${styles.iconHover} transition-colors`} />
-                    </div>
-                    <div>
-                      <span className="block text-white font-medium">{social.label}</span>
-                      <span className="text-gray-500 font-mono text-sm truncate">{social.display}</span>
-                    </div>
-                  </motion.a>
-                );
-              })}
             </motion.div>
 
-            <div className="grid grid-cols-3 gap-2 sm:gap-4 pt-8 border-t border-white/5">
+            {socialLinks.map((social) => {
+              const styles = contactSocialStyles[social.id];
+              const Icon = styles.icon;
+
+              return (
+                <motion.a
+                  key={social.id}
+                  variants={panelRevealVariants}
+                  href={social.href}
+                  target={social.external ? '_blank' : undefined}
+                  rel={social.external ? 'noopener noreferrer' : undefined}
+                  className={`system-panel-quiet group flex min-w-0 items-center gap-3 overflow-hidden p-4 transition-all duration-300 sm:gap-4 ${styles.hover}`}
+                >
+                  <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center border border-white/10 bg-white/5">
+                    <Icon className={`h-5 w-5 text-gray-400 transition-colors ${styles.iconHover}`} />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <span className="block font-medium text-white">{social.label}</span>
+                    <span className="block truncate font-mono text-xs text-gray-500 sm:text-sm">{social.display}</span>
+                  </div>
+                </motion.a>
+              );
+            })}
+
+            <motion.div variants={panelRevealVariants} className="grid min-w-0 grid-cols-3 gap-2 border-t border-white/5 pt-4 sm:gap-3">
               {metrics.map((metric) => (
-                <div key={metric.label} className="text-center">
+                <div key={metric.label} className="system-panel-quiet min-w-0 p-3 text-center">
                   <AnimatedCounter to={metric.value} suffix={metric.suffix} color={metric.color} trigger={isInView} />
-                  <span className="text-gray-500 text-sm">{metric.label}</span>
+                  <span className="text-xs text-gray-500">{metric.label}</span>
                 </div>
               ))}
-            </div>
-          </motion.div>
+            </motion.div>
+          </motion.aside>
 
           <motion.div
             variants={revealVariants}
             initial="hidden"
             animate={isInView ? 'visible' : 'hidden'}
+            className="system-panel min-w-0 overflow-hidden p-5 sm:p-6 lg:p-8"
           >
             {status === 'success' ? (
-              <div className="system-panel h-full flex flex-col items-center justify-center p-8 border-emerald-500/20 bg-emerald-500/10">
-                <div className="w-16 h-16 rounded-full bg-emerald-500/20 flex items-center justify-center mb-4">
-                  <Check className="w-8 h-8 text-emerald-400" />
+              <div className="flex min-h-[420px] flex-col items-center justify-center text-center">
+                <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-emerald-500/20">
+                  <Check className="h-8 w-8 text-emerald-400" />
                 </div>
-                <h3 className="text-xl font-semibold text-white mb-2">Mensagem Enviada!</h3>
-                <p className="text-gray-400 text-center">Obrigado pelo contato. Responderei em breve.</p>
+                <h3 className="mb-2 text-xl font-semibold text-white">Mensagem Enviada!</h3>
+                <p className="text-gray-400">Obrigado pelo contato. Responderei em breve.</p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-5">
+                <div className="mb-2 flex items-center gap-3">
+                  <ShieldCheck className="h-5 w-5 text-cyan-300" />
+                  <span className="system-label text-cyan-300">Mensagem protegida por honeypot</span>
+                </div>
+
                 <input
                   ref={honeypotRef}
                   type="text"
@@ -253,15 +275,17 @@ export function Contact() {
                     id="name"
                     type="text"
                     value={formData.name}
-                    onChange={(e) => handleChange('name', e.target.value)}
+                    onChange={(event) => handleChange('name', event.target.value)}
                     placeholder="Seu nome"
-                    className={`bg-white/5 border-white/10 text-white placeholder:text-gray-600 focus:border-cyan-500/50 focus:ring-cyan-500/20 ${
-                      errors.name ? 'border-red-500/50' : ''
+                    aria-invalid={Boolean(errors.name)}
+                    aria-describedby={errors.name ? 'name-error' : undefined}
+                    className={`bg-white/5 text-white placeholder:text-gray-600 focus:border-cyan-500/50 focus:ring-cyan-500/20 ${
+                      errors.name ? 'border-red-500/50' : 'border-white/10'
                     }`}
                   />
                   {errors.name && (
-                    <span className="flex items-center gap-1 text-red-400 text-sm">
-                      <AlertCircle className="w-4 h-4" />
+                    <span id="name-error" className="flex items-center gap-1 text-sm text-red-400">
+                      <AlertCircle className="h-4 w-4" />
                       {errors.name}
                     </span>
                   )}
@@ -273,15 +297,17 @@ export function Contact() {
                     id="email"
                     type="email"
                     value={formData.email}
-                    onChange={(e) => handleChange('email', e.target.value)}
+                    onChange={(event) => handleChange('email', event.target.value)}
                     placeholder="seu@email.com"
-                    className={`bg-white/5 border-white/10 text-white placeholder:text-gray-600 focus:border-cyan-500/50 focus:ring-cyan-500/20 ${
-                      errors.email ? 'border-red-500/50' : ''
+                    aria-invalid={Boolean(errors.email)}
+                    aria-describedby={errors.email ? 'email-error' : undefined}
+                    className={`bg-white/5 text-white placeholder:text-gray-600 focus:border-cyan-500/50 focus:ring-cyan-500/20 ${
+                      errors.email ? 'border-red-500/50' : 'border-white/10'
                     }`}
                   />
                   {errors.email && (
-                    <span className="flex items-center gap-1 text-red-400 text-sm">
-                      <AlertCircle className="w-4 h-4" />
+                    <span id="email-error" className="flex items-center gap-1 text-sm text-red-400">
+                      <AlertCircle className="h-4 w-4" />
                       {errors.email}
                     </span>
                   )}
@@ -292,23 +318,25 @@ export function Contact() {
                   <Textarea
                     id="message"
                     value={formData.message}
-                    onChange={(e) => handleChange('message', e.target.value)}
+                    onChange={(event) => handleChange('message', event.target.value)}
                     placeholder="Sua mensagem..."
-                    rows={5}
-                    className={`bg-white/5 border-white/10 text-white placeholder:text-gray-600 focus:border-cyan-500/50 focus:ring-cyan-500/20 resize-none ${
-                      errors.message ? 'border-red-500/50' : ''
+                    rows={6}
+                    aria-invalid={Boolean(errors.message)}
+                    aria-describedby={errors.message ? 'message-error' : undefined}
+                    className={`resize-none bg-white/5 text-white placeholder:text-gray-600 focus:border-cyan-500/50 focus:ring-cyan-500/20 ${
+                      errors.message ? 'border-red-500/50' : 'border-white/10'
                     }`}
                   />
                   {errors.message && (
-                    <span className="flex items-center gap-1 text-red-400 text-sm">
-                      <AlertCircle className="w-4 h-4" />
+                    <span id="message-error" className="flex items-center gap-1 text-sm text-red-400">
+                      <AlertCircle className="h-4 w-4" />
                       {errors.message}
                     </span>
                   )}
                 </div>
 
                 {status === 'error' && requestError && (
-                  <div className="rounded-lg border border-red-500/30 bg-red-500/10 p-3 text-sm text-red-300">
+                  <div className="border border-red-500/30 bg-red-500/10 p-3 text-sm text-red-300">
                     {requestError}
                   </div>
                 )}
@@ -316,16 +344,16 @@ export function Contact() {
                 <Button
                   type="submit"
                   disabled={status === 'loading'}
-                  className="system-button-primary w-full py-6 disabled:opacity-50"
+                  className="system-button-primary h-14 w-full disabled:opacity-50"
                 >
                   {status === 'loading' ? (
                     <>
-                      <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                      <Loader2 className="h-5 w-5 animate-spin" />
                       Enviando...
                     </>
                   ) : (
                     <>
-                      <Send className="w-5 h-5 mr-2" />
+                      <Send className="h-5 w-5" />
                       Enviar Mensagem
                     </>
                   )}

@@ -8,7 +8,7 @@ import { profile } from '@/data/portfolio';
 import { heroSequence } from '@/lib/motion';
 
 const heroCtaClass =
-  'h-14 w-full sm:w-56 px-6 text-base font-semibold rounded-md';
+  'h-12 sm:h-14 w-full sm:w-56 px-5 sm:px-6 text-sm sm:text-base font-semibold rounded-md';
 
 export function Hero() {
   const scrollToSection = (id: string) => {
@@ -25,17 +25,21 @@ export function Hero() {
     >
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-dark/50 to-dark pointer-events-none z-[1]" />
 
-      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-16 py-20">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center sm:min-h-[80vh]">
-          <div className="space-y-8">
+      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-16 py-20 sm:py-24">
+        <div className="relative grid lg:grid-cols-2 gap-6 sm:gap-12 lg:gap-8 items-center sm:min-h-[80vh]">
+          <div className="relative z-10 max-w-xs space-y-6 sm:max-w-none sm:space-y-8">
             <motion.div
               variants={heroSequence.badge}
               initial="hidden"
               animate="visible"
             >
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 font-mono text-sm">
-                <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
-                SOFTWARE ENGINEER - BACKEND - CLEAN CODE
+              <span className="inline-flex w-full max-w-xs flex-wrap items-center gap-x-2 gap-y-1 rounded-md border border-cyan-500/20 bg-cyan-500/10 px-3 py-2 font-mono text-xs leading-relaxed text-cyan-400 sm:w-auto sm:max-w-none sm:flex-nowrap sm:rounded-full sm:px-4 sm:text-sm">
+                <span className="h-2 w-2 shrink-0 rounded-full bg-cyan-400 animate-pulse" />
+                <span>SOFTWARE ENGINEER</span>
+                <span>-</span>
+                <span>BACKEND</span>
+                <span>-</span>
+                <span>CLEAN CODE</span>
               </span>
             </motion.div>
 
@@ -43,17 +47,18 @@ export function Hero() {
               variants={heroSequence.title}
               initial="hidden"
               animate="visible"
-              className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight"
+              className="text-3xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight"
             >
-              Alta performance{' '}
-              <span className="text-gradient-cyan">começa na estrutura de dados</span>
+              <span className="block">Alta performance</span>
+              <span className="block text-gradient-cyan">começa na estrutura</span>
+              <span className="block text-gradient-cyan">de dados</span>
             </motion.h1>
 
             <motion.p
               variants={heroSequence.copy}
               initial="hidden"
               animate="visible"
-              className="text-lg sm:text-xl text-gray-400 max-w-xl"
+              className="text-base sm:text-xl text-gray-300 max-w-xl leading-relaxed"
             >
               Olá, meu nome é Pedro Henrique, Engenheiro de Software focado em backend e arquitetura de sistemas escaláveis.
               É um prazer ter você aqui. Este portfólio reúne projetos, experiências e soluções que refletem minha visão de tecnologia:
@@ -64,7 +69,7 @@ export function Hero() {
               variants={heroSequence.actions}
               initial="hidden"
               animate="visible"
-              className="flex flex-wrap gap-4"
+              className="flex flex-wrap gap-3 sm:gap-4"
             >
               <Button
                 onClick={() => scrollToSection('projects')}
@@ -99,7 +104,7 @@ export function Hero() {
               variants={heroSequence.actions}
               initial="hidden"
               animate="visible"
-              className="flex flex-wrap items-center gap-x-4 gap-y-2 pt-4"
+              className="flex flex-wrap items-center gap-x-4 gap-y-2 pt-2 sm:pt-4"
             >
               <a
                 href={profile.githubUrl}
@@ -135,7 +140,7 @@ export function Hero() {
             variants={heroSequence.visual}
             initial="hidden"
             animate="visible"
-            className="relative h-[320px] sm:h-[400px] lg:h-[560px]"
+            className="pointer-events-none absolute inset-x-0 top-[25rem] z-0 h-[220px] opacity-10 sm:top-20 sm:h-[420px] sm:opacity-45 lg:pointer-events-auto lg:relative lg:inset-auto lg:z-auto lg:h-[560px] lg:opacity-100"
           >
             <div className="absolute inset-0 overflow-hidden">
               <ErrorBoundary
