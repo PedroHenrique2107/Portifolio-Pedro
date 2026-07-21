@@ -1,20 +1,23 @@
-import { useRef, useState } from 'react';
+import { lazy, Suspense, useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { ProjectEmptyState } from '@/components/projects/ProjectEmptyState';
 import { ProjectFilters } from '@/components/projects/ProjectFilters';
 import { ProjectGrid } from '@/components/projects/ProjectGrid';
-import { ProjectModal } from '@/components/projects/ProjectModal';
 import { filterCategories, projects } from '@/data/portfolio';
 import { revealVariants, sectionHeaderVariants } from '@/lib/motion';
 import type { FilterCategory, Project } from '@/types';
 
-const projectImageModules = import.meta.glob('../image/*.{png,jpg,jpeg,webp,avif}', {
+const ProjectModal = lazy(() =>
+  import('@/components/projects/ProjectModal').then((module) => ({ default: module.ProjectModal }))
+);
+
+const projectImageModules = import.meta.glob('../image/optimized/*.webp', {
   eager: true,
   import: 'default'
 }) as Record<string, string>;
 
 const projectImages = Object.fromEntries(
-  Object.entries(projectImageModules).map(([path, url]) => [path.split('/').pop() ?? '', url])
+  Object.entries(projectImageModules).map(([path, url]) => [path.replace('../image/', ''), url])
 ) as Record<string, string>;
 
 export function Projects() {
@@ -71,12 +74,15 @@ export function Projects() {
           <ProjectEmptyState activeFilterLabel={activeFilterLabel} />
         )}
 
-        <ProjectModal
-          project={selectedProject}
-          onClose={() => setSelectedProject(null)}
-        />
+        {selectedProject && (
+          <Suspense fallback={null}>
+            <ProjectModal
+              project={selectedProject}
+              onClose={() => setSelectedProject(null)}
+            />
+          </Suspense>
+        )}
       </div>
     </section>
   );
 }
-

@@ -49,7 +49,7 @@ export const projects = [
   {
     id: 'apisrestfull',
     title: 'APIsRESTFULL',
-    image: 'APIRESTful.png',
+    image: 'optimized/APIRESTful.webp',
     category: 'apis',
     categoryLabel: 'Backend',
     description: 'APIs robustas com arquitetura limpa e separação de responsabilidades, implementadas em Python/Flask',
@@ -74,7 +74,7 @@ export const projects = [
   {
     id: 'shop-swift',
     title: 'Shop Swift Suite',
-    image: 'ShopSwiftSuite.png',
+    image: 'optimized/ShopSwiftSuite.webp',
     category: 'fullstack',
     categoryLabel: 'Fullstack',
     description: 'Plataforma de e-commerce completa com gestão de produtos, pedidos e integração com gateway de pagamentos.',
@@ -99,7 +99,7 @@ export const projects = [
   {
     id: 'valeti-system',
     title: 'Valet Tracker',
-    image: 'SistemaValeti.png',
+    image: 'optimized/SistemaValeti.webp',
     category: 'fullstack',
     categoryLabel: 'Fullstack',
     description: 'Sistema de gerenciamento de valets com tracking em tempo real e gestão de filas.',
@@ -124,7 +124,7 @@ export const projects = [
   },
   {
     id: 'agrolink',
-    image: 'AgroLink.png',
+    image: 'optimized/AgroLink.webp',
     title: 'AgroLink - © MetaCore',
     category: 'aiot',
     categoryLabel: 'AIoT & Infraestrutura',
