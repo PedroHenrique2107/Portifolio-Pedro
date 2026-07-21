@@ -2,7 +2,7 @@
 import { ChevronDown, Download, Mail } from 'lucide-react';
 import { GitHubIcon, LinkedInIcon } from '@/components/icons/BrandIcons';
 import { Button } from '@/components/ui/button';
-import { CoreSphere } from '@/components/3d/CoreSphere';
+import { AdaptiveVisualCore } from '@/components/hero/AdaptiveVisualCore';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { profile } from '@/data/portfolio';
 import { heroSequence } from '@/lib/motion';
@@ -135,7 +135,7 @@ export function Hero() {
             variants={heroSequence.visual}
             initial="hidden"
             animate="visible"
-            className="relative h-[400px] lg:h-[560px] hidden lg:block"
+            className="relative h-[320px] sm:h-[400px] lg:h-[560px]"
           >
             <div className="absolute inset-0 overflow-hidden">
               <ErrorBoundary
@@ -145,7 +145,7 @@ export function Hero() {
                   </div>
                 }
               >
-                <CoreSphere />
+                <AdaptiveVisualCore />
               </ErrorBoundary>
             </div>
           </motion.div>
