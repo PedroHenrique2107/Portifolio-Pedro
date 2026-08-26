@@ -55,7 +55,7 @@ export function ProjectCard({ project, imageUrl, onSelect }: ProjectCardProps) {
       </p>
 
       <div className="mb-4">
-        <ProjectCaseDiagram project={project} />
+        <ProjectCaseDiagram project={project} expandable />
       </div>
 
       <ul className="mb-6 space-y-1">

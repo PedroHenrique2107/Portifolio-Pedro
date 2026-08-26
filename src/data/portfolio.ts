@@ -149,6 +149,31 @@ export const projects = [
     results: 'Projeto publicado em produção com painel de ocupação, atalhos operacionais e navegação inferior para fluxos principais.'
   },
   {
+    id: 'gymflow',
+    title: 'GymFlow',
+    image: 'optimized/GymFlow.webp',
+    category: 'fullstack',
+    categoryLabel: 'Fullstack',
+    description: 'PWA mobile-first para planejar, executar e acompanhar treinos, com experiência online e offline integrada à API do GymFlow.',
+    highlights: [
+      'Fichas, agenda semanal e execução completa de treinos',
+      'Histórico, recordes, medidas e fotos privadas de progresso',
+      'Treino offline com sincronização segura ao recuperar a conexão',
+      'Autenticação por convite, perfis e administração de contas'
+    ],
+    stack: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'TanStack Query', 'Supabase Auth', 'PWA', 'Dexie', 'OpenAPI'],
+    githubUrl: 'https://github.com/PedroHenrique2107/gym-mobile',
+    problem: 'Reunir planejamento, execução e acompanhamento de treinos em uma experiência rápida para celular, sem perder o registro quando a conexão falha.',
+    architecture: 'Frontend em Next.js com App Router, sessão via Supabase Auth e consumo exclusivo da API versionada do gym-service. TanStack Query gerencia dados remotos, enquanto Dexie e uma outbox idempotente sustentam o treino offline.',
+    decisions: [
+      'PWA mobile-first para instalação e uso recorrente no treino',
+      'Contrato OpenAPI gerado pelo backend para manter o cliente tipado',
+      'Outbox isolada por usuário, sem persistir tokens de autenticação',
+      'Separação entre interface, autenticação e regras críticas do backend'
+    ],
+    results: 'Fluxo integrado para organizar fichas e agenda, registrar séries mesmo offline e acompanhar a evolução com dados reais e privados.'
+  },
+  {
     id: 'agrolink',
     image: 'optimized/AgroLink.webp',
     title: 'AgroLink - © MetaCore',
@@ -387,8 +412,8 @@ export const dataCoreProjectNodes = projects.map((project, index) => ({
   id: project.id,
   label: project.title,
   kind: 'project',
-  x: [50, 75, 62, 36, 25][index] ?? 50,
-  y: [50, 54, 30, 70, 54][index] ?? 50,
+  x: [50, 66, 66, 50, 34, 34][index] ?? 50,
+  y: [34, 42, 60, 68, 60, 42][index] ?? 50,
   color:
     project.category === 'aiot'
       ? '#10b981'
