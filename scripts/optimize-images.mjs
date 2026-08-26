@@ -10,6 +10,7 @@ const projectImages = [
   'ShopSwiftSuite.png',
   'SistemaValeti.png',
   'ParkScan.png',
+  'GymFlow.png',
   'AgroLink.png'
 ];
 
