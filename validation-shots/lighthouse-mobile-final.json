@@ -1928,7 +1928,7 @@
                     "height": 208
                   },
                   "snippet": "<p class=\"text-base sm:text-xl text-gray-300 max-w-xl leading-relaxed\" style=\"opacity: 1; transform: none;\">",
-                  "nodeLabel": "Olá, meu nome é Pedro Henrique, Engenheiro de Software focado em backend e arqu…"
+                  "nodeLabel": "Olá, meu nome é Pedro Henrique, Engenheiro de Software focado em fullstack e arqu…"
                 }
               }
             ]
@@ -4854,7 +4854,7 @@
           },
           {
             "index": "14",
-            "line": "      content=\"Portfólio de Pedro Henrique, Engenheiro de Software focado em backend, arquitetura limpa, dados, AIoT e sistemas escaláveis.\"",
+            "line": "      content=\"Portfólio de Pedro Henrique, Engenheiro de Software focado em fullstack, arquitetura limpa, dados, AIoT e sistemas escaláveis.\"",
             "message": "Syntax not understood"
           },
           {
@@ -5601,7 +5601,7 @@
               "height": 208
             },
             "snippet": "<p class=\"text-base sm:text-xl text-gray-300 max-w-xl leading-relaxed\" style=\"opacity: 1; transform: none;\">",
-            "nodeLabel": "Olá, meu nome é Pedro Henrique, Engenheiro de Software focado em backend e arqu…"
+            "nodeLabel": "Olá, meu nome é Pedro Henrique, Engenheiro de Software focado em fullstack e arqu…"
           }
         ]
       },

@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Brain, Code2, Database, GitBranch, Lightbulb, Network, Server, Target, User } from 'lucide-react';
+import { Database, GitBranch, Lightbulb, Network, Server, Target, User } from 'lucide-react';
 import { experiences, skills } from '@/data/portfolio';
 import {
   panelRevealVariants,
@@ -8,14 +8,7 @@ import {
   sectionHeaderVariants,
   staggerContainerVariants
 } from '@/lib/motion';
-import type { LucideIcon } from 'lucide-react';
 import type { Experience, Skill } from '@/types';
-
-const iconMap: Record<Experience['icon'], LucideIcon> = {
-  Server,
-  Code2,
-  Brain
-};
 
 const colorMap: Record<Experience['color'], { bg: string; dot: string; border: string; text: string }> = {
   green: {
@@ -218,15 +211,16 @@ export function About() {
 
               <div className="grid gap-4">
                 {experiences.map((experience) => {
-                  const Icon = iconMap[experience.icon];
                   const colors = colorMap[experience.color];
 
                   return (
                     <article key={experience.id} className={`border-l pl-4 ${colors.border}`}>
                       <div className="mb-3 flex items-start gap-3">
-                        <div className={`flex h-10 w-10 flex-shrink-0 items-center justify-center border ${colors.bg} ${colors.border}`}>
-                          <Icon className={`h-5 w-5 ${colors.text}`} />
-                        </div>
+                        <img
+                          src={experience.logo}
+                          alt={`Logo da ${experience.company}`}
+                          className="h-12 w-16 flex-shrink-0 object-contain"
+                        />
                         <div className="min-w-0">
                           <span className="font-mono text-xs text-gray-500">{experience.period}</span>
                           <h4 className="text-base font-semibold text-white">{experience.company}</h4>

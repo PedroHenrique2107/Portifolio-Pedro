@@ -36,6 +36,7 @@ export interface Experience {
   title: string;
   period: string;
   company: string;
+  logo: string;
   icon: ExperienceIcon;
   color: ExperienceColor;
   items: readonly string[];

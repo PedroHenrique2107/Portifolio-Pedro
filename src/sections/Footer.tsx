@@ -36,7 +36,7 @@ export function Footer() {
               </div>
               <p className="max-w-sm text-sm leading-relaxed text-gray-400">
                 Se dá pra automatizar, não é pra fazer manual.
-                Backend, AIoT e Arquitetura Limpa.
+                FullStack, AIoT e Arquitetura Limpa.
               </p>
             </div>
 
