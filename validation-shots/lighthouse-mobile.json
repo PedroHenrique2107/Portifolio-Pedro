@@ -2127,7 +2127,7 @@
                     "height": 234
                   },
                   "snippet": "<p code-path=\"src\\sections\\Hero.tsx:57:13\" class=\"text-base sm:text-xl text-gray-300 max-w-xl leading-relaxed\" style=\"opacity: 1; transform: none;\">",
-                  "nodeLabel": "Olá, meu nome é Pedro Henrique, Engenheiro de Software focado em backend e arqu…"
+                  "nodeLabel": "Olá, meu nome é Pedro Henrique, Engenheiro de Software focado em fullstack e arqu…"
                 }
               }
             ]
@@ -2237,7 +2237,7 @@
                 "height": 860
               },
               "snippet": "<div code-path=\"src\\sections\\Hero.tsx:28:7\" class=\"relative z-10 w-full max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-16 py-20 sm…\">",
-              "nodeLabel": "SOFTWARE ENGINEER\n-\nBACKEND\n-\nCLEAN CODE\nAlta performance\ncomeça na estrutura\nd…"
+              "nodeLabel": "SOFTWARE ENGINEER\n-\nFULLSTACK\n-\nCLEAN CODE\nAlta performance\ncomeça na estrutura\nd…"
             },
             "score": 0.2668020959902795
           }
@@ -2610,7 +2610,7 @@
                 "height": 234
               },
               "snippet": "<p code-path=\"src\\sections\\Hero.tsx:57:13\" class=\"text-base sm:text-xl text-gray-300 max-w-xl leading-relaxed\" style=\"opacity: 1; transform: none;\">",
-              "nodeLabel": "Olá, meu nome é Pedro Henrique, Engenheiro de Software focado em backend e arqu…"
+              "nodeLabel": "Olá, meu nome é Pedro Henrique, Engenheiro de Software focado em fullstack e arqu…"
             },
             "subItems": {
               "type": "subitems",
@@ -5363,7 +5363,7 @@
           },
           {
             "index": "14",
-            "line": "      content=\"Portfólio de Pedro Henrique, Engenheiro de Software focado em backend, arquitetura limpa, dados, AIoT e sistemas escaláveis.\"",
+            "line": "      content=\"Portfólio de Pedro Henrique, Engenheiro de Software focado em fullstack, arquitetura limpa, dados, AIoT e sistemas escaláveis.\"",
             "message": "Syntax not understood"
           },
           {
@@ -5790,7 +5790,7 @@
                     "height": 860
                   },
                   "snippet": "<div code-path=\"src\\sections\\Hero.tsx:28:7\" class=\"relative z-10 w-full max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-16 py-20 sm…\">",
-                  "nodeLabel": "SOFTWARE ENGINEER\n-\nBACKEND\n-\nCLEAN CODE\nAlta performance\ncomeça na estrutura\nd…"
+                  "nodeLabel": "SOFTWARE ENGINEER\n-\nFULLSTACK\n-\nCLEAN CODE\nAlta performance\ncomeça na estrutura\nd…"
                 },
                 "score": 0.2668020959902795
               }
@@ -6201,7 +6201,7 @@
               "height": 234
             },
             "snippet": "<p code-path=\"src\\sections\\Hero.tsx:57:13\" class=\"text-base sm:text-xl text-gray-300 max-w-xl leading-relaxed\" style=\"opacity: 1; transform: none;\">",
-            "nodeLabel": "Olá, meu nome é Pedro Henrique, Engenheiro de Software focado em backend e arqu…"
+            "nodeLabel": "Olá, meu nome é Pedro Henrique, Engenheiro de Software focado em fullstack e arqu…"
           }
         ]
       },

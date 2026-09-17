@@ -1,3 +1,8 @@
+import aiotSolutionLogo from '@/image/optimized/AiotSolution.webp';
+import smartCompassLogo from '@/image/optimized/SmartCompass.webp';
+import modernaTecnologiaLogo from '@/image/optimized/ModernaTecnologia.webp';
+import unimetrocampWydenLogo from '@/image/optimized/UniMetrocamp.webp';
+
 export const profile = {
   name: 'Pedro Henrique',
   role: 'Engenheiro de Software',
@@ -41,7 +46,7 @@ export const socialLinks = [
 
 export const metrics = [
   { label: 'Projetos', value: 20, suffix: '+', color: 'text-cyan-400' },
-  { label: 'Anos Exp.', value: 1, suffix: '+', color: 'text-emerald-400' },
+  { label: 'Anos Exp.', value: 2, suffix: '+', color: 'text-emerald-400' },
   { label: 'Uptime', value: 99, suffix: '%', color: 'text-purple-400' }
 ] as const;
 
@@ -207,6 +212,7 @@ export const experiences = [
     title: 'FullStack Developer Intern',
     period: 'mai/2026 - Atualmente',
     company: 'Moderna Tecnologia',
+    logo: modernaTecnologiaLogo,
     icon: 'Code2',
     color: 'green',
     items: [
@@ -222,6 +228,7 @@ export const experiences = [
     title: 'Desenvolvedor Autônomo | Fullstack',
     period: 'ago/2023 — Atualmente',
     company: 'UniMetrocamp - Wyden',
+    logo: unimetrocampWydenLogo,
     icon: 'Brain',
     color: 'purple',
     items: [
@@ -237,6 +244,7 @@ export const experiences = [
     title: 'FullStack Developer',
     period: 'jan/2026 - mar/2026',
     company: 'SmartCompass',
+    logo: smartCompassLogo,
     icon: 'Code2',
     color: 'green',
     items: [
@@ -252,6 +260,7 @@ export const experiences = [
     title: 'Líder de Projetos de Infraestrutura | Analista de Programação',
     period: 'mar/2025 — dez/2025',
     company: 'AIoT Solution',
+    logo: aiotSolutionLogo,
     icon: 'Server',
     color: 'cyan',
     items: [
@@ -274,9 +283,9 @@ export const timeline = [
   },
   {
     year: '2023',
-    title: 'Inicio da faculdade de Engenharia da Computação',
+    title: 'Inicio da faculdade de Engenharia da Computação - UniMetrocamp - Wyden',
     description: 'O início foi mágico: professores e matérias que faziam meus olhos brilharem, e naquele momento tive certeza de que aquele era o meu lugar. Tive contato com diversas áreas, como sistemas operacionais, redes de computadores, banco de dados e desenvolvimento de software. Foi então que comecei a me aprofundar naquilo que mais me interessava: o desenvolvimento de software.',
-    technologies: ['C/C++', 'NodeJS', 'Python', 'Git', 'Linux', 'Docker', 'AWS', 'Projetos Acadêmicos']
+    technologies: ['C/C++', 'NodeJS', 'Python', 'Git', 'Linux', 'Docker', 'Microcontroladores', 'Projetos Acadêmicos']
   },
   {
     year: '2024',
@@ -300,7 +309,7 @@ export const timeline = [
     year: '2027',
     title: 'Diploma da faculdade e novos desafios',
     description: 'Após a conclusão da faculdade, estou me preparando para novos desafios no mercado de tecnologia, com foco em Engenharia de Software e arquitetura de software escalável, expandindo meus conhecimentos em tecnologias de nuvem e DevOps.',
-    technologies: ['Software Engineering', 'Clean Architecture', 'Vibe Coding', 'Inteligência Artificial', 'Certificações em Cloud/IaC/Linux', 'DevOps']
+    technologies: ['Software Engineering', 'Clean Architecture', 'Vibe Coding', 'Inteligência Artificial', 'Certificações em Cloud/IA/Linux', 'DevOps']
   },
   {
     year: '2028',

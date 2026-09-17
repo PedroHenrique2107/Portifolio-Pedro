@@ -37,7 +37,7 @@ export function Hero() {
                 <span className="h-2 w-2 shrink-0 rounded-full bg-cyan-400 animate-pulse" />
                 <span>SOFTWARE ENGINEER</span>
                 <span>-</span>
-                <span>BACKEND</span>
+                <span>FULLSTACK</span>
                 <span>-</span>
                 <span>CLEAN CODE</span>
               </span>
@@ -60,7 +60,7 @@ export function Hero() {
               animate="visible"
               className="text-base sm:text-xl text-gray-300 max-w-xl leading-relaxed"
             >
-              Olá, meu nome é Pedro Henrique, Engenheiro de Software focado em backend e arquitetura de sistemas escaláveis.
+              Olá, meu nome é Pedro Henrique, Engenheiro de Software focado em fullstack e arquitetura de sistemas escaláveis.
               É um prazer ter você aqui. Este portfólio reúne projetos, experiências e soluções que refletem minha visão de tecnologia:
               eficiência, inovação e impacto positivo. Explore e vamos construir o futuro juntos
             </motion.p>
