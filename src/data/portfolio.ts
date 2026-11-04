@@ -45,7 +45,7 @@ export const socialLinks = [
 ] as const;
 
 export const metrics = [
-  { label: 'Projetos', value: 20, suffix: '+', color: 'text-cyan-400' },
+  { label: 'Projetos', value: 21, suffix: '+', color: 'text-cyan-400' },
   { label: 'Anos Exp.', value: 2, suffix: '+', color: 'text-emerald-400' },
   { label: 'Uptime', value: 99, suffix: '%', color: 'text-purple-400' }
 ] as const;
@@ -203,6 +203,32 @@ export const projects = [
       'Alertas baseados em thresholds'
     ],
     results: 'Economia de 25% em irrigação, detecção precoce de problemas. Aumento de 15% na produtividade agrícola. 70% de aumento na gestão financeira e operacional da safra'
+  },
+  {
+    id: 'clp-academy',
+    title: 'CLP Academy',
+    image: 'optimized/ClpAcademy.webp',
+    category: 'aiot',
+    categoryLabel: 'AIoT & Infraestrutura',
+    description: 'Firmware para placa CLP educacional HF-006 (ESP32) com controle de 6 relés via Wi-Fi, BLE e serial.',
+    highlights: [
+      'Mapeamento 1:1 de 6 entradas virtuais para 6 relés',
+      'Servidor web com captive portal em modo Access Point',
+      'Controle via Bluetooth Low Energy (Nordic UART Service)',
+      'Comandos via monitor serial (115200 baud)',
+      'Suporte opcional a display LCD I2C'
+    ],
+    stack: ['C++', 'Arduino', 'ESP32', 'PlatformIO', 'BLE', 'IoT'],
+    githubUrl: 'https://github.com/PedroHenrique2107/clp_academy',
+    problem: 'Prover um firmware didático para controle de relés em placa CLP educacional, com múltiplas formas de acesso (rede local, Bluetooth e serial).',
+    architecture: 'Firmware embarcado em ESP32 com servidor web embutido (HTML/CSS/JS em string), serviço BLE customizado e leitura de comandos via UART, todos operando sobre o mesmo mapa de 6 relés.',
+    decisions: [
+      'PlatformIO como ambiente de build por reprodutibilidade e integração com VSCode',
+      'Modo Access Point com captive portal para acesso sem configuração de rede',
+      'Protocolo de comandos simples e textual (ex: E3=1, ALL=0, ?) para fácil integração via BLE/serial',
+      'LCD I2C opcional para feedback visual local'
+    ],
+    results: 'Firmware funcional testado na placa HF-006, com controle simultâneo dos 6 relés por três canais distintos (Wi-Fi, BLE e serial), usado como trabalho de faculdade.'
   }
 ] as const;
 

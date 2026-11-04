@@ -11,7 +11,8 @@ const projectImages = [
   'SistemaValeti.png',
   'ParkScan.png',
   'GymFlow.png',
-  'AgroLink.png'
+  'AgroLink.png',
+  'ClpAcademy.png'
 ];
 
 async function optimizeImage(fileName) {
